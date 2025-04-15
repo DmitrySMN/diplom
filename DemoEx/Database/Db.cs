@@ -22,13 +22,15 @@ namespace DB
         private System.Data.DataTable dt;
         private string captchaText;
 
+
+        public Db(string connnectionString)
+        {
+            this.conStr = connnectionString;
+        }
+
         public string getCaptchaText()
         {
             return this.captchaText;
-        }
-        public void setConnectionStr(string conStr)
-        {
-            this.conStr = conStr;
         }
 
         public void FillDGV(DataGridView dgv, string query)
@@ -118,11 +120,11 @@ namespace DB
         }
 
 
-        public int fillTableWithData(string insertQuery)
+        public int executeNonQuery(string nonQuery)
         {
             using (con = new MySqlConnection(conStr))
             {
-                cmd = new MySqlCommand(insertQuery, con);
+                cmd = new MySqlCommand(nonQuery, con);
                 con.Open();
                 return cmd.ExecuteNonQuery();
             }
@@ -144,15 +146,6 @@ namespace DB
             }
         }
 
-        public int updateTable(string updateQuery)
-        {
-            using (con = new MySqlConnection(conStr))
-            {
-                cmd = new MySqlCommand(updateQuery, con);
-                con.Open();
-                return cmd.ExecuteNonQuery();
-            }
-        }
 
         public void setUpDgvImages(DataGridView name, string photoColumnName)
         {

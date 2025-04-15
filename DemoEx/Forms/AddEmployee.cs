@@ -9,6 +9,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DB;
+using DemoEx.utility;
 
 namespace DemoEx
 {
@@ -24,11 +25,7 @@ namespace DemoEx
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
-            string s = e.KeyChar.ToString();
-            if (!Regex.Match(s, @"^[a-zA-Z]+$|[\b]|[_]|[0-9]").Success)
-            {
-                e.Handled = true;
-            }
+            InputFieldCorrection.engLettersNumbersField(e);
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -118,47 +115,27 @@ namespace DemoEx
 
         private void surname_KeyPress(object sender, KeyPressEventArgs e)
         {
-            string s = e.KeyChar.ToString();
-            if (!Regex.Match(s, @"[а-яА-Я]|[\b]|[-]").Success)
-            {
-                e.Handled = true;
-            }
+            InputFieldCorrection.ruLettersField(e);
         }
 
         private void name_KeyPress(object sender, KeyPressEventArgs e)
         {
-            string s = e.KeyChar.ToString();
-            if (!Regex.Match(s, @"[а-яА-Я]|[\b]|[-]").Success)
-            {
-                e.Handled = true;
-            }
+            InputFieldCorrection.ruLettersField(e);
         }
 
         private void pat_KeyPress(object sender, KeyPressEventArgs e)
         {
-            string s = e.KeyChar.ToString();
-            if (!Regex.Match(s, @"[а-яА-Я]|[\b]|[-]").Success)
-            {
-                e.Handled = true;
-            }
+            InputFieldCorrection.ruLettersField(e);
         }
 
         private void pwdTb_KeyPress(object sender, KeyPressEventArgs e)
         {
-            string s = e.KeyChar.ToString();
-            if (!Regex.Match(s, @"^[a-zA-Z]+$|[\b]|[_]|[0-9]").Success)
-            {
-                e.Handled = true;
-            }
+            InputFieldCorrection.engLettersNumbersField(e);
         }
 
         private void address_KeyPress(object sender, KeyPressEventArgs e)
         {
-            string s = e.KeyChar.ToString();
-            if (!Regex.Match(s, @"[а-яА-Я]|[\b]|[-]|[.]|[,]|[0-9]").Success)
-            {
-                e.Handled = true;
-            }
+            InputFieldCorrection.ruLettersNumbersField(e);
         }
     }
 }
