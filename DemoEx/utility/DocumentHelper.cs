@@ -11,11 +11,10 @@ namespace DemoEx.data
 {   
     public static class DocumentHelper
     {
-        private static Db db = new Db();
+        private static Db db = new Db(Connection.connectionString);
 
         public static void createPurchaseDocument(int dealId, int ownerId, int estateId)
         {
-            db.setConnectionStr(Connection.connectionString);
             string type = db.getValuesFromColumn($"select type from deals where id={dealId};")[0];
 
             var clientId = db.getIntValuesFromColumn($"select client from deals where id={dealId};")[0];
@@ -253,7 +252,6 @@ namespace DemoEx.data
 
         public static void createRentDocument(int dealId, int ownerId, int estateId)
         {
-            db.setConnectionStr(Connection.connectionString);
             string type = db.getValuesFromColumn($"select type from deals where id={dealId};")[0];
 
             var clientId = db.getIntValuesFromColumn($"select client from deals where id={dealId};")[0];

@@ -16,7 +16,7 @@ namespace DemoEx
 {
     public partial class AddDealForm : Form
     {
-        private Db db = new Db();
+        private Db db = new Db(Connection.connectionString);
         private string empLogin;
         private int clientId;
         private int edit;
@@ -33,7 +33,6 @@ namespace DemoEx
 
         private void AddDealForm_Load(object sender, EventArgs e)
         {
-            db.setConnectionStr(Connection.connectionString);
 
             dataGridView1.RowTemplate.Height = 70;
             dataGridView1.MultiSelect = false;
@@ -131,15 +130,15 @@ namespace DemoEx
             var estateId = Convert.ToInt32(dataGridView1.SelectedCells[0].Value.ToString());
             try
             {
-                db.fillTableWithData($"INSERT INTO `db17`.`deals` (`client`, `estate`, `employees`, `type`, `transaction_date`, `status`) VALUES ('{clientId}', '{estateId}', '{db.getIntValuesFromColumn($"select id from employees where login='{empLogin}'")[0]}', '{type.Text}', '{dateTimePicker1.Value.ToString("yyyy-MM-dd")}', '{status.Text}')");
+                db.executeNonQuery($"INSERT INTO `db17`.`deals` (`client`, `estate`, `employees`, `type`, `transaction_date`, `status`) VALUES ('{clientId}', '{estateId}', '{db.getIntValuesFromColumn($"select id from employees where login='{empLogin}'")[0]}', '{type.Text}', '{dateTimePicker1.Value.ToString("yyyy-MM-dd")}', '{status.Text}')");
                 MessageBox.Show("Сделка создана!", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 if (type.Text == "Аренда")
                 {
-                    db.updateTable($"UPDATE `db17`.`estate` SET `status` = '{"Арендовано"}' WHERE (`id` = '{estateId}');");
+                    db.executeNonQuery($"UPDATE `db17`.`estate` SET `status` = '{"Арендовано"}' WHERE (`id` = '{estateId}');");
                 } else if (type.Text == "Покупка")
                 {
-                    db.updateTable($"UPDATE `db17`.`estate` SET `status` = '{"Продан"}' WHERE (`id` = '{estateId}');");
+                    db.executeNonQuery($"UPDATE `db17`.`estate` SET `status` = '{"Продан"}' WHERE (`id` = '{estateId}');");
                 }
             }
             catch (Exception exc)
@@ -153,16 +152,16 @@ namespace DemoEx
         {
             try
             {
-                db.updateTable($"update deals set type='{type.Text}', status='{status.Text}' where id={clientId};");
+                db.executeNonQuery($"update deals set type='{type.Text}', status='{status.Text}' where id={clientId};");
                 MessageBox.Show("Данные о сделке успешно изменены!", "Информация",MessageBoxButtons.OK, MessageBoxIcon.Information);
                 var estateId = Convert.ToInt32(dataGridView1.SelectedCells[0].Value.ToString());
                 if (type.Text == "Аренда")
                 {
-                    db.updateTable($"UPDATE `db17`.`estate` SET `status` = '{"Арендован"}' WHERE (`id` = '{estateId}');");
+                    db.executeNonQuery($"UPDATE `db17`.`estate` SET `status` = '{"Арендован"}' WHERE (`id` = '{estateId}');");
                 }
                 else if (type.Text == "Покупка")
                 {
-                    db.updateTable($"UPDATE `db17`.`estate` SET `status` = '{"Продан"}' WHERE (`id` = '{estateId}');");
+                    db.executeNonQuery($"UPDATE `db17`.`estate` SET `status` = '{"Продан"}' WHERE (`id` = '{estateId}');");
                 }
 
                 if (status.Text == "Завершена")

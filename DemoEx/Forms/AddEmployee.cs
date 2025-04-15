@@ -15,7 +15,7 @@ namespace DemoEx
 {
     public partial class AddEmployee : Form
     {
-        private Db db = new Db();
+        private Db db = new Db(Connection.connectionString);
         private int id;
         public AddEmployee(int id)
         {
@@ -47,7 +47,7 @@ namespace DemoEx
                         return;
                     }
 
-                    db.fillTableWithData($"INSERT INTO `db17`.`employees` (`login`, `password`, `Surname`, `Name`, `Patronymic`, `passport`, `birth`, `phone_number`, `address`, `post`, `photo`) VALUES ('{loginTb.Text}', '{db.getHashFromPassword(pwdTb.Text)}', '{surname.Text}', '{name.Text}', '{pat.Text}', '{passport.Text}', '{dateTimePicker1.Value.ToString("yyyy-MM-dd")}', '{phone.Text}', '{address.Text}', '2', 'user.png');");
+                    db.executeNonQuery($"INSERT INTO `db17`.`employees` (`login`, `password`, `Surname`, `Name`, `Patronymic`, `passport`, `birth`, `phone_number`, `address`, `post`, `photo`) VALUES ('{loginTb.Text}', '{db.getHashFromPassword(pwdTb.Text)}', '{surname.Text}', '{name.Text}', '{pat.Text}', '{passport.Text}', '{dateTimePicker1.Value.ToString("yyyy-MM-dd")}', '{phone.Text}', '{address.Text}', '2', 'user.png');");
                     loginTb.Clear();
                     pwdTb.Clear();
                     surname.Clear();
@@ -69,12 +69,12 @@ namespace DemoEx
                 {
                     if (pwdTb.Text.Length == 0)
                     {
-                        db.updateTable($"UPDATE `db17`.`employees` SET `login` = '{loginTb.Text}', `Surname` = '{surname.Text}', `Name` = '{name.Text}', `Patronymic` = '{pat.Text}', `passport` = '{passport.Text}', `birth` = '{dateTimePicker1.Value.ToString("yyyy-MM-dd")}', `phone_number` = '{phone.Text}', `address` = '{address.Text}' WHERE (`id` = {id});");
+                        db.executeNonQuery($"UPDATE `db17`.`employees` SET `login` = '{loginTb.Text}', `Surname` = '{surname.Text}', `Name` = '{name.Text}', `Patronymic` = '{pat.Text}', `passport` = '{passport.Text}', `birth` = '{dateTimePicker1.Value.ToString("yyyy-MM-dd")}', `phone_number` = '{phone.Text}', `address` = '{address.Text}' WHERE (`id` = {id});");
                         MessageBox.Show("Данные сотрудника изменены!", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
-                        db.updateTable($"UPDATE `db17`.`employees` SET `login` = '{loginTb.Text}', password = '{db.getHashFromPassword(pwdTb.Text)}', `Surname` = '{surname.Text}', `Name` = '{name.Text}', `Patronymic` = '{pat.Text}', `passport` = '{passport.Text}', `birth` = '{dateTimePicker1.Value.ToString("yyyy-MM-dd")}', `phone_number` = '{phone.Text}', `address` = '{address.Text}' WHERE (`id` = {id});");
+                        db.executeNonQuery($"UPDATE `db17`.`employees` SET `login` = '{loginTb.Text}', password = '{db.getHashFromPassword(pwdTb.Text)}', `Surname` = '{surname.Text}', `Name` = '{name.Text}', `Patronymic` = '{pat.Text}', `passport` = '{passport.Text}', `birth` = '{dateTimePicker1.Value.ToString("yyyy-MM-dd")}', `phone_number` = '{phone.Text}', `address` = '{address.Text}' WHERE (`id` = {id});");
 
                         MessageBox.Show("Данные сотрудника изменены!", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -88,7 +88,7 @@ namespace DemoEx
 
         private void AddEmployee_Load(object sender, EventArgs e)
         {
-            db.setConnectionStr(Connection.connectionString);
+            
 
             dateTimePicker1.MinDate = DateTime.Now.AddYears(-99);
             dateTimePicker1.MaxDate = DateTime.Now.AddYears(-18);

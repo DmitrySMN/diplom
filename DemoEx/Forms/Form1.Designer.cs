@@ -41,14 +41,14 @@ namespace DemoEx
             this.button2 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.captcha = new System.Windows.Forms.GroupBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.button3 = new System.Windows.Forms.Button();
             this.captchaInputText = new System.Windows.Forms.TextBox();
             this.captchaPicture = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.captcha.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.captchaPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.captchaPicture)).BeginInit();
             this.SuspendLayout();
             // 
             // pwdTb
@@ -94,10 +94,10 @@ namespace DemoEx
             this.label1.BackColor = System.Drawing.Color.White;
             this.label1.Font = new System.Drawing.Font("Yu Gothic UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(11, 100);
+            this.label1.Location = new System.Drawing.Point(13, 100);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(83, 32);
+            this.label1.Size = new System.Drawing.Size(82, 32);
             this.label1.TabIndex = 13;
             this.label1.Text = "Логин";
             // 
@@ -109,7 +109,7 @@ namespace DemoEx
             this.label2.Location = new System.Drawing.Point(11, 190);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(100, 32);
+            this.label2.Size = new System.Drawing.Size(99, 32);
             this.label2.TabIndex = 14;
             this.label2.Text = "Пароль";
             // 
@@ -121,7 +121,7 @@ namespace DemoEx
             this.checkBox1.Location = new System.Drawing.Point(17, 281);
             this.checkBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(220, 36);
+            this.checkBox1.Size = new System.Drawing.Size(219, 36);
             this.checkBox1.TabIndex = 15;
             this.checkBox1.Text = "Показать пароль";
             this.checkBox1.UseVisualStyleBackColor = true;
@@ -140,7 +140,7 @@ namespace DemoEx
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.Color.Black;
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(113)))), ((int)(((byte)(125)))));
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button1.Font = new System.Drawing.Font("Yu Gothic UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button1.ForeColor = System.Drawing.Color.White;
@@ -154,7 +154,7 @@ namespace DemoEx
             // 
             // button2
             // 
-            this.button2.BackColor = System.Drawing.Color.Black;
+            this.button2.BackColor = System.Drawing.Color.Silver;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button2.Font = new System.Drawing.Font("Yu Gothic UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button2.ForeColor = System.Drawing.Color.White;
@@ -170,6 +170,7 @@ namespace DemoEx
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Yu Gothic UI", 15.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.ForeColor = System.Drawing.Color.Black;
             this.label3.Location = new System.Drawing.Point(37, 441);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(320, 30);
@@ -178,6 +179,7 @@ namespace DemoEx
             // 
             // captcha
             // 
+            this.captcha.BackColor = System.Drawing.Color.White;
             this.captcha.Controls.Add(this.pictureBox2);
             this.captcha.Controls.Add(this.button3);
             this.captcha.Controls.Add(this.captchaInputText);
@@ -190,15 +192,26 @@ namespace DemoEx
             this.captcha.TabStop = false;
             this.captcha.Text = "Captcha";
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(275, 231);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(65, 43);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 22;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
+            // 
             // button3
             // 
-            this.button3.BackColor = System.Drawing.Color.Black;
+            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(175)))), ((int)(((byte)(210)))), ((int)(((byte)(117)))));
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button3.Font = new System.Drawing.Font("Yu Gothic UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button3.ForeColor = System.Drawing.Color.White;
             this.button3.Location = new System.Drawing.Point(0, 280);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(365, 45);
+            this.button3.Size = new System.Drawing.Size(363, 45);
             this.button3.TabIndex = 21;
             this.button3.Text = "Проверить";
             this.button3.UseVisualStyleBackColor = false;
@@ -219,17 +232,6 @@ namespace DemoEx
             this.captchaPicture.Size = new System.Drawing.Size(315, 186);
             this.captchaPicture.TabIndex = 0;
             this.captchaPicture.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(275, 231);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(65, 43);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 22;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // Form1
             // 
@@ -264,8 +266,8 @@ namespace DemoEx
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.captcha.ResumeLayout(false);
             this.captcha.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.captchaPicture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.captchaPicture)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

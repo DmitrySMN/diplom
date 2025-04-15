@@ -103,7 +103,7 @@ namespace DemoEx
             {
                 if (id == 0)
                 {
-                    db.fillTableWithData($"INSERT INTO `db17`.`clients` (`Surname`, `Name`, `Patronymic`, `passport`, `address`,`birth`, `phone_number`, `type`) VALUES ('{surname.Text}', '{name.Text}', '{pat.Text}', '{passport.Text}', '{address.Text}','{dateTimePicker1.Value.ToString("yyyy-MM-dd")}', '{phone.Text}', '{type.Text}');");
+                    db.executeNonQuery($"INSERT INTO `db17`.`clients` (`Surname`, `Name`, `Patronymic`, `passport`, `address`,`birth`, `phone_number`, `type`) VALUES ('{surname.Text}', '{name.Text}', '{pat.Text}', '{passport.Text}', '{address.Text}','{dateTimePicker1.Value.ToString("yyyy-MM-dd")}', '{phone.Text}', '{type.Text}');");
                     MessageBox.Show("Клиент успешно добавлен!", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     surname.Clear();
                     name.Clear();
@@ -114,7 +114,7 @@ namespace DemoEx
                 }
                 else
                 {
-                    db.updateTable($"UPDATE `db17`.`clients` SET `Surname` = '{surname.Text}', `Name` = '{name.Text}', `Patronymic` = '{pat.Text}', `passport` = '{passport.Text}', `address` = '{address.Text}', `birth` = '{dateTimePicker1.Value.ToString("yyyy-MM-dd")}', `phone_number` = '{phone.Text}', `type` = '{type.Text}' WHERE (`id` = '{id}');");
+                    db.executeNonQuery($"UPDATE `db17`.`clients` SET `Surname` = '{surname.Text}', `Name` = '{name.Text}', `Patronymic` = '{pat.Text}', `passport` = '{passport.Text}', `address` = '{address.Text}', `birth` = '{dateTimePicker1.Value.ToString("yyyy-MM-dd")}', `phone_number` = '{phone.Text}', `type` = '{type.Text}' WHERE (`id` = '{id}');");
                     MessageBox.Show("Данные клиента изменены!", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }

@@ -9,6 +9,6 @@ namespace DemoEx
 {
     public static class Connection
     {
-        public static string connectionString = $"host=10.207.106.12;uid=user17;pwd=rx45;database=db17;";      
+        public static string connectionString = $"host=localhost;uid=root;pwd=root;database=db17;";      
     }
 }

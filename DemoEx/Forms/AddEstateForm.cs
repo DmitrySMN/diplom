@@ -17,7 +17,7 @@ namespace DemoEx
     public partial class AddEstateForm : Form
     {
         private string photo = "home.png";
-        private Db db = new Db();
+        private Db db = new Db(Connection.connectionString);
         private int id;
         public AddEstateForm(int id)
         {
@@ -32,7 +32,6 @@ namespace DemoEx
 
         private void AddEstateForm_Load(object sender, EventArgs e)
         {
-            db.setConnectionStr(Connection.connectionString);
             type.DropDownStyle = ComboBoxStyle.DropDownList;
             status.DropDownStyle = ComboBoxStyle.DropDownList;
             type.Items.AddRange(db.getValuesFromColumn("select type from estate_type;").ToArray());
@@ -142,7 +141,7 @@ namespace DemoEx
                 {
                     if (dataGridView1.SelectedCells.Count > 0 || price.Text.Length > 4 || squareCount.Text.Length > 1 || roomsCount.Text.Length > 0 || address.Text.Length > 0)
                     {
-                        db.fillTableWithData($"INSERT INTO `db17`.`estate` (`estate_type`, `owner_id`, `address`, `square`, `cadastral`,`rooms`, `price`, `photo`, `status`) VALUES ('{db.getIntValuesFromColumn($"select id from estate_type where type='{type.Text}'")[0]}', '{dataGridView1.SelectedCells[0].Value}', '{address.Text}', '{squareCount.Text}', '{cadastral.Text}', '{roomsCount.Text}', '{price.Text}', '{photo}', '{(status.Text == "Продажа" ? "В продаже" : "Сдается в аренду")}');");
+                        db.executeNonQuery($"INSERT INTO `db17`.`estate` (`estate_type`, `owner_id`, `address`, `square`, `cadastral`,`rooms`, `price`, `photo`, `status`) VALUES ('{db.getIntValuesFromColumn($"select id from estate_type where type='{type.Text}'")[0]}', '{dataGridView1.SelectedCells[0].Value}', '{address.Text}', '{squareCount.Text}', '{cadastral.Text}', '{roomsCount.Text}', '{price.Text}', '{photo}', '{(status.Text == "Продажа" ? "В продаже" : "Сдается в аренду")}');");
                         MessageBox.Show("Объект успешно добавлен!", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         price.Clear();
                         squareCount.Clear();
@@ -157,7 +156,7 @@ namespace DemoEx
                 }
                 else
                 {
-                   db.updateTable($"UPDATE `db17`.`estate` SET `estate_type` = '{db.getValuesFromColumn($"select id from estate_type where type='{type.Text}';")[0]}', `owner_id` = '{dataGridView1.SelectedRows[0].Cells[0].Value}', `address` = '{address.Text}', `square` = '{squareCount.Text}', `rooms` = '{roomsCount.Text}', `price` = '{price.Text}', `photo` = '{photo}', `status` = '{status.Text}' WHERE (`id` = '{id}');");
+                   db.executeNonQuery($"UPDATE `db17`.`estate` SET `estate_type` = '{db.getValuesFromColumn($"select id from estate_type where type='{type.Text}';")[0]}', `owner_id` = '{dataGridView1.SelectedRows[0].Cells[0].Value}', `address` = '{address.Text}', `square` = '{squareCount.Text}', `rooms` = '{roomsCount.Text}', `price` = '{price.Text}', `photo` = '{photo}', `status` = '{status.Text}' WHERE (`id` = '{id}');");
                     MessageBox.Show("Данные объекта успешно отредактированы!", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 }

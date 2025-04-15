@@ -73,7 +73,11 @@ namespace DemoEx
 
         private void button2_Click_2(object sender, EventArgs e)
         {
-            Messages.applicationExitConfirmationMessage();
+           var result = MessageStore.applicationExitConfirmationMessage();
+            if (result == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
         }
 
         private void button1_Click_1(object sender, EventArgs e)

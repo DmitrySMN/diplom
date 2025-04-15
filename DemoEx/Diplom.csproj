@@ -120,7 +120,7 @@
       <DependentUpon>AddClientForm.cs</DependentUpon>
     </Compile>
     <Compile Include="utility\InputFieldCorrection.cs" />
-    <Compile Include="utility\Messages.cs" />
+    <Compile Include="utility\MessageStore.cs" />
     <EmbeddedResource Include="Forms\AddDealForm.resx">
       <DependentUpon>AddDealForm.cs</DependentUpon>
     </EmbeddedResource>
