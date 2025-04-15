@@ -15,7 +15,7 @@ namespace DemoEx
 {
     public partial class AddClientForm : Form
     {
-        private Db db = new Db();
+        private Db db = new Db(Connection.connectionString);
         private bool a = false;
         private int id;
         public AddClientForm(int id)
@@ -26,7 +26,6 @@ namespace DemoEx
 
         private void RegistrationForm_Load(object sender, EventArgs e)
         {
-            db.setConnectionStr(Connection.connectionString);
             type.DropDownStyle = ComboBoxStyle.DropDownList;
 
             type.Items.Add("Покупатель");

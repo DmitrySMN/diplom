@@ -17,7 +17,7 @@ namespace DemoEx
 {
     public partial class MainForm : Form
     {
-        private Db db = new Db();
+        private Db db = new Db(Connection.connectionString);
         private string login;
         private int post;
         private int currentInfo = 1;
@@ -30,9 +30,8 @@ namespace DemoEx
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            db.setConnectionStr(Connection.connectionString);
             var name = db.getValuesFromColumn($"select concat(surname, ' ', name) from employees where login='{login}';")[0];
-            pictureBox1.Image = Image.FromFile(Directory.GetCurrentDirectory() + "\\imges\\profile\\" + db.getValuesFromColumn($"select photo from employees where login='{login}';")[0]);
+            pictureBox1.Image = Image.FromFile(Directory.GetCurrentDirectory() + "..\\assets\\images\\profile\\" + db.getValuesFromColumn($"select photo from employees where login='{login}';")[0]);
 
             if (post == 2)
             {
@@ -634,7 +633,7 @@ namespace DemoEx
             {
                 try
                 {
-                    db.updateTable($"DELETE FROM `db17`.`employees` WHERE (`id` = {dataGridView1.SelectedRows[0].Cells[0].Value});");
+                    db.executeNonQuery($"DELETE FROM `db17`.`employees` WHERE (`id` = {dataGridView1.SelectedRows[0].Cells[0].Value});");
                 }
                 catch (Exception c)
                 {

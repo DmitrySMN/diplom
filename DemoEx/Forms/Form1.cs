@@ -12,13 +12,14 @@ using DB;
 using System.Configuration;
 using System.Threading;
 using System.Text.RegularExpressions;
+using DemoEx.utility;
 
 
 namespace DemoEx
 {
     public partial class Form1 : Form
     {
-        private Db db = new Db();
+        private Db db = new Db(Connection.connectionString);
         private int counter = 0;
         public Form1()
         {
@@ -35,7 +36,6 @@ namespace DemoEx
         private void Form1_Load(object sender, EventArgs e)
         {
             captcha.Visible = false;
-            db.setConnectionStr(Connection.connectionString);
             pwdTb.PasswordChar = '·';
             captchaPicture.Image = db.createImageForCaptcha(captchaPicture.Width, captchaPicture.Height, 4);
 
@@ -73,15 +73,7 @@ namespace DemoEx
 
         private void button2_Click_2(object sender, EventArgs e)
         {
-            DialogResult res = MessageBox.Show("Вы уверенны что хотите, выйти из приложения?", "Подтверждение", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            if (res == DialogResult.Yes)
-            {
-                Close();
-            } else
-            {
-                return;
-            }
+            Messages.applicationExitConfirmationMessage();
         }
 
         private void button1_Click_1(object sender, EventArgs e)

@@ -154,7 +154,7 @@ namespace DemoEx
             try
             {
                 db.updateTable($"update deals set type='{type.Text}', status='{status.Text}' where id={clientId};");
-                MessageBox.Show("Данные изменены!", "Информация",MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Данные о сделке успешно изменены!", "Информация",MessageBoxButtons.OK, MessageBoxIcon.Information);
                 var estateId = Convert.ToInt32(dataGridView1.SelectedCells[0].Value.ToString());
                 if (type.Text == "Аренда")
                 {
