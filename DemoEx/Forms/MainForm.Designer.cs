@@ -37,7 +37,7 @@ namespace DemoEx
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.objectsDGV = new System.Windows.Forms.DataGridView();
             this.button2 = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabPage4 = new System.Windows.Forms.TabPage();
@@ -46,25 +46,25 @@ namespace DemoEx
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
-            this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.requestDGV = new System.Windows.Forms.DataGridView();
             this.button3 = new System.Windows.Forms.Button();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.comboBox4 = new System.Windows.Forms.ComboBox();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
-            this.dataGridView4 = new System.Windows.Forms.DataGridView();
+            this.employeeDGV = new System.Windows.Forms.DataGridView();
             this.button4 = new System.Windows.Forms.Button();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.comboBox5 = new System.Windows.Forms.ComboBox();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
-            this.dataGridView5 = new System.Windows.Forms.DataGridView();
+            this.dealsDGV = new System.Windows.Forms.DataGridView();
             this.button5 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.clientDGV = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
@@ -77,22 +77,22 @@ namespace DemoEx
             this.tabPage2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.objectsDGV)).BeginInit();
             this.tabPage3.SuspendLayout();
             this.tabPage4.SuspendLayout();
             this.tabPage5.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.requestDGV)).BeginInit();
             this.groupBox7.SuspendLayout();
             this.groupBox8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.employeeDGV)).BeginInit();
             this.groupBox9.SuspendLayout();
             this.groupBox10.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dealsDGV)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.clientDGV)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -114,7 +114,7 @@ namespace DemoEx
             this.tabPage1.Controls.Add(this.button6);
             this.tabPage1.Controls.Add(this.groupBox1);
             this.tabPage1.Controls.Add(this.groupBox2);
-            this.tabPage1.Controls.Add(this.dataGridView1);
+            this.tabPage1.Controls.Add(this.clientDGV);
             this.tabPage1.Controls.Add(this.button1);
             this.tabPage1.Location = new System.Drawing.Point(4, 41);
             this.tabPage1.Name = "tabPage1";
@@ -128,7 +128,7 @@ namespace DemoEx
             this.tabPage2.Controls.Add(this.button8);
             this.tabPage2.Controls.Add(this.groupBox3);
             this.tabPage2.Controls.Add(this.groupBox4);
-            this.tabPage2.Controls.Add(this.dataGridView2);
+            this.tabPage2.Controls.Add(this.objectsDGV);
             this.tabPage2.Controls.Add(this.button2);
             this.tabPage2.Location = new System.Drawing.Point(4, 41);
             this.tabPage2.Name = "tabPage2";
@@ -174,17 +174,18 @@ namespace DemoEx
             this.textBox2.Size = new System.Drawing.Size(360, 39);
             this.textBox2.TabIndex = 0;
             // 
-            // dataGridView2
+            // objectsDGV
             // 
-            this.dataGridView2.AllowUserToAddRows = false;
-            this.dataGridView2.AllowUserToDeleteRows = false;
-            this.dataGridView2.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(-1, 83);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.ReadOnly = true;
-            this.dataGridView2.Size = new System.Drawing.Size(1902, 917);
-            this.dataGridView2.TabIndex = 5;
+            this.objectsDGV.AllowUserToAddRows = false;
+            this.objectsDGV.AllowUserToDeleteRows = false;
+            this.objectsDGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.objectsDGV.BackgroundColor = System.Drawing.Color.White;
+            this.objectsDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.objectsDGV.Location = new System.Drawing.Point(-1, 83);
+            this.objectsDGV.Name = "objectsDGV";
+            this.objectsDGV.ReadOnly = true;
+            this.objectsDGV.Size = new System.Drawing.Size(1902, 917);
+            this.objectsDGV.TabIndex = 5;
             // 
             // button2
             // 
@@ -203,7 +204,7 @@ namespace DemoEx
             this.tabPage3.Controls.Add(this.button7);
             this.tabPage3.Controls.Add(this.groupBox5);
             this.tabPage3.Controls.Add(this.groupBox6);
-            this.tabPage3.Controls.Add(this.dataGridView3);
+            this.tabPage3.Controls.Add(this.requestDGV);
             this.tabPage3.Controls.Add(this.button3);
             this.tabPage3.Location = new System.Drawing.Point(4, 41);
             this.tabPage3.Name = "tabPage3";
@@ -217,7 +218,7 @@ namespace DemoEx
             this.tabPage4.Controls.Add(this.button9);
             this.tabPage4.Controls.Add(this.groupBox7);
             this.tabPage4.Controls.Add(this.groupBox8);
-            this.tabPage4.Controls.Add(this.dataGridView4);
+            this.tabPage4.Controls.Add(this.employeeDGV);
             this.tabPage4.Controls.Add(this.button4);
             this.tabPage4.Location = new System.Drawing.Point(4, 41);
             this.tabPage4.Name = "tabPage4";
@@ -231,7 +232,7 @@ namespace DemoEx
             this.tabPage5.Controls.Add(this.button10);
             this.tabPage5.Controls.Add(this.groupBox9);
             this.tabPage5.Controls.Add(this.groupBox10);
-            this.tabPage5.Controls.Add(this.dataGridView5);
+            this.tabPage5.Controls.Add(this.dealsDGV);
             this.tabPage5.Controls.Add(this.button5);
             this.tabPage5.Location = new System.Drawing.Point(4, 41);
             this.tabPage5.Name = "tabPage5";
@@ -276,17 +277,18 @@ namespace DemoEx
             this.textBox3.Size = new System.Drawing.Size(360, 39);
             this.textBox3.TabIndex = 0;
             // 
-            // dataGridView3
+            // requestDGV
             // 
-            this.dataGridView3.AllowUserToAddRows = false;
-            this.dataGridView3.AllowUserToDeleteRows = false;
-            this.dataGridView3.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Location = new System.Drawing.Point(-1, 83);
-            this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.ReadOnly = true;
-            this.dataGridView3.Size = new System.Drawing.Size(1902, 917);
-            this.dataGridView3.TabIndex = 5;
+            this.requestDGV.AllowUserToAddRows = false;
+            this.requestDGV.AllowUserToDeleteRows = false;
+            this.requestDGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.requestDGV.BackgroundColor = System.Drawing.Color.White;
+            this.requestDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.requestDGV.Location = new System.Drawing.Point(-1, 83);
+            this.requestDGV.Name = "requestDGV";
+            this.requestDGV.ReadOnly = true;
+            this.requestDGV.Size = new System.Drawing.Size(1902, 917);
+            this.requestDGV.TabIndex = 5;
             // 
             // button3
             // 
@@ -336,17 +338,18 @@ namespace DemoEx
             this.textBox4.Size = new System.Drawing.Size(360, 39);
             this.textBox4.TabIndex = 0;
             // 
-            // dataGridView4
+            // employeeDGV
             // 
-            this.dataGridView4.AllowUserToAddRows = false;
-            this.dataGridView4.AllowUserToDeleteRows = false;
-            this.dataGridView4.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView4.Location = new System.Drawing.Point(-1, 83);
-            this.dataGridView4.Name = "dataGridView4";
-            this.dataGridView4.ReadOnly = true;
-            this.dataGridView4.Size = new System.Drawing.Size(1902, 917);
-            this.dataGridView4.TabIndex = 9;
+            this.employeeDGV.AllowUserToAddRows = false;
+            this.employeeDGV.AllowUserToDeleteRows = false;
+            this.employeeDGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.employeeDGV.BackgroundColor = System.Drawing.Color.White;
+            this.employeeDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.employeeDGV.Location = new System.Drawing.Point(-1, 83);
+            this.employeeDGV.Name = "employeeDGV";
+            this.employeeDGV.ReadOnly = true;
+            this.employeeDGV.Size = new System.Drawing.Size(1902, 917);
+            this.employeeDGV.TabIndex = 9;
             // 
             // button4
             // 
@@ -396,17 +399,18 @@ namespace DemoEx
             this.textBox5.Size = new System.Drawing.Size(360, 39);
             this.textBox5.TabIndex = 0;
             // 
-            // dataGridView5
+            // dealsDGV
             // 
-            this.dataGridView5.AllowUserToAddRows = false;
-            this.dataGridView5.AllowUserToDeleteRows = false;
-            this.dataGridView5.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridView5.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView5.Location = new System.Drawing.Point(-1, 83);
-            this.dataGridView5.Name = "dataGridView5";
-            this.dataGridView5.ReadOnly = true;
-            this.dataGridView5.Size = new System.Drawing.Size(1902, 917);
-            this.dataGridView5.TabIndex = 9;
+            this.dealsDGV.AllowUserToAddRows = false;
+            this.dealsDGV.AllowUserToDeleteRows = false;
+            this.dealsDGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dealsDGV.BackgroundColor = System.Drawing.Color.White;
+            this.dealsDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dealsDGV.Location = new System.Drawing.Point(-1, 83);
+            this.dealsDGV.Name = "dealsDGV";
+            this.dealsDGV.ReadOnly = true;
+            this.dealsDGV.Size = new System.Drawing.Size(1902, 917);
+            this.dealsDGV.TabIndex = 9;
             // 
             // button5
             // 
@@ -456,17 +460,19 @@ namespace DemoEx
             this.textBox1.Size = new System.Drawing.Size(360, 39);
             this.textBox1.TabIndex = 0;
             // 
-            // dataGridView1
+            // clientDGV
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(-1, 83);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(1902, 917);
-            this.dataGridView1.TabIndex = 9;
+            this.clientDGV.AllowUserToAddRows = false;
+            this.clientDGV.AllowUserToDeleteRows = false;
+            this.clientDGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.clientDGV.BackgroundColor = System.Drawing.Color.White;
+            this.clientDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.clientDGV.Location = new System.Drawing.Point(-1, 83);
+            this.clientDGV.Name = "clientDGV";
+            this.clientDGV.ReadOnly = true;
+            this.clientDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.clientDGV.Size = new System.Drawing.Size(1902, 917);
+            this.clientDGV.TabIndex = 9;
             // 
             // button1
             // 
@@ -544,7 +550,7 @@ namespace DemoEx
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 26);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
             // MainForm
             // 
@@ -569,26 +575,26 @@ namespace DemoEx
             this.groupBox3.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.objectsDGV)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage4.ResumeLayout(false);
             this.tabPage5.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.requestDGV)).EndInit();
             this.groupBox7.ResumeLayout(false);
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.employeeDGV)).EndInit();
             this.groupBox9.ResumeLayout(false);
             this.groupBox10.ResumeLayout(false);
             this.groupBox10.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dealsDGV)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.clientDGV)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -601,7 +607,7 @@ namespace DemoEx
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridView objectsDGV;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.TabPage tabPage4;
@@ -610,25 +616,25 @@ namespace DemoEx
         private System.Windows.Forms.ComboBox comboBox3;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.DataGridView dataGridView3;
+        private System.Windows.Forms.DataGridView requestDGV;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.ComboBox comboBox4;
         private System.Windows.Forms.GroupBox groupBox8;
         private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.DataGridView dataGridView4;
+        private System.Windows.Forms.DataGridView employeeDGV;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.GroupBox groupBox9;
         private System.Windows.Forms.ComboBox comboBox5;
         private System.Windows.Forms.GroupBox groupBox10;
         private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.DataGridView dataGridView5;
+        private System.Windows.Forms.DataGridView dealsDGV;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView clientDGV;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button7;

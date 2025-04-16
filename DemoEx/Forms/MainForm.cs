@@ -30,6 +30,13 @@ namespace DemoEx
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            clientDGV.RowTemplate.Height = 40;
+            requestDGV.RowTemplate.Height = 40;
+            objectsDGV.RowTemplate.Height = 40;
+            dealsDGV.RowTemplate.Height = 40;
+            employeeDGV.RowTemplate.Height = 40;
+
+            fillAllDgv();
             //var name = db.getValuesFromColumn($"select concat(surname, ' ', name) from employees where login='{login}';")[0];
             ////pictureBox1.Image = Image.FromFile(Directory.GetCurrentDirectory() + "..\\assets\\images\\profile\\" + db.getValuesFromColumn($"select photo from employees where login='{login}';")[0]);
 
@@ -82,6 +89,16 @@ namespace DemoEx
 
             //filter.SelectedIndex = 0;
             //sort.SelectedIndex = 0;
+        }
+
+        private void fillAllDgv()
+        {
+            
+            db.FillDGV(clientDGV, $"SELECT id, concat(Surname,' ', Name,' ', Patronymic) as 'ФИО', passport as 'Паспорт', address as 'Адрес', birth as 'Дата рождения', phone_number as 'Номер телефона', type as 'Тип' FROM db17.clients");
+            db.FillDGV(requestDGV, $"SELECT requestId, description as 'Описание', request_types.request_type as 'Тип запроса' FROM db17.client_request \r\njoin request_types \r\non client_request.type_id=request_types.request_type_id;");
+            db.FillDGV(objectsDGV, $"SELECT * FROM db17.object;");
+            db.FillDGV(employeeDGV, $"SELECT * FROM db17.employees;");
+            db.FillDGV(dealsDGV, $"SELECT * FROM db17.deals;");
         }
 
         private void groupBox2_Enter(object sender, EventArgs e)
