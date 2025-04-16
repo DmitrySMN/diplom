@@ -204,9 +204,6 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Database\restore_dump.sql">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="assets\icons\estate\home.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

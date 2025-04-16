@@ -154,7 +154,7 @@ namespace DemoEx
             // 
             // button2
             // 
-            this.button2.BackColor = System.Drawing.Color.Silver;
+            this.button2.BackColor = System.Drawing.Color.LightSalmon;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button2.Font = new System.Drawing.Font("Yu Gothic UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button2.ForeColor = System.Drawing.Color.White;
@@ -190,7 +190,7 @@ namespace DemoEx
             this.captcha.Size = new System.Drawing.Size(363, 325);
             this.captcha.TabIndex = 23;
             this.captcha.TabStop = false;
-            this.captcha.Text = "Captcha";
+            this.captcha.Text = "Проверка";
             // 
             // pictureBox2
             // 
@@ -205,7 +205,7 @@ namespace DemoEx
             // 
             // button3
             // 
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(175)))), ((int)(((byte)(210)))), ((int)(((byte)(117)))));
+            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(113)))), ((int)(((byte)(125)))));
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button3.Font = new System.Drawing.Font("Yu Gothic UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button3.ForeColor = System.Drawing.Color.White;

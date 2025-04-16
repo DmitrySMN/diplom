@@ -33,6 +33,10 @@ namespace DemoEx.utility
             return MessageBox.Show("Вы уверенны что хотите, выйти из приложения?", "Подтверждение", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
         }
 
+        public static void captchaErrorMessage()
+        {
+            MessageBox.Show("Каптча введена неверно! Система заблокирована на 10 секунд.", "Каптча", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
         //Сделки
         public static void dealCannotChangeMessage() {
             MessageBox.Show("Данная сделка завершена, её нельзя изменить!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);

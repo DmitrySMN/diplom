@@ -32,7 +32,6 @@ namespace DemoEx
             Application.Exit();
         }
 
-
         private void Form1_Load(object sender, EventArgs e)
         {
             captcha.Visible = false;
@@ -64,11 +63,7 @@ namespace DemoEx
 
         private void loginTb_KeyPress_1(object sender, KeyPressEventArgs e)
         {
-            string s = e.KeyChar.ToString();
-            if (!Regex.Match(s, @"^[a-zA-Z]+$|[\b]|[_]|[0-9]").Success)
-            {
-                e.Handled = true;
-            }
+            InputFieldCorrection.engLettersNumbersField(e);
         }
 
         private void button2_Click_2(object sender, EventArgs e)
@@ -92,7 +87,7 @@ namespace DemoEx
 
                 if (loginTb.Text.Length == 0 || pwdTb.Text.Length == 0)
                 {
-                    MessageBox.Show("Заполните все поля!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageStore.notAllFieldsFilledMessage();
                     return;
                 }
                                 
@@ -115,7 +110,7 @@ namespace DemoEx
                     }
                     else
                     {
-                        MessageBox.Show("Неверный логин или пароль!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageStore.loginErrorMessage();
                         counter++;
                         return;
                     }
@@ -123,7 +118,7 @@ namespace DemoEx
                 
             } catch(Exception ex)
             {
-              
+                MessageStore.somethingWentWrongMessage();
             }
         }
 
@@ -136,17 +131,9 @@ namespace DemoEx
             }
             else
             {
-                MessageBox.Show("Каптча введена неверно! Система заблокирована на 10 секунд.", "Каптча", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                blockUIAsync();
+                MessageStore.captchaErrorMessage();
             }
             captchaInputText.Clear();
-        }
-
-        private async Task blockUIAsync()
-        {
-            this.Enabled = false;
-            await Task.Delay(TimeSpan.FromSeconds(10));
-            this.Enabled = true;
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
