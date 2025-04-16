@@ -65,22 +65,16 @@ namespace DemoEx
                 }
             } else
             {
-                if (loginTb.Text.Length > 3 && passport.Text.Length != 11 && surname.Text.Length > 1 && name.Text.Length > 2 && pat.Text.Length > 4 && address.Text.Length > 0 && phone.Text.Length == 18)
+                if (pwdTb.Text.Length == 0)
                 {
-                    if (pwdTb.Text.Length == 0)
-                    {
-                        db.executeNonQuery($"UPDATE `db17`.`employees` SET `login` = '{loginTb.Text}', `Surname` = '{surname.Text}', `Name` = '{name.Text}', `Patronymic` = '{pat.Text}', `passport` = '{passport.Text}', `birth` = '{dateTimePicker1.Value.ToString("yyyy-MM-dd")}', `phone_number` = '{phone.Text}', `address` = '{address.Text}' WHERE (`id` = {id});");
-                        MessageBox.Show("Данные сотрудника изменены!", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else
-                    {
-                        db.executeNonQuery($"UPDATE `db17`.`employees` SET `login` = '{loginTb.Text}', password = '{db.getHashFromPassword(pwdTb.Text)}', `Surname` = '{surname.Text}', `Name` = '{name.Text}', `Patronymic` = '{pat.Text}', `passport` = '{passport.Text}', `birth` = '{dateTimePicker1.Value.ToString("yyyy-MM-dd")}', `phone_number` = '{phone.Text}', `address` = '{address.Text}' WHERE (`id` = {id});");
-
-                        MessageBox.Show("Данные сотрудника изменены!", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    }
-                } else
+                    db.executeNonQuery($"UPDATE `db17`.`employees` SET `login` = '{loginTb.Text}', `Surname` = '{surname.Text}', `Name` = '{name.Text}', `Patronymic` = '{pat.Text}', `passport` = '{passport.Text}', `birth` = '{dateTimePicker1.Value.ToString("yyyy-MM-dd")}', `phone_number` = '{phone.Text}', `address` = '{address.Text}' WHERE (`id` = {id});");
+                    MessageBox.Show("Данные сотрудника изменены!", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
                 {
+                    db.executeNonQuery($"UPDATE `db17`.`employees` SET `login` = '{loginTb.Text}', password = '{db.getHashFromPassword(pwdTb.Text)}', `Surname` = '{surname.Text}', `Name` = '{name.Text}', `Patronymic` = '{pat.Text}', `passport` = '{passport.Text}', `birth` = '{dateTimePicker1.Value.ToString("yyyy-MM-dd")}', `phone_number` = '{phone.Text}', `address` = '{address.Text}' WHERE (`id` = {id});");
+
+                    MessageBox.Show("Данные сотрудника изменены!", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 }
             }
@@ -107,7 +101,7 @@ namespace DemoEx
                 passport.Text = db.getValuesFromColumn($"select passport from employees where id={id};")[0];
                 phone.Text = db.getValuesFromColumn($"select phone_number from employees where id={id};")[0];
                 address.Text = db.getValuesFromColumn($"select address from employees where id={id};")[0];
-                dateTimePicker1.Value = db.getDateValuesFromColumn($"select birth from employees where id={id};")[0];
+                //dateTimePicker1.Value = db.getDateValuesFromColumn($"select birth from employees where id={id};")[0];
 
                 button1.Text = "Редактирование";
             }
