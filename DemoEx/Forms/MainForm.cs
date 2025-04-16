@@ -89,6 +89,11 @@ namespace DemoEx
 
         }
 
+        private void button6_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
         //    private void label5_Click_1(object sender, EventArgs e)
         //    {
         //        sort.Items.Clear();
