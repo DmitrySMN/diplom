@@ -17,7 +17,7 @@ namespace DemoEx
     {
         private Db db = new Db(Connection.connectionString);
         private int id;
-        public AddEmployee(int id)
+        public AddEmployee(int id = 0)
         {
             InitializeComponent();
             this.id = id;

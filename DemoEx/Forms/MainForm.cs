@@ -30,13 +30,25 @@ namespace DemoEx
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            fillAllDgv();
+
             clientDGV.RowTemplate.Height = 40;
             requestDGV.RowTemplate.Height = 40;
-            objectsDGV.RowTemplate.Height = 40;
+            objectsDGV.RowTemplate.Height = 85;
             dealsDGV.RowTemplate.Height = 40;
             employeeDGV.RowTemplate.Height = 40;
 
-            fillAllDgv();
+            clientDGV.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            requestDGV.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            objectsDGV.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            employeeDGV.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dealsDGV.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
+            clientDGV.Columns[0].Visible = false;
+            requestDGV.Columns[0].Visible = false;
+            objectsDGV.Columns[0].Visible = false;
+            employeeDGV.Columns[0].Visible = false;
+            dealsDGV.Columns[0].Visible = false;
             //var name = db.getValuesFromColumn($"select concat(surname, ' ', name) from employees where login='{login}';")[0];
             ////pictureBox1.Image = Image.FromFile(Directory.GetCurrentDirectory() + "..\\assets\\images\\profile\\" + db.getValuesFromColumn($"select photo from employees where login='{login}';")[0]);
 
@@ -101,14 +113,50 @@ namespace DemoEx
             db.FillDGV(dealsDGV, $"SELECT * FROM db17.deals;");
         }
 
-        private void groupBox2_Enter(object sender, EventArgs e)
-        {
-
-        }
 
         private void button6_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            new AddClientForm().ShowDialog();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            new AddObjectForm().ShowDialog();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            new AddEmployee().ShowDialog();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            new AddEmployee().ShowDialog();
         }
 
         //    private void label5_Click_1(object sender, EventArgs e)

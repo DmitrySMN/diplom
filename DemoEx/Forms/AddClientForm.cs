@@ -18,7 +18,7 @@ namespace DemoEx
         private Db db = new Db(Connection.connectionString);
         private bool a = false;
         private int id;
-        public AddClientForm(int id)
+        public AddClientForm(int id = 0)
         {
             InitializeComponent();
             this.id = id;
