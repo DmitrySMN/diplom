@@ -226,6 +226,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="assets\images\estate\" />
+    <Folder Include="assets\images\profile\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

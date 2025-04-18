@@ -105,12 +105,14 @@ namespace DemoEx
 
         private void fillAllDgv()
         {
-            
             db.FillDGV(clientDGV, $"SELECT id, concat(Surname,' ', Name,' ', Patronymic) as 'ФИО', passport as 'Паспорт', address as 'Адрес', birth as 'Дата рождения', phone_number as 'Номер телефона', type as 'Тип' FROM db17.clients");
             db.FillDGV(requestDGV, $"SELECT requestId, description as 'Описание', request_types.request_type as 'Тип запроса' FROM db17.client_request \r\njoin request_types \r\non client_request.type_id=request_types.request_type_id;");
             db.FillDGV(objectsDGV, $"SELECT * FROM db17.object;");
-            db.FillDGV(employeeDGV, $"SELECT * FROM db17.employees;");
+            db.FillDGV(employeeDGV, $"SELECT id, login as 'Логин', password as 'Пароль', concat(Surname, ' ', Name, ' ', Patronymic) as 'ФИО', passport as 'Паспорт', birth as 'Дата рождения', phone_number as 'Номер телефона', address as 'Адрес', post as 'Должность', photo FROM db17.employees;");
             db.FillDGV(dealsDGV, $"SELECT * FROM db17.deals;");
+
+            employeeDGV.Columns["photo"].Visible = false;
+            db.setUpDgvImages(employeeDGV, "Фото");
         }
 
 

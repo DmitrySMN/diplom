@@ -155,10 +155,20 @@ namespace DB
             name.Columns.Add(imageColumn);
             foreach (DataGridViewRow row in name.Rows)
             {
-                string nam = row.Cells["photo"].Value.ToString();
-                using (Image image = Image.FromFile(Directory.GetCurrentDirectory() + "\\imges\\estate\\" + nam))
+                string photoName = row.Cells["photo"].Value.ToString();
+                
+                if (photoName == "")
                 {
-                    row.Cells[photoColumnName].Value = new Bitmap(image);
+                    using (Image image = Image.FromFile(Directory.GetCurrentDirectory() + "\\assets\\icons\\profile\\user.png"))
+                    {
+                        row.Cells[photoColumnName].Value = new Bitmap(image);
+                    }
+                } else
+                {
+                    using (Image image = Image.FromFile(Directory.GetCurrentDirectory() + "\\assets\\images\\profile\\" + photoName))
+                    {
+                        row.Cells[photoColumnName].Value = new Bitmap(image);
+                    }
                 }
             }
         }
