@@ -30,13 +30,13 @@ namespace DemoEx
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            fillAllDgv();
-
             clientDGV.RowTemplate.Height = 40;
             requestDGV.RowTemplate.Height = 40;
             objectsDGV.RowTemplate.Height = 85;
             dealsDGV.RowTemplate.Height = 40;
-            employeeDGV.RowTemplate.Height = 40;
+            employeeDGV.RowTemplate.Height = 85;
+
+            fillAllDgv();
 
             clientDGV.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             requestDGV.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -146,7 +146,7 @@ namespace DemoEx
 
         private void button2_Click(object sender, EventArgs e)
         {
-            new AddObjectForm().ShowDialog();
+            
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -157,6 +157,11 @@ namespace DemoEx
         private void button5_Click(object sender, EventArgs e)
         {
             new AddEmployee().ShowDialog();
+        }
+
+        private void button6_Click_1(object sender, EventArgs e)
+        {
+            Close();
         }
 
         //    private void label5_Click_1(object sender, EventArgs e)
