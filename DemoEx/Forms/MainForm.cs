@@ -49,6 +49,7 @@ namespace DemoEx
             objectsDGV.Columns[0].Visible = false;
             employeeDGV.Columns[0].Visible = false;
             dealsDGV.Columns[0].Visible = false;
+
             //var name = db.getValuesFromColumn($"select concat(surname, ' ', name) from employees where login='{login}';")[0];
             ////pictureBox1.Image = Image.FromFile(Directory.GetCurrentDirectory() + "..\\assets\\images\\profile\\" + db.getValuesFromColumn($"select photo from employees where login='{login}';")[0]);
 
@@ -164,6 +165,23 @@ namespace DemoEx
         private void button6_Click_1(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void tabControl1_Selecting(object sender, TabControlCancelEventArgs e)
+        {
+            if (post == 1)
+            {
+                if (e.TabPage == tabPage2 || e.TabPage == tabPage4 || e.TabPage == tabPage5)
+                {
+                    e.Cancel = true;
+                }
+            }
+            else if (post == 2) {
+                if (e.TabPage == tabPage5)
+                {
+                    e.Cancel = true;
+                }
+            }
         }
 
         //    private void label5_Click_1(object sender, EventArgs e)
