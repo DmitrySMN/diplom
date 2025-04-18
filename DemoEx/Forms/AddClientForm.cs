@@ -30,7 +30,7 @@ namespace DemoEx
             type.DropDownStyle = ComboBoxStyle.DropDownList;
 
             type.Items.Add("Покупатель");
-            type.Items.Add("Арендодатель");
+            type.Items.Add("Арендатель");
 
             type.SelectedIndex = 0;
             dateTimePicker1.MinDate = DateTime.Now.AddYears(-99);

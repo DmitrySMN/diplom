@@ -49,15 +49,9 @@ namespace DemoEx
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.objectsDGV = new System.Windows.Forms.DataGridView();
             this.button2 = new System.Windows.Forms.Button();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
-            this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.employeeDGV = new System.Windows.Forms.DataGridView();
-            this.button4 = new System.Windows.Forms.Button();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.comboBox5 = new System.Windows.Forms.ComboBox();
@@ -65,9 +59,15 @@ namespace DemoEx
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.dealsDGV = new System.Windows.Forms.DataGridView();
             this.button5 = new System.Windows.Forms.Button();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.employeeDGV = new System.Windows.Forms.DataGridView();
+            this.button4 = new System.Windows.Forms.Button();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.button6 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -81,14 +81,14 @@ namespace DemoEx
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.objectsDGV)).BeginInit();
-            this.tabPage4.SuspendLayout();
-            this.groupBox7.SuspendLayout();
-            this.groupBox8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.employeeDGV)).BeginInit();
             this.tabPage5.SuspendLayout();
             this.groupBox9.SuspendLayout();
             this.groupBox10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dealsDGV)).BeginInit();
+            this.tabPage4.SuspendLayout();
+            this.groupBox7.SuspendLayout();
+            this.groupBox8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.employeeDGV)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -154,6 +154,8 @@ namespace DemoEx
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(360, 39);
             this.textBox1.TabIndex = 0;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
             // 
             // clientDGV
             // 
@@ -299,6 +301,10 @@ namespace DemoEx
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Поиск";
             // 
+            // textBox2
+            // 
+            
+            // 
             // objectsDGV
             // 
             this.objectsDGV.AllowUserToAddRows = false;
@@ -324,81 +330,6 @@ namespace DemoEx
             this.button2.Text = "Добавить";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // tabPage4
-            // 
-            this.tabPage4.Controls.Add(this.groupBox7);
-            this.tabPage4.Controls.Add(this.groupBox8);
-            this.tabPage4.Controls.Add(this.employeeDGV);
-            this.tabPage4.Controls.Add(this.button4);
-            this.tabPage4.Location = new System.Drawing.Point(4, 41);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(1901, 935);
-            this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "Сотрудники";
-            this.tabPage4.UseVisualStyleBackColor = true;
-            // 
-            // groupBox7
-            // 
-            this.groupBox7.Controls.Add(this.comboBox4);
-            this.groupBox7.Location = new System.Drawing.Point(575, 0);
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(373, 77);
-            this.groupBox7.TabIndex = 11;
-            this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "Фильтрация";
-            // 
-            // comboBox4
-            // 
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(6, 32);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(360, 40);
-            this.comboBox4.TabIndex = 0;
-            // 
-            // groupBox8
-            // 
-            this.groupBox8.Controls.Add(this.textBox4);
-            this.groupBox8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.groupBox8.Location = new System.Drawing.Point(196, 0);
-            this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(373, 77);
-            this.groupBox8.TabIndex = 10;
-            this.groupBox8.TabStop = false;
-            this.groupBox8.Text = "Поиск";
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(6, 32);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(360, 39);
-            this.textBox4.TabIndex = 0;
-            // 
-            // employeeDGV
-            // 
-            this.employeeDGV.AllowUserToAddRows = false;
-            this.employeeDGV.AllowUserToDeleteRows = false;
-            this.employeeDGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.employeeDGV.BackgroundColor = System.Drawing.Color.White;
-            this.employeeDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.employeeDGV.Location = new System.Drawing.Point(-1, 83);
-            this.employeeDGV.Name = "employeeDGV";
-            this.employeeDGV.ReadOnly = true;
-            this.employeeDGV.Size = new System.Drawing.Size(1902, 917);
-            this.employeeDGV.TabIndex = 9;
-            // 
-            // button4
-            // 
-            this.button4.BackColor = System.Drawing.Color.SkyBlue;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.ForeColor = System.Drawing.Color.Black;
-            this.button4.Location = new System.Drawing.Point(6, 23);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(184, 46);
-            this.button4.TabIndex = 8;
-            this.button4.Text = "Добавить";
-            this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // tabPage5
             // 
@@ -475,6 +406,81 @@ namespace DemoEx
             this.button5.UseVisualStyleBackColor = false;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.groupBox7);
+            this.tabPage4.Controls.Add(this.groupBox8);
+            this.tabPage4.Controls.Add(this.employeeDGV);
+            this.tabPage4.Controls.Add(this.button4);
+            this.tabPage4.Location = new System.Drawing.Point(4, 41);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Size = new System.Drawing.Size(1901, 935);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "Сотрудники";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.comboBox4);
+            this.groupBox7.Location = new System.Drawing.Point(575, 0);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(373, 77);
+            this.groupBox7.TabIndex = 11;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Фильтрация";
+            // 
+            // comboBox4
+            // 
+            this.comboBox4.FormattingEnabled = true;
+            this.comboBox4.Location = new System.Drawing.Point(6, 32);
+            this.comboBox4.Name = "comboBox4";
+            this.comboBox4.Size = new System.Drawing.Size(360, 40);
+            this.comboBox4.TabIndex = 0;
+            // 
+            // groupBox8
+            // 
+            this.groupBox8.Controls.Add(this.textBox4);
+            this.groupBox8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.groupBox8.Location = new System.Drawing.Point(196, 0);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(373, 77);
+            this.groupBox8.TabIndex = 10;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "Поиск";
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(6, 32);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(360, 39);
+            this.textBox4.TabIndex = 0;
+            // 
+            // employeeDGV
+            // 
+            this.employeeDGV.AllowUserToAddRows = false;
+            this.employeeDGV.AllowUserToDeleteRows = false;
+            this.employeeDGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.employeeDGV.BackgroundColor = System.Drawing.Color.White;
+            this.employeeDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.employeeDGV.Location = new System.Drawing.Point(-1, 83);
+            this.employeeDGV.Name = "employeeDGV";
+            this.employeeDGV.ReadOnly = true;
+            this.employeeDGV.Size = new System.Drawing.Size(1902, 917);
+            this.employeeDGV.TabIndex = 9;
+            // 
+            // button4
+            // 
+            this.button4.BackColor = System.Drawing.Color.SkyBlue;
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.ForeColor = System.Drawing.Color.Black;
+            this.button4.Location = new System.Drawing.Point(6, 23);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(184, 46);
+            this.button4.TabIndex = 8;
+            this.button4.Text = "Добавить";
+            this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Name = "contextMenuStrip1";
@@ -492,15 +498,6 @@ namespace DemoEx
             this.button6.Text = "Назад";
             this.button6.UseVisualStyleBackColor = false;
             this.button6.Click += new System.EventHandler(this.button6_Click_1);
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(6, 33);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(361, 39);
-            this.textBox2.TabIndex = 0;
-            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged_1);
-            this.textBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox2_KeyPress);
             // 
             // MainForm
             // 
@@ -536,16 +533,16 @@ namespace DemoEx
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.objectsDGV)).EndInit();
-            this.tabPage4.ResumeLayout(false);
-            this.groupBox7.ResumeLayout(false);
-            this.groupBox8.ResumeLayout(false);
-            this.groupBox8.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.employeeDGV)).EndInit();
             this.tabPage5.ResumeLayout(false);
             this.groupBox9.ResumeLayout(false);
             this.groupBox10.ResumeLayout(false);
             this.groupBox10.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dealsDGV)).EndInit();
+            this.tabPage4.ResumeLayout(false);
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox8.ResumeLayout(false);
+            this.groupBox8.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.employeeDGV)).EndInit();
             this.ResumeLayout(false);
 
         }

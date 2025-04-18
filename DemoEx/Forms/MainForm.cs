@@ -109,11 +109,11 @@ namespace DemoEx
             }
         }
 
-        private void textBox2_TextChanged_1(object sender, EventArgs e)
+        private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            if (textBox2.Text.Length > 0)
+            if (textBox1.Text.Length > 0)
             {
-                db.FillDGV(clientDGV, $"SELECT id, concat(Surname,' ', Name,' ', Patronymic) as 'ФИО', passport as 'Паспорт', address as 'Адрес', birth as 'Дата рождения', phone_number as 'Номер телефона', type as 'Тип' FROM db17.clients WHERE Surname LIKE '{textBox2.Text}%';");
+                db.FillDGV(clientDGV, $"SELECT id, concat(Surname,' ', Name,' ', Patronymic) as 'ФИО', passport as 'Паспорт', address as 'Адрес', birth as 'Дата рождения', phone_number as 'Номер телефона', type as 'Тип' FROM db17.clients WHERE Surname LIKE '{textBox1.Text}%';");
             }
             else
             {
@@ -121,9 +121,9 @@ namespace DemoEx
             }
         }
 
-        private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
-            InputFieldCorrection.ruLettersField();
+            InputFieldCorrection.ruLettersField(e);
         }
 
         //    private void label5_Click_1(object sender, EventArgs e)
