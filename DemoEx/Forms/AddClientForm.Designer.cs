@@ -45,8 +45,6 @@ namespace DemoEx
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.type = new System.Windows.Forms.ComboBox();
             this.button2 = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.address = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
@@ -56,7 +54,6 @@ namespace DemoEx
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox7.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.groupBox9.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -65,7 +62,7 @@ namespace DemoEx
             this.groupBox1.Controls.Add(this.surname);
             this.groupBox1.Font = new System.Drawing.Font("Yu Gothic UI", 18F);
             this.groupBox1.ForeColor = System.Drawing.Color.Black;
-            this.groupBox1.Location = new System.Drawing.Point(105, 8);
+            this.groupBox1.Location = new System.Drawing.Point(15, 3);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(6, 8, 6, 8);
@@ -91,7 +88,7 @@ namespace DemoEx
             this.groupBox4.Controls.Add(this.passport);
             this.groupBox4.Font = new System.Drawing.Font("Yu Gothic UI", 18F);
             this.groupBox4.ForeColor = System.Drawing.Color.Black;
-            this.groupBox4.Location = new System.Drawing.Point(105, 463);
+            this.groupBox4.Location = new System.Drawing.Point(15, 456);
             this.groupBox4.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Padding = new System.Windows.Forms.Padding(6, 8, 6, 8);
@@ -117,7 +114,7 @@ namespace DemoEx
             this.groupBox5.Controls.Add(this.dateTimePicker1);
             this.groupBox5.Font = new System.Drawing.Font("Yu Gothic UI", 18F);
             this.groupBox5.ForeColor = System.Drawing.Color.Black;
-            this.groupBox5.Location = new System.Drawing.Point(472, 8);
+            this.groupBox5.Location = new System.Drawing.Point(382, 3);
             this.groupBox5.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Padding = new System.Windows.Forms.Padding(6, 8, 6, 8);
@@ -140,11 +137,11 @@ namespace DemoEx
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.Color.Black;
+            this.button1.BackColor = System.Drawing.Color.SkyBlue;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button1.Font = new System.Drawing.Font("Yu Gothic UI", 18F);
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(472, 468);
+            this.button1.ForeColor = System.Drawing.Color.Black;
+            this.button1.Location = new System.Drawing.Point(382, 459);
             this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(355, 51);
@@ -158,7 +155,7 @@ namespace DemoEx
             this.groupBox6.Controls.Add(this.phone);
             this.groupBox6.Font = new System.Drawing.Font("Yu Gothic UI", 18F);
             this.groupBox6.ForeColor = System.Drawing.Color.Black;
-            this.groupBox6.Location = new System.Drawing.Point(472, 123);
+            this.groupBox6.Location = new System.Drawing.Point(382, 118);
             this.groupBox6.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Padding = new System.Windows.Forms.Padding(6, 8, 6, 8);
@@ -183,7 +180,7 @@ namespace DemoEx
             this.groupBox2.Controls.Add(this.name);
             this.groupBox2.Font = new System.Drawing.Font("Yu Gothic UI", 18F);
             this.groupBox2.ForeColor = System.Drawing.Color.Black;
-            this.groupBox2.Location = new System.Drawing.Point(105, 123);
+            this.groupBox2.Location = new System.Drawing.Point(15, 118);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(6, 8, 6, 8);
@@ -209,7 +206,7 @@ namespace DemoEx
             this.groupBox3.Controls.Add(this.pat);
             this.groupBox3.Font = new System.Drawing.Font("Yu Gothic UI", 18F);
             this.groupBox3.ForeColor = System.Drawing.Color.Black;
-            this.groupBox3.Location = new System.Drawing.Point(105, 235);
+            this.groupBox3.Location = new System.Drawing.Point(15, 230);
             this.groupBox3.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(6, 8, 6, 8);
@@ -235,7 +232,7 @@ namespace DemoEx
             this.groupBox7.Controls.Add(this.type);
             this.groupBox7.Font = new System.Drawing.Font("Yu Gothic UI", 18F);
             this.groupBox7.ForeColor = System.Drawing.Color.Black;
-            this.groupBox7.Location = new System.Drawing.Point(472, 235);
+            this.groupBox7.Location = new System.Drawing.Point(382, 230);
             this.groupBox7.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Padding = new System.Windows.Forms.Padding(6, 8, 6, 8);
@@ -255,10 +252,10 @@ namespace DemoEx
             // 
             // button2
             // 
-            this.button2.BackColor = System.Drawing.Color.White;
+            this.button2.BackColor = System.Drawing.Color.SteelBlue;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button2.Font = new System.Drawing.Font("Yu Gothic UI", 18F);
-            this.button2.Location = new System.Drawing.Point(472, 525);
+            this.button2.Location = new System.Drawing.Point(382, 518);
             this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(355, 51);
@@ -267,27 +264,10 @@ namespace DemoEx
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.Black;
-            this.panel1.Controls.Add(this.panel2);
-            this.panel1.Location = new System.Drawing.Point(-1, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(97, 590);
-            this.panel1.TabIndex = 6;
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.Black;
-            this.panel2.Location = new System.Drawing.Point(103, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(765, 68);
-            this.panel2.TabIndex = 7;
-            // 
             // groupBox9
             // 
             this.groupBox9.Controls.Add(this.address);
-            this.groupBox9.Location = new System.Drawing.Point(105, 359);
+            this.groupBox9.Location = new System.Drawing.Point(15, 352);
             this.groupBox9.Name = "groupBox9";
             this.groupBox9.Size = new System.Drawing.Size(723, 93);
             this.groupBox9.TabIndex = 18;
@@ -307,10 +287,9 @@ namespace DemoEx
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(835, 586);
+            this.ClientSize = new System.Drawing.Size(750, 586);
             this.ControlBox = false;
             this.Controls.Add(this.groupBox9);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox7);
@@ -339,7 +318,6 @@ namespace DemoEx
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox7.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
             this.groupBox9.ResumeLayout(false);
             this.groupBox9.PerformLayout();
             this.ResumeLayout(false);
@@ -364,8 +342,6 @@ namespace DemoEx
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.ComboBox type;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.GroupBox groupBox9;
         private System.Windows.Forms.TextBox address;
     }

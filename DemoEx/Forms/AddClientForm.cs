@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DB;
 using System.Text.RegularExpressions;
+using DemoEx.utility;
 
 
 namespace DemoEx
@@ -29,8 +30,6 @@ namespace DemoEx
             type.DropDownStyle = ComboBoxStyle.DropDownList;
 
             type.Items.Add("Покупатель");
-            type.Items.Add("Продавец");
-            type.Items.Add("Арендатор");
             type.Items.Add("Арендодатель");
 
             type.SelectedIndex = 0;
@@ -58,44 +57,8 @@ namespace DemoEx
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
-            string s = e.KeyChar.ToString();
-            if (!Regex.Match(s, @"[а-яА-Я]|[\b]|[-]").Success)
-            {
-                e.Handled = true;
-            }
-        }
-
-        private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            char ch = e.KeyChar;
-            if (!char.IsLetter(ch) && !char.IsControl(ch))
-            {
-                e.Handled = true;
-            }
-        }
-
-        private void textBox3_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            char ch = e.KeyChar;
-            if (!char.IsLetter(ch) && !char.IsControl(ch))
-            {
-                e.Handled = true;
-            }
-        }
-
-        private void textBox4_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            char ch = e.KeyChar;
-            if (!char.IsNumber(ch) && !char.IsLetter(ch) && ch != 8 && ch != 46 && !char.IsControl(ch))  
-            {
-                e.Handled = true;
-            }
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
+            InputFieldCorrection.ruLettersField(e);
+        }             
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -104,54 +67,44 @@ namespace DemoEx
                 if (id == 0)
                 {
                     db.executeNonQuery($"INSERT INTO `db17`.`clients` (`Surname`, `Name`, `Patronymic`, `passport`, `address`,`birth`, `phone_number`, `type`) VALUES ('{surname.Text}', '{name.Text}', '{pat.Text}', '{passport.Text}', '{address.Text}','{dateTimePicker1.Value.ToString("yyyy-MM-dd")}', '{phone.Text}', '{type.Text}');");
-                    MessageBox.Show("Клиент успешно добавлен!", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    surname.Clear();
-                    name.Clear();
-                    pat.Clear();
-                    phone.Clear();
-                    address.Clear();
-                    passport.Clear();
+                    MessageStore.clientAddedMessage();
+                    clearAllFields();            
                 }
                 else
                 {
                     db.executeNonQuery($"UPDATE `db17`.`clients` SET `Surname` = '{surname.Text}', `Name` = '{name.Text}', `Patronymic` = '{pat.Text}', `passport` = '{passport.Text}', `address` = '{address.Text}', `birth` = '{dateTimePicker1.Value.ToString("yyyy-MM-dd")}', `phone_number` = '{phone.Text}', `type` = '{type.Text}' WHERE (`id` = '{id}');");
-                    MessageBox.Show("Данные клиента изменены!", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageStore.clientDataEditedMessage();
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Что-то пошло не так!");
+                MessageStore.somethingWentWrongMessage();
             }
-
-            
         }
 
+        private void clearAllFields()
+        {
+            surname.Clear();
+            name.Clear();
+            pat.Clear();
+            phone.Clear();
+            address.Clear();
+            passport.Clear();
+        }
 
         private void textBox2_KeyPress_1(object sender, KeyPressEventArgs e)
         {
-            string s = e.KeyChar.ToString();
-            if (!Regex.Match(s, @"[а-яА-Я]|[\b]|[-]").Success)
-            {
-                e.Handled = true;
-            }
+            InputFieldCorrection.ruLettersField(e);
         }
 
         private void textBox3_KeyPress_1(object sender, KeyPressEventArgs e)
         {
-            string s = e.KeyChar.ToString();
-            if (!Regex.Match(s, @"[а-яА-Я]|[\b]|[-]").Success)
-            {
-                e.Handled = true;
-            }
+            InputFieldCorrection.ruLettersField(e);
         }
 
         private void maskedTextBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
-            char ch = e.KeyChar;
-            if (!char.IsLetter(ch) || !char.IsControl(ch))
-            {
-                e.Handled = true;
-            }
+            InputFieldCorrection.numbersField(e);
         }
 
         private void button2_Click_1(object sender, EventArgs e)

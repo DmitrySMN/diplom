@@ -36,5 +36,14 @@ namespace DemoEx.utility
                 e.Handled = true;
             }
         }
+
+        public static void numbersField(KeyPressEventArgs e)
+        {
+            string s = e.KeyChar.ToString();
+            if (!Regex.Match(s, @"[0-9]").Success)
+            {
+                e.Handled = true;
+            }
+        }
     }
 }
