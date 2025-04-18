@@ -49,7 +49,6 @@ namespace DemoEx
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             this.objectsDGV = new System.Windows.Forms.DataGridView();
             this.button2 = new System.Windows.Forms.Button();
             this.tabPage4 = new System.Windows.Forms.TabPage();
@@ -68,6 +67,7 @@ namespace DemoEx
             this.button5 = new System.Windows.Forms.Button();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.button6 = new System.Windows.Forms.Button();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -299,13 +299,6 @@ namespace DemoEx
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Поиск";
             // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(6, 32);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(360, 39);
-            this.textBox2.TabIndex = 0;
-            // 
             // objectsDGV
             // 
             this.objectsDGV.AllowUserToAddRows = false;
@@ -500,6 +493,15 @@ namespace DemoEx
             this.button6.UseVisualStyleBackColor = false;
             this.button6.Click += new System.EventHandler(this.button6_Click_1);
             // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(6, 33);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(361, 39);
+            this.textBox2.TabIndex = 0;
+            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged_1);
+            this.textBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox2_KeyPress);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
@@ -555,7 +557,6 @@ namespace DemoEx
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.DataGridView objectsDGV;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TabPage tabPage3;
@@ -587,5 +588,6 @@ namespace DemoEx
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.TextBox textBox2;
     }
 }

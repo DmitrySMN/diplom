@@ -12,6 +12,7 @@ using MySql.Data.MySqlClient;
 using DB;
 using System.Globalization;
 using System.Text.RegularExpressions;
+using DemoEx.utility;
 
 namespace DemoEx
 {
@@ -49,59 +50,6 @@ namespace DemoEx
             objectsDGV.Columns[0].Visible = false;
             employeeDGV.Columns[0].Visible = false;
             dealsDGV.Columns[0].Visible = false;
-
-            //var name = db.getValuesFromColumn($"select concat(surname, ' ', name) from employees where login='{login}';")[0];
-            ////pictureBox1.Image = Image.FromFile(Directory.GetCurrentDirectory() + "..\\assets\\images\\profile\\" + db.getValuesFromColumn($"select photo from employees where login='{login}';")[0]);
-
-            //if (post == 2)
-            //{
-            //    employeeLabel.Visible = false;
-            //    pictureBox7.Visible = false;
-            //}
-
-            //contextMenuStrip1.Items["toolStripMenuItem3"].Visible = false;
-            //contextMenuStrip1.Items["toolStripMenuItem4"].Visible = false;
-            //contextMenuStrip1.Items["удалитьСотрудникаToolStripMenuItem"].Visible = false;
-
-            //var text = name;
-
-            //var textInfo = new CultureInfo("ru-RU").TextInfo;
-            
-            //var capitalizedText = textInfo.ToTitleCase(textInfo.ToLower(text));
-
-            //label1.Text = $"{capitalizedText}";
-
-            //label2.Text = DateTime.Now.ToShortTimeString();
-            //dataGridView1.MultiSelect = false;
-            //dataGridView1.RowTemplate.Height = 70;
-            //dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            //dataGridView1.DefaultCellStyle.SelectionBackColor = Color.FromArgb(246, 246, 246);
-            //dataGridView1.DefaultCellStyle.SelectionForeColor = Color.Black;
-            //db.FillDGV(dataGridView1, "select id as 'ID', Surname as 'Фамилия', Name as 'Имя', Patronymic as 'Отчество', passport as 'Паспортные данные',address as 'Адрес', birth as 'Дата рождения', phone_number as 'Номер телефона', type as 'Тип' from clients;");
-            //dataGridView1.Columns["id"].Visible = false;
-            //dataGridView1.RowTemplate.Height = 85;
-            //var count = db.getIntValuesFromColumn("select count(*) from clients;")[0];
-            //pathString.Text = "/ Клиенты / Список";
-            //label7.Text = count.ToString();
-            //searchTextBox.Visible = true;
-
-            //filter.DropDownStyle = ComboBoxStyle.DropDownList;
-            //sort.DropDownStyle = ComboBoxStyle.DropDownList;
-            
-            
-            //filter.Items.Add("По умолчанию");
-            //filter.Items.Add("Покупатели");
-            //filter.Items.Add("Продавцы");
-            //filter.Items.Add("Арендатели");
-            //filter.Items.Add("Арендодатели");
-
-            //sort.Items.Add("По умолчанию");
-            //sort.Items.Add("По фамилии А-Я");
-            //sort.Items.Add("По фамилии Я-А");
-
-
-            //filter.SelectedIndex = 0;
-            //sort.SelectedIndex = 0;
         }
 
         private void fillAllDgv()
@@ -116,50 +64,27 @@ namespace DemoEx
             db.setUpDgvImages(employeeDGV, "Фото");
         }
 
-
-        private void button6_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
-        private void button7_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
-        private void button8_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
-        private void button9_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
-        private void button10_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
             new AddClientForm().ShowDialog();
+            fillAllDgv();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            
+            fillAllDgv();
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
             new AddEmployee().ShowDialog();
+            fillAllDgv();
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
             new AddEmployee().ShowDialog();
+            fillAllDgv();
         }
 
         private void button6_Click_1(object sender, EventArgs e)
@@ -182,6 +107,23 @@ namespace DemoEx
                     e.Cancel = true;
                 }
             }
+        }
+
+        private void textBox2_TextChanged_1(object sender, EventArgs e)
+        {
+            if (textBox2.Text.Length > 0)
+            {
+                db.FillDGV(clientDGV, $"SELECT id, concat(Surname,' ', Name,' ', Patronymic) as 'ФИО', passport as 'Паспорт', address as 'Адрес', birth as 'Дата рождения', phone_number as 'Номер телефона', type as 'Тип' FROM db17.clients WHERE Surname LIKE '{textBox2.Text}%';");
+            }
+            else
+            {
+                fillAllDgv();
+            }
+        }
+
+        private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            InputFieldCorrection.ruLettersField();
         }
 
         //    private void label5_Click_1(object sender, EventArgs e)

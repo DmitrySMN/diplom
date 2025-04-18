@@ -38,8 +38,7 @@ namespace DemoEx
 
             if (id == 0)
             {
-                button1.Text = "Добавить";
-                
+                button1.Text = "Добавить";  
             }
             else
             {
