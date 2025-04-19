@@ -45,6 +45,13 @@ namespace DemoEx
             employeeDGV.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dealsDGV.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
+            clientSortField.DropDownStyle = ComboBoxStyle.DropDownList;
+            clientSortField.Items.Add("По умолчанию");
+            clientSortField.Items.Add("Покупатели");
+            clientSortField.Items.Add("Арендатели");
+
+            clientSortField.SelectedIndex = 0;
+
             clientDGV.Columns[0].Visible = false;
             requestDGV.Columns[0].Visible = false;
             objectsDGV.Columns[0].Visible = false;
@@ -124,6 +131,21 @@ namespace DemoEx
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
             InputFieldCorrection.ruLettersField(e);
+        }
+
+        private void clientSortField_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (clientSortField.SelectedIndex == 0)
+            {
+                fillAllDgv();
+            } else if (clientSortField.SelectedIndex == 1)
+            {
+                db.FillDGV(clientDGV, $"SELECT id, concat(Surname,' ', Name,' ', Patronymic) as 'ФИО', passport as 'Паспорт', address as 'Адрес', birth as 'Дата рождения', phone_number as 'Номер телефона', type as 'Тип' FROM db17.clients WHERE type='Покупатель';");
+            }
+            else 
+            {
+                db.FillDGV(clientDGV, $"SELECT id, concat(Surname,' ', Name,' ', Patronymic) as 'ФИО', passport as 'Паспорт', address as 'Адрес', birth as 'Дата рождения', phone_number as 'Номер телефона', type as 'Тип' FROM db17.clients WHERE type='Арендатель';");
+            }
         }
 
         //    private void label5_Click_1(object sender, EventArgs e)

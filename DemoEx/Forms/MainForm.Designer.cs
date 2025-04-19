@@ -33,7 +33,7 @@ namespace DemoEx
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.clientSortField = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.clientDGV = new System.Windows.Forms.DataGridView();
@@ -121,7 +121,7 @@ namespace DemoEx
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.comboBox1);
+            this.groupBox1.Controls.Add(this.clientSortField);
             this.groupBox1.Location = new System.Drawing.Point(575, 0);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(373, 77);
@@ -129,13 +129,14 @@ namespace DemoEx
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Фильтрация";
             // 
-            // comboBox1
+            // clientSortField
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(6, 32);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(360, 40);
-            this.comboBox1.TabIndex = 0;
+            this.clientSortField.FormattingEnabled = true;
+            this.clientSortField.Location = new System.Drawing.Point(6, 32);
+            this.clientSortField.Name = "clientSortField";
+            this.clientSortField.Size = new System.Drawing.Size(360, 40);
+            this.clientSortField.TabIndex = 0;
+            this.clientSortField.SelectedIndexChanged += new System.EventHandler(this.clientSortField_SelectedIndexChanged);
             // 
             // groupBox2
             // 
@@ -151,6 +152,7 @@ namespace DemoEx
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(6, 32);
+            this.textBox1.MaxLength = 20;
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(360, 39);
             this.textBox1.TabIndex = 0;
@@ -303,7 +305,10 @@ namespace DemoEx
             // 
             // textBox2
             // 
-            
+            this.textBox2.Location = new System.Drawing.Point(0, 0);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(100, 39);
+            this.textBox2.TabIndex = 0;
             // 
             // objectsDGV
             // 
@@ -578,7 +583,7 @@ namespace DemoEx
         private System.Windows.Forms.DataGridView dealsDGV;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox clientSortField;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.DataGridView clientDGV;
