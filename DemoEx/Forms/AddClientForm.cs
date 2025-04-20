@@ -47,7 +47,6 @@ namespace DemoEx
                 name.Text = db.getValuesFromColumn($"select name from clients where id={id};")[0];
                 pat.Text = db.getValuesFromColumn($"select Patronymic from clients where id={id};")[0];
                 passport.Text = db.getValuesFromColumn($"select passport from clients where id={id};")[0];
-                dateTimePicker1.Value = db.getDateValuesFromColumn($"select birth from clients where id={id};")[0];
                 phone.Text = db.getValuesFromColumn($"select phone_number from clients where id={id};")[0];
                 type.Text = db.getValuesFromColumn($"select type from clients where id={id};")[0];
                 address.Text = db.getValuesFromColumn($"select address from clients where id={id};")[0];

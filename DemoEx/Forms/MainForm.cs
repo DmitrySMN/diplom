@@ -148,6 +148,29 @@ namespace DemoEx
             }
         }
 
+        private void создатьЗапросToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void изменитьДанныеКлиентаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new AddClientForm(Convert.ToInt32(clientDGV.SelectedRows[0].Cells[0].Value)).ShowDialog();
+            fillAllDgv();
+        }
+
+        private void удалитьКлиентаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var result = MessageStore.deleteClientConfirmationMessage();
+
+            if (result == DialogResult.Yes)
+            {
+                db.executeNonQuery($"DELETE FROM `db17`.`clients` WHERE (`id` = '{Convert.ToInt32(clientDGV.SelectedRows[0].Cells[0].Value)}');");
+            }
+            
+            fillAllDgv();
+        }
+
         //    private void label5_Click_1(object sender, EventArgs e)
         //    {
         //        sort.Items.Clear();

@@ -63,6 +63,11 @@ namespace DemoEx.utility
             MessageBox.Show("Клиент успешно добавлен!", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
+        public static DialogResult deleteClientConfirmationMessage()
+        {
+            return MessageBox.Show("Удалить данные клиента?", "Подтверждение", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+        }
 
         //Работники
         public static void employeeAddedMessage()
