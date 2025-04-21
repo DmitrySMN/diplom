@@ -43,7 +43,7 @@ namespace DemoEx
 
                     if (logins.Contains(loginTb.Text))
                     {
-                        MessageBox.Show("Сотрудник с таким логином уже существует!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageStore.employeeLoginErrorMessage();
                         return;
                     }
 
@@ -56,12 +56,12 @@ namespace DemoEx
                     passport.Clear();
                     phone.Clear();
                     address.Clear();
-                    MessageBox.Show("Сотрудник добавлен в систему!");
+                    MessageStore.employeeAddedMessage();
 
                 }
                 else
                 {
-                    MessageBox.Show("Некоторые поля заполнены некорректно!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageStore.fieldsFilledIncorrectMessage();
                 }
             } else
             {

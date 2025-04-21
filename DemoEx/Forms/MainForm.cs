@@ -1,17 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
 using DB;
-using System.Globalization;
-using System.Text.RegularExpressions;
 using DemoEx.utility;
 
 namespace DemoEx
@@ -31,16 +20,14 @@ namespace DemoEx
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            clientDGV.RowTemplate.Height = 40;
-            requestDGV.RowTemplate.Height = 40;
+            clientDGV.RowTemplate.Height = 85;
             objectsDGV.RowTemplate.Height = 85;
-            dealsDGV.RowTemplate.Height = 40;
+            dealsDGV.RowTemplate.Height = 85;
             employeeDGV.RowTemplate.Height = 85;
 
             fillAllDgv();
 
             clientDGV.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            requestDGV.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             objectsDGV.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             employeeDGV.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dealsDGV.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -53,7 +40,6 @@ namespace DemoEx
             clientSortField.SelectedIndex = 0;
 
             clientDGV.Columns[0].Visible = false;
-            requestDGV.Columns[0].Visible = false;
             objectsDGV.Columns[0].Visible = false;
             employeeDGV.Columns[0].Visible = false;
             dealsDGV.Columns[0].Visible = false;
@@ -62,13 +48,9 @@ namespace DemoEx
         private void fillAllDgv()
         {
             db.FillDGV(clientDGV, $"SELECT id, concat(Surname,' ', Name,' ', Patronymic) as 'ФИО', passport as 'Паспорт', address as 'Адрес', birth as 'Дата рождения', phone_number as 'Номер телефона', type as 'Тип' FROM db17.clients");
-            db.FillDGV(requestDGV, $"SELECT requestId, description as 'Описание', request_types.request_type as 'Тип запроса' FROM db17.client_request \r\njoin request_types \r\non client_request.type_id=request_types.request_type_id;");
             db.FillDGV(objectsDGV, $"SELECT * FROM db17.object;");
             db.FillDGV(employeeDGV, $"SELECT id, login as 'Логин', password as 'Пароль', concat(Surname, ' ', Name, ' ', Patronymic) as 'ФИО', passport as 'Паспорт', birth as 'Дата рождения', phone_number as 'Номер телефона', address as 'Адрес', post as 'Должность', photo FROM db17.employees;");
             db.FillDGV(dealsDGV, $"SELECT * FROM db17.deals;");
-
-            employeeDGV.Columns["photo"].Visible = false;
-            db.setUpDgvImages(employeeDGV, "Фото");
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -79,7 +61,6 @@ namespace DemoEx
 
         private void button2_Click(object sender, EventArgs e)
         {
-            fillAllDgv();
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -90,7 +71,6 @@ namespace DemoEx
 
         private void button5_Click(object sender, EventArgs e)
         {
-            new AddEmployee().ShowDialog();
             fillAllDgv();
         }
 
@@ -109,7 +89,7 @@ namespace DemoEx
                 }
             }
             else if (post == 2) {
-                if (e.TabPage == tabPage5)
+                if (e.TabPage == tabPage4)
                 {
                     e.Cancel = true;
                 }
@@ -124,6 +104,7 @@ namespace DemoEx
             }
             else
             {
+                employeeDGV.Columns.Remove("Фото");
                 fillAllDgv();
             }
         }
@@ -171,28 +152,6 @@ namespace DemoEx
             fillAllDgv();
         }
 
-        //    private void label5_Click_1(object sender, EventArgs e)
-        //    {
-        //        sort.Items.Clear();
-        //        contextMenuStrip1.Items["toolStripMenuItem1"].Visible = false;
-        //        contextMenuStrip1.Items["toolStripMenuItem2"].Visible = false;
-        //        contextMenuStrip1.Items["toolStripMenuItem3"].Visible = false;
-        //        contextMenuStrip1.Items["toolStripMenuItem4"].Visible = false;
-        //        contextMenuStrip1.Items["удалитьСотрудникаToolStripMenuItem"].Visible = false;
-
-        //        if (dataGridView1.Columns["Фото объекта"] == null)
-        //        {
-
-        //        }
-        //        else
-        //        {
-        //            dataGridView1.Columns.Remove("Фото объекта");
-        //        }
-        //        db.FillDGV(dataGridView1, "select id, (select concat(Surname, Name, Patronymic) from clients where id=client) as 'Клиент', (select address from estate where id=estate) as 'Объект', (select concat(Surname,' ', Name, ' ', Patronymic) from employees where id=employees) as 'Риелтор', type as 'Тип', transaction_date as 'Дата заключения', status as 'Статус' from deals;");
-        //        dataGridView1.Columns["id"].Visible = false;
-        //        dataGridView1.Columns[4].Width = 120;
-        //        dataGridView1.Columns[5].Width = 170;
-        //        dataGridView1.Columns[6].Width = 190;
         //        foreach (DataGridViewRow row in dataGridView1.Rows)
         //        {
         //            if (row.Cells[6].Value.ToString() == "Новая")
@@ -712,38 +671,5 @@ namespace DemoEx
         //        }
         //    }
 
-        //    private void удалитьСотрудникаToolStripMenuItem_Click(object sender, EventArgs e)
-        //    {
-        //        DialogResult res = MessageBox.Show("Вы уверенны что хотите, удалить сотрудника?", "Подтверждение",MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-        //        if (res == DialogResult.Yes)
-        //        {
-        //            try
-        //            {
-        //                db.executeNonQuery($"DELETE FROM `db17`.`employees` WHERE (`id` = {dataGridView1.SelectedRows[0].Cells[0].Value});");
-        //            }
-        //            catch (Exception c)
-        //            {
-        //                MessageBox.Show("Данного сотруднка нельзя удалить!");
-        //                return;
-
-        //            }
-        //            MessageBox.Show("Сотрудник удален!");
-        //            db.FillDGV(dataGridView1, "select id, login as 'Логин', password as 'Пароль', surname as 'Фамилия', name as 'Имя', patronymic as 'Отчество', passport as 'Паспортные данные', birth as 'Дата рождения', phone_number as 'Номер телефона', address as 'Адрес', (select post from posts where posts.id=db17.employees.post) as 'Должность' from employees;");
-        //        }
-        //        else
-        //        {
-
-        //        }
-        //    }
-
-        //    private void searchTextBox_KeyPress(object sender, KeyPressEventArgs e)
-        //    {
-        //        string s = e.KeyChar.ToString();
-        //        if (!Regex.Match(s, @"[а-яА-Я]|[\b]|[-]").Success)
-        //        {
-        //            e.Handled = true;
-        //        }
-        //    }
     }
 }

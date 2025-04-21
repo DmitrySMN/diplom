@@ -165,7 +165,7 @@ namespace DB
                     }
                 } else
                 {
-                    using (Image image = Image.FromFile(Directory.GetCurrentDirectory() + "\\assets\\images\\profile\\" + photoName))
+                    using (Image image = Image.FromFile(Directory.GetCurrentDirectory() + "\\assets\\icons\\profile\\" + photoName))
                     {
                         row.Cells[photoColumnName].Value = new Bitmap(image);
                     }

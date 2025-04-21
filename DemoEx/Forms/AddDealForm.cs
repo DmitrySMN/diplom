@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DB;
 using DemoEx.data;
+using DemoEx.utility;
 
 
 namespace DemoEx
@@ -143,7 +144,7 @@ namespace DemoEx
             }
             catch (Exception exc)
             {
-                MessageBox.Show("Что-то пошло не так!");
+                MessageStore.somethingWentWrongMessage();
             }
 
         }
@@ -184,7 +185,7 @@ namespace DemoEx
                 }
             } catch (Exception xe)
             {
-                MessageBox.Show(xe.Message);
+                MessageStore.somethingWentWrongMessage();
             }
         }
     }
