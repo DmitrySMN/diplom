@@ -142,5 +142,10 @@ namespace DemoEx
         {
             captchaPicture.Image = db.createImageForCaptcha(captchaPicture.Width, captchaPicture.Height, 4);
         }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+            new ManageConnectionForm().ShowDialog();
+        }
     }
 }

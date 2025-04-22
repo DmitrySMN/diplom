@@ -152,6 +152,18 @@ namespace DemoEx
             fillAllDgv();
         }
 
+        private void удалитьСотрудникаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var result = MessageStore.deleteClientConfirmationMessage();
+
+            if (result == DialogResult.Yes)
+            {
+                db.executeNonQuery($"DELETE FROM `db17`.`employees` WHERE (`id` = '{Convert.ToInt32(clientDGV.SelectedRows[0].Cells[0].Value)}');");
+            }
+
+            fillAllDgv();
+        }
+
         //        foreach (DataGridViewRow row in dataGridView1.Rows)
         //        {
         //            if (row.Cells[6].Value.ToString() == "Новая")

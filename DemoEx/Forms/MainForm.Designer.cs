@@ -46,6 +46,7 @@ namespace DemoEx
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.objectsDGV = new System.Windows.Forms.DataGridView();
             this.button2 = new System.Windows.Forms.Button();
             this.tabPage5 = new System.Windows.Forms.TabPage();
@@ -61,12 +62,11 @@ namespace DemoEx
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.employeeDGV = new System.Windows.Forms.DataGridView();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.редактироватьДанныеСотрудникаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.удалитьСотрудникаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -256,6 +256,13 @@ namespace DemoEx
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Поиск";
             // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(6, 32);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(361, 39);
+            this.textBox2.TabIndex = 0;
+            // 
             // objectsDGV
             // 
             this.objectsDGV.AllowUserToAddRows = false;
@@ -420,6 +427,27 @@ namespace DemoEx
             this.employeeDGV.Size = new System.Drawing.Size(1902, 917);
             this.employeeDGV.TabIndex = 9;
             // 
+            // contextMenuStrip2
+            // 
+            this.contextMenuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.редактироватьДанныеСотрудникаToolStripMenuItem,
+            this.удалитьСотрудникаToolStripMenuItem});
+            this.contextMenuStrip2.Name = "contextMenuStrip2";
+            this.contextMenuStrip2.Size = new System.Drawing.Size(239, 70);
+            // 
+            // редактироватьДанныеСотрудникаToolStripMenuItem
+            // 
+            this.редактироватьДанныеСотрудникаToolStripMenuItem.Name = "редактироватьДанныеСотрудникаToolStripMenuItem";
+            this.редактироватьДанныеСотрудникаToolStripMenuItem.Size = new System.Drawing.Size(238, 22);
+            this.редактироватьДанныеСотрудникаToolStripMenuItem.Text = "Изменить данные сотрудника";
+            // 
+            // удалитьСотрудникаToolStripMenuItem
+            // 
+            this.удалитьСотрудникаToolStripMenuItem.Name = "удалитьСотрудникаToolStripMenuItem";
+            this.удалитьСотрудникаToolStripMenuItem.Size = new System.Drawing.Size(238, 22);
+            this.удалитьСотрудникаToolStripMenuItem.Text = "Удалить сотрудника";
+            this.удалитьСотрудникаToolStripMenuItem.Click += new System.EventHandler(this.удалитьСотрудникаToolStripMenuItem_Click);
+            // 
             // button4
             // 
             this.button4.BackColor = System.Drawing.Color.SkyBlue;
@@ -445,33 +473,6 @@ namespace DemoEx
             this.button6.Text = "Назад";
             this.button6.UseVisualStyleBackColor = false;
             this.button6.Click += new System.EventHandler(this.button6_Click_1);
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(6, 32);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(361, 39);
-            this.textBox2.TabIndex = 0;
-            // 
-            // contextMenuStrip2
-            // 
-            this.contextMenuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.редактироватьДанныеСотрудникаToolStripMenuItem,
-            this.удалитьСотрудникаToolStripMenuItem});
-            this.contextMenuStrip2.Name = "contextMenuStrip2";
-            this.contextMenuStrip2.Size = new System.Drawing.Size(239, 48);
-            // 
-            // редактироватьДанныеСотрудникаToolStripMenuItem
-            // 
-            this.редактироватьДанныеСотрудникаToolStripMenuItem.Name = "редактироватьДанныеСотрудникаToolStripMenuItem";
-            this.редактироватьДанныеСотрудникаToolStripMenuItem.Size = new System.Drawing.Size(238, 22);
-            this.редактироватьДанныеСотрудникаToolStripMenuItem.Text = "Изменить данные сотрудника";
-            // 
-            // удалитьСотрудникаToolStripMenuItem
-            // 
-            this.удалитьСотрудникаToolStripMenuItem.Name = "удалитьСотрудникаToolStripMenuItem";
-            this.удалитьСотрудникаToolStripMenuItem.Size = new System.Drawing.Size(238, 22);
-            this.удалитьСотрудникаToolStripMenuItem.Text = "Удалить сотрудника";
             // 
             // MainForm
             // 
