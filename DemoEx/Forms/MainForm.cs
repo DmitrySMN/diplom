@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using DB;
+using DemoEx.Forms;
 using DemoEx.utility;
 
 namespace DemoEx
@@ -12,6 +13,7 @@ namespace DemoEx
         private int post;
         private int currentInfo = 1;
         private int offset = 0;
+        private int page = 1;
 
         public MainForm(string login, int post)
         {
@@ -37,6 +39,8 @@ namespace DemoEx
             clientSortField.DropDownStyle = ComboBoxStyle.DropDownList;
             clientSortField.Items.Add("По умолчанию");
             clientSortField.Items.Add("Покупатели");
+            clientSortField.Items.Add("Продавцы");
+            clientSortField.Items.Add("Арендодатели");
             clientSortField.Items.Add("Арендатели");
 
             clientSortField.SelectedIndex = 0;
@@ -50,7 +54,7 @@ namespace DemoEx
         private void fillAllDgv()
         {
             db.FillDGV(clientDGV, $"SELECT id, concat(Surname,' ', Name,' ', Patronymic) as 'ФИО', passport as 'Паспорт', address as 'Адрес', birth as 'Дата рождения', phone_number as 'Номер телефона', type as 'Тип' FROM db17.clients limit 10 offset {offset};");
-            db.FillDGV(objectsDGV, $"SELECT * FROM db17.object;");
+            db.FillDGV(objectsDGV, $"SELECT id, object_type as 'Тип объекта', owner_id 'Владелец', address as 'Адрес', square as 'Площадь', cadastral as 'Кадастровый ном.', rooms as 'Кол-во комнат', price as 'Цена', photo as 'Фото', status as 'Статус' FROM db17.object;");
             db.FillDGV(employeeDGV, $"SELECT id, login as 'Логин', password as 'Пароль', concat(Surname, ' ', Name, ' ', Patronymic) as 'ФИО', passport as 'Паспорт', birth as 'Дата рождения', phone_number as 'Номер телефона', address as 'Адрес', post as 'Должность', photo FROM db17.employees;");
             db.FillDGV(dealsDGV, $"SELECT * FROM db17.deals;");
         }
@@ -63,6 +67,8 @@ namespace DemoEx
 
         private void button2_Click(object sender, EventArgs e)
         {
+            new AddObjectForm().ShowDialog(); 
+            fillAllDgv();
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -216,107 +222,7 @@ namespace DemoEx
 
         //        filter.SelectedIndex = 0;
         //        sort.SelectedIndex = 0;
-        //    }
-
-        //    private void label3_Click_1(object sender, EventArgs e)
-        //    {
-        //        button1.Text = "Добавить";
-        //        sort.Visible = true;
-        //        contextMenuStrip1.Items["toolStripMenuItem1"].Visible = true;
-        //        contextMenuStrip1.Items["toolStripMenuItem2"].Visible = true;
-        //        contextMenuStrip1.Items["toolStripMenuItem3"].Visible = false;
-        //        contextMenuStrip1.Items["toolStripMenuItem4"].Visible = false;
-        //        contextMenuStrip1.Items["удалитьСотрудникаToolStripMenuItem"].Visible = false;
-
-        //        if (dataGridView1.Columns["Фото объекта"] == null)
-        //        {
-
-        //        } else
-        //        {
-        //            dataGridView1.Columns.Remove("Фото объекта");
-        //        }
-
-        //        db.FillDGV(dataGridView1, "select id as 'ID', Surname as 'Фамилия', Name as 'Имя', Patronymic as 'Отчество', passport as 'Паспортные данные', address as 'Адрес', birth as 'Дата рождения', phone_number as 'Номер телефона', type as 'Тип' from clients;");
-        //        pathString.Text = "/ Клиенты / Список";
-        //        var count = db.getIntValuesFromColumn("select count(*) from clients;")[0];
-        //        label7.Text = count.ToString();
-        //        currentInfo = 1;
-        //        searchTextBox.Visible = true;
-
-        //        filter.Items.Clear();
-
-        //        filter.Items.Add("По умолчанию");
-        //        filter.Items.Add("Покупатели");
-        //        filter.Items.Add("Продавцы");
-        //        filter.Items.Add("Арендатели");
-        //        filter.Items.Add("Арендодатели");
-
-        //        sort.Items.Clear();
-
-        //        sort.Items.Add("По умолчанию");
-        //        sort.Items.Add("По фамилии А-Я");
-        //        sort.Items.Add("По фамилии Я-А");
-
-        //        filter.SelectedIndex = 0;
-        //        sort.SelectedIndex = 0;
-        //    }
-
-        //    private void label4_Click(object sender, EventArgs e)
-        //    {
-        //        button1.Text = "Добавить";
-        //        sort.Visible = true;
-        //        contextMenuStrip1.Items["toolStripMenuItem1"].Visible = false;
-        //        contextMenuStrip1.Items["toolStripMenuItem2"].Visible = false;
-        //        contextMenuStrip1.Items["toolStripMenuItem3"].Visible = true;
-        //        contextMenuStrip1.Items["удалитьСотрудникаToolStripMenuItem"].Visible = false;
-
-        //        if (dataGridView1.Columns["Фото объекта"] == null)
-        //        {
-
-        //        }
-        //        else
-        //        {
-        //            dataGridView1.Columns.Remove("Фото объекта");
-        //        }
-        //        db.FillDGV(dataGridView1, $"select id, (select type from estate_type where id=estate_type) as 'Тип объекта', (select concat(Surname, Name, Patronymic) from clients where id=owner_id) as 'Владелец', address as 'Адрес', square as 'Площадь', cadastral as 'Кадастровый номер', rooms as 'Кол-во комнат', price as 'Цена', photo, status as 'Статус' from estate;");
-        //        dataGridView1.Columns["id"].Visible = false;
-        //        dataGridView1.Columns["photo"].Visible = false;
-        //        db.setUpDgvImages(dataGridView1, "Фото объекта");
-        //        dataGridView1.Columns[1].Width = 150;
-        //        dataGridView1.Columns[4].Width = 120;
-        //        dataGridView1.Columns[5].Width = 150;
-        //        dataGridView1.Columns[6].Width = 170;
-        //        dataGridView1.Columns["Фото объекта"].Width = 120;
-        //        pathString.Text = "/ Объекты / Список";
-        //        var count = db.getIntValuesFromColumn("select count(*) from estate;")[0];
-        //        label7.Text = count.ToString();
-        //        currentInfo = 2;
-        //        searchTextBox.Visible = false;
-
-        //        filter.Items.Clear();
-
-        //        filter.Items.Add("По умолчанию ");
-        //        filter.Items.Add("Квартиры");
-        //        filter.Items.Add("Дома");
-        //        filter.Items.Add("Котеджи");
-        //        filter.Items.Add("Склады");
-        //        filter.Items.Add("Офисы");
-
-        //        sort.Items.Clear();
-
-        //        sort.Items.Add("По умолчанию  ");
-        //        sort.Items.Add("По убыванию цены");
-        //        sort.Items.Add("По возрастанию цены");
-
-        //        filter.SelectedIndex = 0;
-        //        sort.SelectedIndex = 0;
-
-        //    }
-
-        //    private void panel3_Paint(object sender, PaintEventArgs e)
-        //    {
-
-        //    }
+        //    }          
 
         //    private void button1_Click_2(object sender, EventArgs e)
         //    {

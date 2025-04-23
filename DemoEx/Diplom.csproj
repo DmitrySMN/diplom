@@ -143,6 +143,9 @@
     <EmbeddedResource Include="Forms\AddEmployee.resx">
       <DependentUpon>AddEmployee.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AddObjectForm.resx">
+      <DependentUpon>AddObjectForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\AdminForm.resx">
       <DependentUpon>AdminForm.cs</DependentUpon>
     </EmbeddedResource>
