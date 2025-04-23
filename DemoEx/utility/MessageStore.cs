@@ -85,11 +85,11 @@ namespace DemoEx.utility
         }
 
         //Объекты
-        public static void editEstateMessage()
+        public static void editObjectMessage()
         {
             MessageBox.Show("Информаци об объекте успешно отредактирована!", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-        public static void addEstateMessage()
+        public static void addObjectMessage()
         {
             MessageBox.Show("Объект успешно добавлен!", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }

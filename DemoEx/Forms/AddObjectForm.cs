@@ -1,4 +1,5 @@
 ﻿using DB;
+using DemoEx.utility;
 using System;
 using System.Drawing;
 using System.IO;
@@ -9,15 +10,31 @@ namespace DemoEx.Forms
     public partial class AddObjectForm : Form
     {
         private Db db = new Db(Connection.connectionString);
-        public AddObjectForm()
+        private string photoName = null;
+        private int objectId;
+        public AddObjectForm(int objectId = 0)
         {
             InitializeComponent();
+            this.objectId = objectId;
         }
 
         private void AddObjectForm_Load(object sender, EventArgs e)
         {
-            owner_cb.DropDownStyle = ComboBoxStyle.DropDownList;    
+            owner_cb.DropDownStyle = ComboBoxStyle.DropDownList;
+            status_cb.DropDownStyle = ComboBoxStyle.DropDownList;
+            object_type_cb.DropDownStyle = ComboBoxStyle.DropDownList;
+
             owner_cb.Items.AddRange(db.getValuesFromColumn("SELECT concat(surname,' ', name, ' ', patronymic) FROM db17.clients where type='Продавец' or type='Арендодатель';").ToArray());
+            string[] status = { "В продаже", "Продан", "Арендуется", "Арендован" };
+            status_cb.Items.AddRange(status);
+            object_type_cb.Items.AddRange(db.getValuesFromColumn("SELECT type FROM db17.object_type;").ToArray());
+
+            if (objectId == 0)
+            {
+            } else
+            {
+
+            }
         }
 
 
@@ -28,10 +45,22 @@ namespace DemoEx.Forms
 
         private void button1_Click(object sender, EventArgs e)
         {
-            db.executeNonQuery($"INSERT INTO `db17`.`object` (`object_type`, `owner_id`, `address`, `square`, `cadastral`, `rooms`, `price`, `photo`, `status`) VALUES ('1', '1', 'f', 'f', 'f', '3', 'f', 'f', 'f');");
-        }
+            try
+            {
+                db.executeNonQuery($"INSERT INTO `db17`.`object` (`object_type`, `owner_id`, `address`, `square`, `cadastral`, `rooms`, `price`, `photo`, `status`) VALUES ('{db.getIntValuesFromColumn($"SELECT id FROM db17.object_type where type='{object_type_cb.Text}';")[0]}', '{db.getIntValuesFromColumn($"SELECT id FROM db17.clients where concat(surname, ' ', name, ' ', Patronymic) = '{owner_cb.Text}';")[0]}', '{address_tb.Text}', '{square_tb.Text}', '{cadastral_tb.Text}', '{rooms_tb.Text}', '{price_tb.Text}', '{((photoName == null) ? "home.png" : photoName)}', '{status_cb.Text}');");
+                MessageStore.addObjectMessage();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }        }
 
         private void button3_Click(object sender, EventArgs e)
+        {
+            photoName = selectPhoto();
+        }
+
+        private string selectPhoto()
         {
             openFileDialog1.Filter = "Изображения (*.jpg; *.jpeg; *.png)|*.jpg; *.jpeg; *.png";
             openFileDialog1.Title = "Выберита изображение";
@@ -46,7 +75,7 @@ namespace DemoEx.Forms
 
                     string fileName = Path.GetFileName(openFileDialog1.FileName);
                     string destinationPath = Path.Combine(photosFolder, fileName);
-                    
+
                     if (File.Exists(destinationPath))
                     {
                         string newFileName = Path.GetFileNameWithoutExtension(fileName) + "_копия" + Path.GetExtension(fileName);
@@ -59,7 +88,8 @@ namespace DemoEx.Forms
                 {
                     MessageBox.Show($"Ошибка: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-        } 
+            }
+            return openFileDialog1.FileName;
         }
     }
 }

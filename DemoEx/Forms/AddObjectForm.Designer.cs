@@ -51,6 +51,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox7.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -210,6 +211,7 @@
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.label2);
             this.groupBox5.Controls.Add(this.price_tb);
             this.groupBox5.Font = new System.Drawing.Font("Yu Gothic UI", 18F);
             this.groupBox5.ForeColor = System.Drawing.Color.Black;
@@ -227,7 +229,7 @@
             this.price_tb.Location = new System.Drawing.Point(9, 41);
             this.price_tb.MaxLength = 10;
             this.price_tb.Name = "price_tb";
-            this.price_tb.Size = new System.Drawing.Size(294, 39);
+            this.price_tb.Size = new System.Drawing.Size(225, 39);
             this.price_tb.TabIndex = 1;
             // 
             // groupBox6
@@ -309,6 +311,15 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(242, 48);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(59, 32);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "руб.";
+            // 
             // AddObjectForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
@@ -379,5 +390,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.Label label2;
     }
 }
