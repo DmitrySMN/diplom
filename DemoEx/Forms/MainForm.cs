@@ -11,6 +11,8 @@ namespace DemoEx
         private string login;
         private int post;
         private int currentInfo = 1;
+        private int offset = 0;
+
         public MainForm(string login, int post)
         {
             this.login = login;
@@ -20,8 +22,8 @@ namespace DemoEx
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            clientDGV.RowTemplate.Height = 85;
             objectsDGV.RowTemplate.Height = 85;
+            clientDGV.RowTemplate.Height = 82;
             dealsDGV.RowTemplate.Height = 85;
             employeeDGV.RowTemplate.Height = 85;
 
@@ -47,7 +49,7 @@ namespace DemoEx
 
         private void fillAllDgv()
         {
-            db.FillDGV(clientDGV, $"SELECT id, concat(Surname,' ', Name,' ', Patronymic) as 'ФИО', passport as 'Паспорт', address as 'Адрес', birth as 'Дата рождения', phone_number as 'Номер телефона', type as 'Тип' FROM db17.clients");
+            db.FillDGV(clientDGV, $"SELECT id, concat(Surname,' ', Name,' ', Patronymic) as 'ФИО', passport as 'Паспорт', address as 'Адрес', birth as 'Дата рождения', phone_number as 'Номер телефона', type as 'Тип' FROM db17.clients limit 10 offset {offset};");
             db.FillDGV(objectsDGV, $"SELECT * FROM db17.object;");
             db.FillDGV(employeeDGV, $"SELECT id, login as 'Логин', password as 'Пароль', concat(Surname, ' ', Name, ' ', Patronymic) as 'ФИО', passport as 'Паспорт', birth as 'Дата рождения', phone_number as 'Номер телефона', address as 'Адрес', post as 'Должность', photo FROM db17.employees;");
             db.FillDGV(dealsDGV, $"SELECT * FROM db17.deals;");
@@ -161,6 +163,18 @@ namespace DemoEx
                 db.executeNonQuery($"DELETE FROM `db17`.`employees` WHERE (`id` = '{Convert.ToInt32(clientDGV.SelectedRows[0].Cells[0].Value)}');");
             }
 
+            fillAllDgv();
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            offset += 10;
+            fillAllDgv();
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            if (offset > 0) offset -= 10;
             fillAllDgv();
         }
 
