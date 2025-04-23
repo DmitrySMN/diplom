@@ -55,7 +55,7 @@ namespace DemoEx
         {
             db.FillDGV(clientDGV, $"SELECT id, concat(Surname,' ', Name,' ', Patronymic) as 'ФИО', passport as 'Паспорт', address as 'Адрес', birth as 'Дата рождения', phone_number as 'Номер телефона', type as 'Тип' FROM db17.clients limit 10 offset {offset};");
             db.FillDGV(objectsDGV, $"SELECT id, object_type as 'Тип объекта', owner_id 'Владелец', address as 'Адрес', square as 'Площадь', cadastral as 'Кадастровый ном.', rooms as 'Кол-во комнат', price as 'Цена', photo as 'Фото', status as 'Статус' FROM db17.object;");
-            db.FillDGV(employeeDGV, $"SELECT id, login as 'Логин', password as 'Пароль', concat(Surname, ' ', Name, ' ', Patronymic) as 'ФИО', passport as 'Паспорт', birth as 'Дата рождения', phone_number as 'Номер телефона', address as 'Адрес', post as 'Должность', photo FROM db17.employees;");
+            db.FillDGV(employeeDGV, $"SELECT id, login as 'Логин', password as 'Пароль', concat(Surname, ' ', Name, ' ', Patronymic) as 'ФИО', passport as 'Паспорт', birth as 'Дата рождения', phone_number as 'Номер телефона', address as 'Адрес', post as 'Должность' FROM db17.employees;");
             db.FillDGV(dealsDGV, $"SELECT * FROM db17.deals;");
         }
 
@@ -131,6 +131,14 @@ namespace DemoEx
             {
                 db.FillDGV(clientDGV, $"SELECT id, concat(Surname,' ', Name,' ', Patronymic) as 'ФИО', passport as 'Паспорт', address as 'Адрес', birth as 'Дата рождения', phone_number as 'Номер телефона', type as 'Тип' FROM db17.clients WHERE type='Покупатель';");
             }
+            else if (clientSortField.SelectedIndex == 2)
+            {
+                db.FillDGV(clientDGV, $"SELECT id, concat(Surname,' ', Name,' ', Patronymic) as 'ФИО', passport as 'Паспорт', address as 'Адрес', birth as 'Дата рождения', phone_number as 'Номер телефона', type as 'Тип' FROM db17.clients WHERE type='Продавец';");
+            }
+            else if (clientSortField.SelectedIndex == 3)
+            {
+                db.FillDGV(clientDGV, $"SELECT id, concat(Surname,' ', Name,' ', Patronymic) as 'ФИО', passport as 'Паспорт', address as 'Адрес', birth as 'Дата рождения', phone_number as 'Номер телефона', type as 'Тип' FROM db17.clients WHERE type='Арендодатель';");
+            }
             else 
             {
                 db.FillDGV(clientDGV, $"SELECT id, concat(Surname,' ', Name,' ', Patronymic) as 'ФИО', passport as 'Паспорт', address as 'Адрес', birth as 'Дата рождения', phone_number as 'Номер телефона', type as 'Тип' FROM db17.clients WHERE type='Арендатель';");
@@ -175,13 +183,26 @@ namespace DemoEx
         private void pictureBox2_Click(object sender, EventArgs e)
         {
             offset += 10;
+            clearParameters();
             fillAllDgv();
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             if (offset > 0) offset -= 10;
+            clearParameters();
             fillAllDgv();
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void clearParameters()
+        {
+            clientSortField.SelectedIndex = 0;
+            textBox1.Clear();
         }
 
         //        foreach (DataGridViewRow row in dataGridView1.Rows)
@@ -584,24 +605,5 @@ namespace DemoEx
         //        dataGridView1.Columns.Remove("Фото объекта");
         //        db.setUpDgvImages(dataGridView1, "Фото объекта");
         //    }
-
-        //    private void toolStripMenuItem4_Click(object sender, EventArgs e)
-        //    {
-        //        try
-        //        {
-        //            new AddEmployee(Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value.ToString())).ShowDialog();
-        //            filter.SelectedIndex = 0;
-        //            sort.SelectedIndex = 0;
-        //            searchTextBox.Clear();
-        //            db.FillDGV(dataGridView1, "select id, login as 'Логин', password as 'Пароль', surname as 'Фамилия', name as 'Имя', patronymic as 'Отчество', passport as 'Паспортные данные', birth as 'Дата рождения', phone_number as 'Номер телефона', address as 'Адрес', (select post from posts where posts.id=db17.employees.post) as 'Должность' from employees;");
-
-        //            var count = db.getIntValuesFromColumn("select count(*) from employees;")[0];
-        //            label7.Text = count.ToString();
-        //        } catch (Exception exx)
-        //        {
-        //            MessageBox.Show("Что-то пошло не так!");
-        //        }
-        //    }
-
     }
 }

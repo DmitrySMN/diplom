@@ -31,6 +31,9 @@ namespace DemoEx
 
             type.Items.Add("Покупатель");
             type.Items.Add("Арендатель");
+            type.Items.Add("Продавец");
+            type.Items.Add("Арендодатель");
+
 
             type.SelectedIndex = 0;
             dateTimePicker1.MinDate = DateTime.Now.AddYears(-99);

@@ -1,5 +1,7 @@
 ﻿using DB;
 using System;
+using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 
 namespace DemoEx.Forms
@@ -27,6 +29,37 @@ namespace DemoEx.Forms
         private void button1_Click(object sender, EventArgs e)
         {
             db.executeNonQuery($"INSERT INTO `db17`.`object` (`object_type`, `owner_id`, `address`, `square`, `cadastral`, `rooms`, `price`, `photo`, `status`) VALUES ('1', '1', 'f', 'f', 'f', '3', 'f', 'f', 'f');");
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.Filter = "Изображения (*.jpg; *.jpeg; *.png)|*.jpg; *.jpeg; *.png";
+            openFileDialog1.Title = "Выберита изображение";
+
+            if (openFileDialog1.ShowDialog(this) == DialogResult.OK)
+            {
+                try
+                {
+                    pictureBox1.Image = new Bitmap(openFileDialog1.FileName);
+
+                    string photosFolder = Environment.CurrentDirectory + $"\\assets\\images\\estate";
+
+                    string fileName = Path.GetFileName(openFileDialog1.FileName);
+                    string destinationPath = Path.Combine(photosFolder, fileName);
+                    
+                    if (File.Exists(destinationPath))
+                    {
+                        string newFileName = Path.GetFileNameWithoutExtension(fileName) + "_копия" + Path.GetExtension(fileName);
+                        destinationPath = Path.Combine(photosFolder, newFileName);
+                    }
+
+                    File.Copy(openFileDialog1.FileName, destinationPath);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Ошибка: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+        } 
         }
     }
 }

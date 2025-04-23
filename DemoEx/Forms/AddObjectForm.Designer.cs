@@ -34,22 +34,23 @@
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.owner_cb = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.address_tb = new System.Windows.Forms.TextBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.square_tb = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.object_type_cb = new System.Windows.Forms.ComboBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.square_tb = new System.Windows.Forms.TextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.cadastral_tb = new System.Windows.Forms.MaskedTextBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.price_tb = new System.Windows.Forms.TextBox();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.rooms_tb = new System.Windows.Forms.TextBox();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.status_cb = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox7.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -84,6 +85,7 @@
             this.button3.TabIndex = 5;
             this.button3.Text = "Загрузить фото";
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // groupBox7
             // 
@@ -122,6 +124,13 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Адрес";
             // 
+            // address_tb
+            // 
+            this.address_tb.Location = new System.Drawing.Point(9, 38);
+            this.address_tb.Name = "address_tb";
+            this.address_tb.Size = new System.Drawing.Size(558, 39);
+            this.address_tb.TabIndex = 0;
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.object_type_cb);
@@ -136,12 +145,14 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Тип объекта";
             // 
-            // address_tb
+            // object_type_cb
             // 
-            this.address_tb.Location = new System.Drawing.Point(9, 38);
-            this.address_tb.Name = "address_tb";
-            this.address_tb.Size = new System.Drawing.Size(558, 39);
-            this.address_tb.TabIndex = 0;
+            this.object_type_cb.FormattingEnabled = true;
+            this.object_type_cb.Location = new System.Drawing.Point(9, 35);
+            this.object_type_cb.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.object_type_cb.Name = "object_type_cb";
+            this.object_type_cb.Size = new System.Drawing.Size(267, 40);
+            this.object_type_cb.TabIndex = 1;
             // 
             // groupBox3
             // 
@@ -158,14 +169,6 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Площадь";
             // 
-            // square_tb
-            // 
-            this.square_tb.Location = new System.Drawing.Point(10, 36);
-            this.square_tb.MaxLength = 4;
-            this.square_tb.Name = "square_tb";
-            this.square_tb.Size = new System.Drawing.Size(198, 39);
-            this.square_tb.TabIndex = 1;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -175,14 +178,13 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "кв.м";
             // 
-            // object_type_cb
+            // square_tb
             // 
-            this.object_type_cb.FormattingEnabled = true;
-            this.object_type_cb.Location = new System.Drawing.Point(9, 35);
-            this.object_type_cb.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.object_type_cb.Name = "object_type_cb";
-            this.object_type_cb.Size = new System.Drawing.Size(267, 40);
-            this.object_type_cb.TabIndex = 1;
+            this.square_tb.Location = new System.Drawing.Point(10, 36);
+            this.square_tb.MaxLength = 4;
+            this.square_tb.Name = "square_tb";
+            this.square_tb.Size = new System.Drawing.Size(198, 39);
+            this.square_tb.TabIndex = 1;
             // 
             // groupBox4
             // 
@@ -220,6 +222,14 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Цена";
             // 
+            // price_tb
+            // 
+            this.price_tb.Location = new System.Drawing.Point(9, 41);
+            this.price_tb.MaxLength = 10;
+            this.price_tb.Name = "price_tb";
+            this.price_tb.Size = new System.Drawing.Size(294, 39);
+            this.price_tb.TabIndex = 1;
+            // 
             // groupBox6
             // 
             this.groupBox6.Controls.Add(this.rooms_tb);
@@ -233,14 +243,6 @@
             this.groupBox6.TabIndex = 10;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Кол-во комнат";
-            // 
-            // price_tb
-            // 
-            this.price_tb.Location = new System.Drawing.Point(9, 41);
-            this.price_tb.MaxLength = 10;
-            this.price_tb.Name = "price_tb";
-            this.price_tb.Size = new System.Drawing.Size(294, 39);
-            this.price_tb.TabIndex = 1;
             // 
             // rooms_tb
             // 
@@ -302,6 +304,10 @@
             this.button2.Text = "Выйти";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click_1);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // AddObjectForm
             // 
@@ -372,5 +378,6 @@
         private System.Windows.Forms.ComboBox status_cb;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }
