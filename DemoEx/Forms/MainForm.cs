@@ -14,6 +14,7 @@ namespace DemoEx
         private int currentInfo = 1;
         private int offset = 0;
         private int page = 1;
+        private int clientsPageCount = 0;
 
         public MainForm(string login, int post)
         {
@@ -24,6 +25,9 @@ namespace DemoEx
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            int totalRecords = db.getIntValuesFromColumn("select count(*) from clients;")[0];
+            clientsPageCount = (totalRecords % 10 == 0) ? totalRecords / 10 : totalRecords / 10 + 1;
+            label1.Text = $"{page}/{clientsPageCount}";
             objectsDGV.RowTemplate.Height = 85;
             clientDGV.RowTemplate.Height = 82;
             dealsDGV.RowTemplate.Height = 85;
@@ -67,7 +71,7 @@ namespace DemoEx
 
         private void button2_Click(object sender, EventArgs e)
         {
-            new AddObjectForm().ShowDialog(); 
+            new AddObjectForm().ShowDialog();
             fillAllDgv();
         }
 
@@ -139,7 +143,7 @@ namespace DemoEx
             {
                 db.FillDGV(clientDGV, $"SELECT id, concat(Surname,' ', Name,' ', Patronymic) as 'ФИО', passport as 'Паспорт', address as 'Адрес', birth as 'Дата рождения', phone_number as 'Номер телефона', type as 'Тип' FROM db17.clients WHERE type='Арендодатель';");
             }
-            else 
+            else
             {
                 db.FillDGV(clientDGV, $"SELECT id, concat(Surname,' ', Name,' ', Patronymic) as 'ФИО', passport as 'Паспорт', address as 'Адрес', birth as 'Дата рождения', phone_number as 'Номер телефона', type as 'Тип' FROM db17.clients WHERE type='Арендатель';");
             }
@@ -164,7 +168,7 @@ namespace DemoEx
             {
                 db.executeNonQuery($"DELETE FROM `db17`.`clients` WHERE (`id` = '{Convert.ToInt32(clientDGV.SelectedRows[0].Cells[0].Value)}');");
             }
-            
+
             fillAllDgv();
         }
 
@@ -182,16 +186,36 @@ namespace DemoEx
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
-            offset += 10;
-            clearParameters();
-            fillAllDgv();
+            nextClientPage();
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            if (offset > 0) offset -= 10;
-            clearParameters();
-            fillAllDgv();
+            prevClientPage();
+        }
+
+        private void nextClientPage() 
+        {
+            if (page < clientsPageCount)
+            {
+                offset += 10;
+                clearParameters();
+                fillAllDgv();
+                page += 1;
+                label1.Text = $"{page}/{clientsPageCount}";
+            }
+        }
+
+        private void prevClientPage()
+        {
+            if (page > 1)
+            {
+                offset -= 10;
+                clearParameters();
+                fillAllDgv();
+                page -= 1;
+                label1.Text = $"{page}/{clientsPageCount}";
+            }
         }
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)

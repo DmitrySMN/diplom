@@ -31,9 +31,10 @@ namespace DemoEx.Forms
 
             if (objectId == 0)
             {
+                button1.Text = "Добавить";
             } else
             {
-
+                button1.Text = "Редактировать";
             }
         }
 
@@ -47,8 +48,17 @@ namespace DemoEx.Forms
         {
             try
             {
-                db.executeNonQuery($"INSERT INTO `db17`.`object` (`object_type`, `owner_id`, `address`, `square`, `cadastral`, `rooms`, `price`, `photo`, `status`) VALUES ('{db.getIntValuesFromColumn($"SELECT id FROM db17.object_type where type='{object_type_cb.Text}';")[0]}', '{db.getIntValuesFromColumn($"SELECT id FROM db17.clients where concat(surname, ' ', name, ' ', Patronymic) = '{owner_cb.Text}';")[0]}', '{address_tb.Text}', '{square_tb.Text}', '{cadastral_tb.Text}', '{rooms_tb.Text}', '{price_tb.Text}', '{((photoName == null) ? "home.png" : photoName)}', '{status_cb.Text}');");
-                MessageStore.addObjectMessage();
+                if (objectId == 0)
+                {
+                    db.executeNonQuery($"INSERT INTO `db17`.`object` (`object_type`, `owner_id`, `address`, `square`, `cadastral`, `rooms`, `price`, `photo`, `status`) VALUES ('{db.getIntValuesFromColumn($"SELECT id FROM db17.object_type where type='{object_type_cb.Text}';")[0]}', '{db.getIntValuesFromColumn($"SELECT id FROM db17.clients where concat(surname, ' ', name, ' ', Patronymic) = '{owner_cb.Text}';")[0]}', '{address_tb.Text}', '{square_tb.Text}', '{cadastral_tb.Text}', '{rooms_tb.Text}', '{price_tb.Text}', '{((photoName == null) ? "home.png" : photoName)}', '{status_cb.Text}');");
+                    MessageStore.addObjectMessage();
+                    clearAllFields();
+                }
+                else
+                {
+                    MessageBox.Show("Редактирование");
+                }
+                
             }
             catch (Exception ex)
             {
@@ -58,6 +68,15 @@ namespace DemoEx.Forms
         private void button3_Click(object sender, EventArgs e)
         {
             photoName = selectPhoto();
+        }
+
+        private void clearAllFields()
+        {
+            address_tb.Clear();
+            square_tb.Clear();
+            cadastral_tb.Clear();
+            price_tb.Clear();
+            rooms_tb.Clear();
         }
 
         private string selectPhoto()

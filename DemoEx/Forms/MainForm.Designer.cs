@@ -70,6 +70,11 @@ namespace DemoEx
             this.button6 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.contextMenuStrip3 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.contextMenuStrip4 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.редактироватьДанныеОбъектаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.удалитьОбъектToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label1 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -91,6 +96,7 @@ namespace DemoEx
             this.contextMenuStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.contextMenuStrip3.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -109,10 +115,13 @@ namespace DemoEx
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.White;
+            this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.Controls.Add(this.groupBox1);
             this.tabPage1.Controls.Add(this.groupBox2);
             this.tabPage1.Controls.Add(this.clientDGV);
             this.tabPage1.Controls.Add(this.button1);
+            this.tabPage1.Controls.Add(this.pictureBox1);
+            this.tabPage1.Controls.Add(this.pictureBox2);
             this.tabPage1.Location = new System.Drawing.Point(4, 41);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -276,6 +285,7 @@ namespace DemoEx
             this.objectsDGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.objectsDGV.BackgroundColor = System.Drawing.Color.White;
             this.objectsDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.objectsDGV.ContextMenuStrip = this.contextMenuStrip3;
             this.objectsDGV.Location = new System.Drawing.Point(-1, 83);
             this.objectsDGV.Name = "objectsDGV";
             this.objectsDGV.ReadOnly = true;
@@ -472,9 +482,9 @@ namespace DemoEx
             this.button6.BackColor = System.Drawing.Color.SteelBlue;
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button6.ForeColor = System.Drawing.Color.Black;
-            this.button6.Location = new System.Drawing.Point(157, 986);
+            this.button6.Location = new System.Drawing.Point(9, 986);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(1735, 46);
+            this.button6.Size = new System.Drawing.Size(1883, 46);
             this.button6.TabIndex = 12;
             this.button6.Text = "Назад";
             this.button6.UseVisualStyleBackColor = false;
@@ -483,7 +493,7 @@ namespace DemoEx
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(9, 986);
+            this.pictureBox1.Location = new System.Drawing.Point(1655, 23);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(68, 46);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -494,7 +504,7 @@ namespace DemoEx
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(83, 986);
+            this.pictureBox2.Location = new System.Drawing.Point(1814, 22);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(68, 46);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -502,14 +512,46 @@ namespace DemoEx
             this.pictureBox2.TabStop = false;
             this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
+            // contextMenuStrip3
+            // 
+            this.contextMenuStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.редактироватьДанныеОбъектаToolStripMenuItem,
+            this.удалитьОбъектToolStripMenuItem});
+            this.contextMenuStrip3.Name = "contextMenuStrip3";
+            this.contextMenuStrip3.Size = new System.Drawing.Size(220, 48);
+            // 
+            // contextMenuStrip4
+            // 
+            this.contextMenuStrip4.Name = "contextMenuStrip4";
+            this.contextMenuStrip4.Size = new System.Drawing.Size(61, 4);
+            // 
+            // редактироватьДанныеОбъектаToolStripMenuItem
+            // 
+            this.редактироватьДанныеОбъектаToolStripMenuItem.Name = "редактироватьДанныеОбъектаToolStripMenuItem";
+            this.редактироватьДанныеОбъектаToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
+            this.редактироватьДанныеОбъектаToolStripMenuItem.Text = "Изменить данные объекта";
+            // 
+            // удалитьОбъектToolStripMenuItem
+            // 
+            this.удалитьОбъектToolStripMenuItem.Name = "удалитьОбъектToolStripMenuItem";
+            this.удалитьОбъектToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
+            this.удалитьОбъектToolStripMenuItem.Text = "Удалить объект";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Yu Gothic UI", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(1733, 18);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(0, 50);
+            this.label1.TabIndex = 15;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.OldLace;
             this.ClientSize = new System.Drawing.Size(1904, 1041);
-            this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.tabControl1);
             this.Cursor = System.Windows.Forms.Cursors.Default;
@@ -524,6 +566,7 @@ namespace DemoEx
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
@@ -547,6 +590,7 @@ namespace DemoEx
             this.contextMenuStrip2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.contextMenuStrip3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -591,5 +635,10 @@ namespace DemoEx
         private System.Windows.Forms.ToolStripMenuItem удалитьСотрудникаToolStripMenuItem;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip3;
+        private System.Windows.Forms.ToolStripMenuItem редактироватьДанныеОбъектаToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem удалитьОбъектToolStripMenuItem;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip4;
+        private System.Windows.Forms.Label label1;
     }
 }
