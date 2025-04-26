@@ -43,6 +43,7 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.cadastral_tb = new System.Windows.Forms.MaskedTextBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.price_tb = new System.Windows.Forms.TextBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.rooms_tb = new System.Windows.Forms.TextBox();
@@ -51,7 +52,6 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox7.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -128,6 +128,7 @@
             // address_tb
             // 
             this.address_tb.Location = new System.Drawing.Point(9, 38);
+            this.address_tb.MaxLength = 100;
             this.address_tb.Name = "address_tb";
             this.address_tb.Size = new System.Drawing.Size(558, 39);
             this.address_tb.TabIndex = 0;
@@ -186,6 +187,7 @@
             this.square_tb.Name = "square_tb";
             this.square_tb.Size = new System.Drawing.Size(198, 39);
             this.square_tb.TabIndex = 1;
+            this.square_tb.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.square_tb_KeyPress);
             // 
             // groupBox4
             // 
@@ -224,6 +226,15 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Цена";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(242, 48);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(59, 32);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "руб.";
+            // 
             // price_tb
             // 
             this.price_tb.Location = new System.Drawing.Point(9, 41);
@@ -231,6 +242,7 @@
             this.price_tb.Name = "price_tb";
             this.price_tb.Size = new System.Drawing.Size(225, 39);
             this.price_tb.TabIndex = 1;
+            this.price_tb.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.price_tb_KeyPress);
             // 
             // groupBox6
             // 
@@ -253,6 +265,7 @@
             this.rooms_tb.Name = "rooms_tb";
             this.rooms_tb.Size = new System.Drawing.Size(183, 39);
             this.rooms_tb.TabIndex = 2;
+            this.rooms_tb.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.rooms_tb_KeyPress);
             // 
             // groupBox8
             // 
@@ -310,15 +323,6 @@
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(242, 48);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(59, 32);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "руб.";
             // 
             // AddObjectForm
             // 

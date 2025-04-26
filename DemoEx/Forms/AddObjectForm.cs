@@ -50,7 +50,7 @@ namespace DemoEx.Forms
             {
                 if (objectId == 0)
                 {
-                    db.executeNonQuery($"INSERT INTO `db17`.`object` (`object_type`, `owner_id`, `address`, `square`, `cadastral`, `rooms`, `price`, `photo`, `status`) VALUES ('{db.getIntValuesFromColumn($"SELECT id FROM db17.object_type where type='{object_type_cb.Text}';")[0]}', '{db.getIntValuesFromColumn($"SELECT id FROM db17.clients where concat(surname, ' ', name, ' ', Patronymic) = '{owner_cb.Text}';")[0]}', '{address_tb.Text}', '{square_tb.Text}', '{cadastral_tb.Text}', '{rooms_tb.Text}', '{price_tb.Text}', '{((photoName == null) ? "home.png" : photoName)}', '{status_cb.Text}');");
+                    db.executeNonQuery($"INSERT INTO `db17`.`object` (`object_type`, `owner_id`, `object_address`, `square`, `cadastral`, `rooms`, `price`, `photo`, `status`) VALUES ('{db.getIntValuesFromColumn($"SELECT id FROM db17.object_type where type='{object_type_cb.Text}';")[0]}', '{db.getIntValuesFromColumn($"SELECT id FROM db17.clients where concat(surname, ' ', name, ' ', Patronymic) = '{owner_cb.Text}';")[0]}', '{address_tb.Text}', '{square_tb.Text}', '{cadastral_tb.Text}', '{rooms_tb.Text}', '{price_tb.Text}', '{((photoName == null) ? "home.png" : photoName)}', '{status_cb.Text}');");
                     MessageStore.addObjectMessage();
                     clearAllFields();
                 }
@@ -109,6 +109,21 @@ namespace DemoEx.Forms
                 }
             }
             return openFileDialog1.FileName;
+        }
+
+        private void square_tb_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            InputFieldCorrection.numbersField(e);
+        }
+
+        private void rooms_tb_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            InputFieldCorrection.numbersField(e);
+        }
+
+        private void price_tb_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            InputFieldCorrection.numbersField(e);
         }
     }
 }
