@@ -1,5 +1,6 @@
 ﻿using DB;
 using DemoEx.utility;
+using MySqlX.XDevAPI;
 using System;
 using System.Drawing;
 using System.IO;
@@ -24,20 +25,42 @@ namespace DemoEx.Forms
             status_cb.DropDownStyle = ComboBoxStyle.DropDownList;
             object_type_cb.DropDownStyle = ComboBoxStyle.DropDownList;
 
-            owner_cb.Items.AddRange(db.getValuesFromColumn("SELECT concat(surname,' ', name, ' ', patronymic) FROM db17.clients where type='Продавец' or type='Арендодатель';").ToArray());
             string[] status = { "В продаже", "Продан", "Арендуется", "Арендован" };
             status_cb.Items.AddRange(status);
-            object_type_cb.Items.AddRange(db.getValuesFromColumn("SELECT type FROM db17.object_type;").ToArray());
 
-            if (objectId == 0)
+            try
             {
-                button1.Text = "Добавить";
-            } else
+                object_type_cb.Items.AddRange(db.getValuesFromColumn("SELECT type FROM db17.object_type;").ToArray());
+
+                if (objectId == 0)
+                {
+                    owner_cb.Items.AddRange(db.getValuesFromColumn("SELECT concat(surname,' ', name, ' ', patronymic) FROM db17.clients where type='Продавец' or type='Арендодатель';").ToArray());
+                    button1.Text = "Добавить";
+                }
+                else
+                {
+                    fillDataFields();
+                    button1.Text = "Редактировать";
+                }
+            }
+            catch (Exception ex)
             {
-                button1.Text = "Редактировать";
+                MessageStore.somethingWentWrongMessage();
             }
         }
 
+        private void fillDataFields()
+        {
+            owner_cb.Items.Add(db.getValuesFromColumn($"SELECT concat(clients.surname,' ', clients.name, ' ', clients.patronymic) FROM db17.object JOIN clients ON clients.id = object.owner_id where objectid = {objectId};")[0]);
+            owner_cb.SelectedIndex = 0;
+            address_tb.Text = db.getValuesFromColumn($"SELECT object_address FROM db17.object where objectid = {objectId};")[0];
+            square_tb.Text = db.getIntValuesFromColumn($"SELECT square FROM db17.object where objectid = {objectId};")[0].ToString();
+            cadastral_tb.Text = db.getValuesFromColumn($"SELECT cadastral FROM db17.object where objectid = {objectId};")[0].ToString();
+            price_tb.Text = db.getIntValuesFromColumn($"SELECT price FROM db17.object where objectid = {objectId};")[0].ToString();
+            rooms_tb.Text = db.getIntValuesFromColumn($"SELECT rooms FROM db17.object where objectid = {objectId};")[0].ToString();
+            status_cb.SelectedItem = db.getValuesFromColumn($"SELECT status FROM db17.object where objectid = {objectId};")[0].ToString();
+            object_type_cb.SelectedIndex = db.getIntValuesFromColumn($"SELECT object_type FROM db17.object where objectid = {objectId};")[0] - 1;
+        }
 
         private void button2_Click_1(object sender, EventArgs e)
         {
