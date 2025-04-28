@@ -83,6 +83,7 @@ namespace DemoEx
 
         private void button5_Click(object sender, EventArgs e)
         {
+            new AddDealForm("loginq",0).ShowDialog();
             fillAllDgv();
         }
 
