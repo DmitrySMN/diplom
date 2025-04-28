@@ -93,5 +93,10 @@ namespace DemoEx.utility
         {
             MessageBox.Show("Объект успешно добавлен!", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
+        public static DialogResult deleteObjectConfirmationMessage()
+        {
+            return MessageBox.Show("Удалить объект?", "Подтверждение", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+        }
     }
 }

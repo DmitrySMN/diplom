@@ -58,12 +58,13 @@ namespace DemoEx.Forms
                 {
                     MessageBox.Show("Редактирование");
                 }
-                
+
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-            }        }
+            }
+        }    
 
         private void button3_Click(object sender, EventArgs e)
         {
@@ -84,6 +85,7 @@ namespace DemoEx.Forms
             openFileDialog1.Filter = "Изображения (*.jpg; *.jpeg; *.png)|*.jpg; *.jpeg; *.png";
             openFileDialog1.Title = "Выберита изображение";
 
+            string destinationPath = "";
             if (openFileDialog1.ShowDialog(this) == DialogResult.OK)
             {
                 try
@@ -93,7 +95,7 @@ namespace DemoEx.Forms
                     string photosFolder = Environment.CurrentDirectory + $"\\assets\\images\\estate";
 
                     string fileName = Path.GetFileName(openFileDialog1.FileName);
-                    string destinationPath = Path.Combine(photosFolder, fileName);
+                    destinationPath = Path.Combine(photosFolder, fileName);
 
                     if (File.Exists(destinationPath))
                     {
@@ -106,9 +108,10 @@ namespace DemoEx.Forms
                 catch (Exception ex)
                 {
                     MessageBox.Show($"Ошибка: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
                 }
             }
-            return openFileDialog1.FileName;
+            return destinationPath;
         }
 
         private void square_tb_KeyPress(object sender, KeyPressEventArgs e)

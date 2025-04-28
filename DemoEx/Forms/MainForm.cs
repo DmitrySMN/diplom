@@ -114,9 +114,8 @@ namespace DemoEx
             {
                 db.FillDGV(clientDGV, $"SELECT id, concat(Surname,' ', Name,' ', Patronymic) as 'ФИО', passport as 'Паспорт', address as 'Адрес', birth as 'Дата рождения', phone_number as 'Номер телефона', type as 'Тип' FROM db17.clients WHERE Surname LIKE '{textBox1.Text}%';");
             }
-            else
+            else if( textBox1.Text.Length == 0)
             {
-                employeeDGV.Columns.Remove("Фото");
                 fillAllDgv();
             }
         }
@@ -252,6 +251,16 @@ namespace DemoEx
                 clientDGV.ClearSelection();
                 clientDGV[e.ColumnIndex, e.RowIndex].Selected = true;
             }
+        }
+
+        private void удалитьОбъектToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var result = MessageStore.deleteObjectConfirmationMessage();
+            if (result  == DialogResult.Yes)
+            {
+                db.executeNonQuery($"DELETE FROM `db17`.`object` WHERE (`objectid` = '{Convert.ToInt32(objectsDGV.SelectedRows[0].Cells[0].Value)}');");
+            }
+            fillAllDgv();
         }
     }
 }

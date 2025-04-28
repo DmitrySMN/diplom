@@ -13,7 +13,7 @@ namespace DemoEx.utility
         public static void engLettersNumbersField(KeyPressEventArgs e)
         {
             string s = e.KeyChar.ToString();
-            if (!Regex.Match(s, @"^[a-zA-Z]+$|[\b]|[_]|[0-9]").Success)
+            if (!Regex.Match(s, @"^[a-zA-Z]+$|[\b]|[_]|[0-9]").Success && e.KeyChar != (char)Keys.Back)
             {
                 e.Handled = true;
             }
@@ -22,7 +22,7 @@ namespace DemoEx.utility
         public static void ruLettersField(KeyPressEventArgs e)
         {
             string s = e.KeyChar.ToString();
-            if (!Regex.Match(s, @"[а-яА-Я]|[\b]|[-]").Success)
+            if (!Regex.Match(s, @"[а-яА-Я]|[\b]|[-]").Success && e.KeyChar != (char)Keys.Back)
             {
                 e.Handled = true;
             }
@@ -31,7 +31,7 @@ namespace DemoEx.utility
         public static void ruLettersNumbersField(KeyPressEventArgs e)
         {
             string s = e.KeyChar.ToString();
-            if (!Regex.Match(s, @"[а-яА-Я]|[\b]|[-]|[.]|[,]|[0-9]").Success)
+            if (!Regex.Match(s, @"[а-яА-Я]|[\b]|[-]|[.]|[,]|[0-9]").Success && e.KeyChar != (char)Keys.Back)
             {
                 e.Handled = true;
             }
@@ -40,7 +40,7 @@ namespace DemoEx.utility
         public static void numbersField(KeyPressEventArgs e)
         {
             string s = e.KeyChar.ToString();
-            if (!Regex.Match(s, @"[0-9]").Success)
+            if (!Regex.Match(s, @"[0-9]").Success && e.KeyChar != (char)Keys.Back)
             {
                 e.Handled = true;
             }
