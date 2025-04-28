@@ -262,5 +262,11 @@ namespace DemoEx
             }
             fillAllDgv();
         }
+
+        private void редактироватьДанныеОбъектаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new AddObjectForm(Convert.ToInt32(objectsDGV.SelectedRows[0].Cells[0].Value)).ShowDialog();
+            fillAllDgv();
+        }
     }
 }

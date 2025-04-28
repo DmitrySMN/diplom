@@ -267,6 +267,7 @@ namespace DemoEx
             // 
             // tabPage2
             // 
+            this.tabPage2.BackColor = System.Drawing.Color.White;
             this.tabPage2.Controls.Add(this.label2);
             this.tabPage2.Controls.Add(this.pictureBox3);
             this.tabPage2.Controls.Add(this.pictureBox4);
@@ -280,7 +281,6 @@ namespace DemoEx
             this.tabPage2.Size = new System.Drawing.Size(1901, 935);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Объекты";
-            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // label2
             // 
@@ -368,13 +368,14 @@ namespace DemoEx
             this.редактироватьДанныеОбъектаToolStripMenuItem,
             this.удалитьОбъектToolStripMenuItem});
             this.contextMenuStrip3.Name = "contextMenuStrip3";
-            this.contextMenuStrip3.Size = new System.Drawing.Size(220, 70);
+            this.contextMenuStrip3.Size = new System.Drawing.Size(220, 48);
             // 
             // редактироватьДанныеОбъектаToolStripMenuItem
             // 
             this.редактироватьДанныеОбъектаToolStripMenuItem.Name = "редактироватьДанныеОбъектаToolStripMenuItem";
             this.редактироватьДанныеОбъектаToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
             this.редактироватьДанныеОбъектаToolStripMenuItem.Text = "Изменить данные объекта";
+            this.редактироватьДанныеОбъектаToolStripMenuItem.Click += new System.EventHandler(this.редактироватьДанныеОбъектаToolStripMenuItem_Click);
             // 
             // удалитьОбъектToolStripMenuItem
             // 
@@ -398,6 +399,7 @@ namespace DemoEx
             // 
             // tabPage5
             // 
+            this.tabPage5.BackColor = System.Drawing.Color.White;
             this.tabPage5.Controls.Add(this.groupBox9);
             this.tabPage5.Controls.Add(this.groupBox10);
             this.tabPage5.Controls.Add(this.dealsDGV);
@@ -407,7 +409,6 @@ namespace DemoEx
             this.tabPage5.Size = new System.Drawing.Size(1901, 935);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Сделки";
-            this.tabPage5.UseVisualStyleBackColor = true;
             // 
             // groupBox9
             // 
@@ -473,6 +474,7 @@ namespace DemoEx
             // 
             // tabPage4
             // 
+            this.tabPage4.BackColor = System.Drawing.Color.White;
             this.tabPage4.Controls.Add(this.groupBox7);
             this.tabPage4.Controls.Add(this.groupBox8);
             this.tabPage4.Controls.Add(this.employeeDGV);
@@ -482,7 +484,6 @@ namespace DemoEx
             this.tabPage4.Size = new System.Drawing.Size(1901, 935);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Сотрудники";
-            this.tabPage4.UseVisualStyleBackColor = true;
             // 
             // groupBox7
             // 
