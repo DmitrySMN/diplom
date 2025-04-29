@@ -62,6 +62,7 @@ namespace DemoEx
             this.pwdTb.Name = "pwdTb";
             this.pwdTb.Size = new System.Drawing.Size(363, 39);
             this.pwdTb.TabIndex = 0;
+            this.pwdTb.Text = "22";
             // 
             // pictureBox1
             // 
@@ -86,6 +87,7 @@ namespace DemoEx
             this.loginTb.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.loginTb.Size = new System.Drawing.Size(363, 39);
             this.loginTb.TabIndex = 0;
+            this.loginTb.Text = "login1";
             this.loginTb.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.loginTb_KeyPress_1);
             // 
             // label1

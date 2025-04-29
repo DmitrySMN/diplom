@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 using DB;
 using DemoEx.Forms;
@@ -96,7 +97,9 @@ namespace DemoEx
         private void fillAllDgv()
         {
             db.FillDGV(clientDGV, $"SELECT id, concat(Surname,' ', Name,' ', Patronymic) as 'ФИО', passport as 'Паспорт', address as 'Адрес', birth as 'Дата рождения', phone_number as 'Номер телефона', type as 'Тип' FROM db17.clients limit 10 offset {offset};");
-            db.FillDGV(objectsDGV, $"SELECT objectid, object_type.type as 'Тип объекта', concat(clients.surname,' ', clients.name, ' ', clients.patronymic) as 'Владелец', address as 'Адрес', square as 'Площадь', cadastral as 'Кадастровый ном.', rooms as 'Кол-во комнат', price as 'Цена', photo, status as 'Статус'\r\nFROM db17.object\r\nJOIN object_type ON object_type.id=object.object_type\r\nJOIN clients ON clients.id=object.owner_id;");
+            db.FillDGV(objectsDGV, $"SELECT objectid, object_type.type as 'Тип объекта', concat(clients.surname,' ', clients.name, ' ', clients.patronymic) as 'Владелец', object_address as 'Адрес', square as 'Площадь', cadastral as 'Кадастровый ном.', rooms as 'Кол-во комнат', price as 'Цена', photo, status as 'Статус'\r\nFROM db17.object\r\nJOIN object_type ON object_type.id=object.object_type\r\nJOIN clients ON clients.id=object.owner_id;");
+
+
             db.FillDGV(employeeDGV, $"SELECT id, login as 'Логин', password as 'Пароль', concat(Surname, ' ', Name, ' ', Patronymic) as 'ФИО', passport as 'Паспорт', birth as 'Дата рождения', phone_number as 'Номер телефона', address as 'Адрес', post as 'Должность' FROM db17.employees;");
             db.FillDGV(dealsDGV, $"SELECT * FROM db17.deals;");
 
@@ -106,6 +109,23 @@ namespace DemoEx
             dealsDGV.Columns[0].Visible = false;
 
             db.setUpDgvImages(objectsDGV, "Фото объекта");
+
+            foreach (DataGridViewRow row in objectsDGV.Rows)
+            {
+                if (row.Cells[9].Value.ToString() == "В продаже")
+                {
+                    row.Cells[9].Style.BackColor = Color.LightGreen;
+                }
+                else if (row.Cells[9].Value.ToString() == "Продан")
+                {
+                    row.Cells[9].Style.BackColor = Color.LightPink;
+
+                }
+                else
+                {
+                    row.Cells[9].Style.BackColor = Color.LightYellow;
+                }
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -139,6 +159,7 @@ namespace DemoEx
 
         private void tabControl1_Selecting(object sender, TabControlCancelEventArgs e)
         {
+            
             if (post == 1)
             {
                 if (e.TabPage == tabPage2 || e.TabPage == tabPage4 || e.TabPage == tabPage5)
@@ -340,6 +361,11 @@ namespace DemoEx
                 employeeDGV.ClearSelection();
                 employeeDGV[e.ColumnIndex, e.RowIndex].Selected = true;
             }
+        }
+
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            fillAllDgv();
         }
     }
 }

@@ -36,8 +36,6 @@ namespace DemoEx
         {
             captcha.Visible = false;
             pwdTb.PasswordChar = '·';
-            loginTb.Text = "login1";
-            pwdTb.Text = "22";
             captchaPicture.Image = db.createImageForCaptcha(captchaPicture.Width, captchaPicture.Height, 4);
 
         }

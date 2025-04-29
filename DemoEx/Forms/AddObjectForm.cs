@@ -53,6 +53,8 @@ namespace DemoEx.Forms
         {
             owner_cb.Items.Add(db.getValuesFromColumn($"SELECT concat(clients.surname,' ', clients.name, ' ', clients.patronymic) FROM db17.object JOIN clients ON clients.id = object.owner_id where objectid = {objectId};")[0]);
             owner_cb.SelectedIndex = 0;
+            string photoName = db.getValuesFromColumn($"SELECT photo FROM db17.object where objectid = {objectId};")[0];
+            pictureBox1.Image = Image.FromFile(Directory.GetCurrentDirectory() + "\\assets\\images\\estate\\" + photoName);
             address_tb.Text = db.getValuesFromColumn($"SELECT object_address FROM db17.object where objectid = {objectId};")[0];
             square_tb.Text = db.getIntValuesFromColumn($"SELECT square FROM db17.object where objectid = {objectId};")[0].ToString();
             cadastral_tb.Text = db.getValuesFromColumn($"SELECT cadastral FROM db17.object where objectid = {objectId};")[0].ToString();
