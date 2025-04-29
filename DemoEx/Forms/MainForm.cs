@@ -53,7 +53,7 @@ namespace DemoEx
         private void fillAllDgv()
         {
             db.FillDGV(clientDGV, $"SELECT id, concat(Surname,' ', Name,' ', Patronymic) as 'ФИО', passport as 'Паспорт', address as 'Адрес', birth as 'Дата рождения', phone_number as 'Номер телефона', type as 'Тип' FROM db17.clients limit 10 offset {offset};");
-            db.FillDGV(objectsDGV, $"SELECT objectid, object_type.type as 'Тип объекта', concat(clients.surname,' ', clients.name, ' ', clients.patronymic) as 'Владелец', address as 'Адрес', square as 'Площадь', cadastral as 'Кадастровый ном.', rooms as 'Кол-во комнат', price as 'Цена', photo as 'Фото', status as 'Статус'\r\nFROM db17.object\r\nJOIN object_type ON object_type.id=object.object_type\r\nJOIN clients ON clients.id=object.owner_id;");
+            db.FillDGV(objectsDGV, $"SELECT objectid, object_type.type as 'Тип объекта', concat(clients.surname,' ', clients.name, ' ', clients.patronymic) as 'Владелец', address as 'Адрес', square as 'Площадь', cadastral as 'Кадастровый ном.', rooms as 'Кол-во комнат', price as 'Цена', photo, status as 'Статус'\r\nFROM db17.object\r\nJOIN object_type ON object_type.id=object.object_type\r\nJOIN clients ON clients.id=object.owner_id;");
             db.FillDGV(employeeDGV, $"SELECT id, login as 'Логин', password as 'Пароль', concat(Surname, ' ', Name, ' ', Patronymic) as 'ФИО', passport as 'Паспорт', birth as 'Дата рождения', phone_number as 'Номер телефона', address as 'Адрес', post as 'Должность' FROM db17.employees;");
             db.FillDGV(dealsDGV, $"SELECT * FROM db17.deals;");
 
@@ -61,6 +61,8 @@ namespace DemoEx
             objectsDGV.Columns[0].Visible = false;
             employeeDGV.Columns[0].Visible = false;
             dealsDGV.Columns[0].Visible = false;
+
+            db.setUpDgvImages(objectsDGV, "Фото объекта");
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -268,6 +270,33 @@ namespace DemoEx
         {
             new AddObjectForm(Convert.ToInt32(objectsDGV.SelectedRows[0].Cells[0].Value)).ShowDialog();
             fillAllDgv();
+        }
+
+        private void objectsDGV_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                objectsDGV.ClearSelection();
+                objectsDGV[e.ColumnIndex, e.RowIndex].Selected = true;
+            }
+        }
+
+        private void dealsDGV_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                dealsDGV.ClearSelection();
+                dealsDGV[e.ColumnIndex, e.RowIndex].Selected = true;
+            }
+        }
+
+        private void employeeDGV_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                employeeDGV.ClearSelection();
+                employeeDGV[e.ColumnIndex, e.RowIndex].Selected = true;
+            }
         }
     }
 }

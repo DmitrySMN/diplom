@@ -108,7 +108,7 @@ namespace DemoEx.Forms
             openFileDialog1.Filter = "Изображения (*.jpg; *.jpeg; *.png)|*.jpg; *.jpeg; *.png";
             openFileDialog1.Title = "Выберита изображение";
 
-            string destinationPath = "";
+            string photoname = "";
             if (openFileDialog1.ShowDialog(this) == DialogResult.OK)
             {
                 try
@@ -118,7 +118,8 @@ namespace DemoEx.Forms
                     string photosFolder = Environment.CurrentDirectory + $"\\assets\\images\\estate";
 
                     string fileName = Path.GetFileName(openFileDialog1.FileName);
-                    destinationPath = Path.Combine(photosFolder, fileName);
+                    photoname = fileName;
+                    string destinationPath = Path.Combine(photosFolder, fileName);
 
                     if (File.Exists(destinationPath))
                     {
@@ -134,7 +135,7 @@ namespace DemoEx.Forms
                     return null;
                 }
             }
-            return destinationPath;
+            return photoname;
         }
 
         private void square_tb_KeyPress(object sender, KeyPressEventArgs e)

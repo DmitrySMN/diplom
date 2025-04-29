@@ -220,10 +220,7 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="assets\icons\estate\home.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="assets\icons\profile\user.png">
+    <Content Include="assets\images\estate\home.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="assets\images\estate\6305750656.jpg">
