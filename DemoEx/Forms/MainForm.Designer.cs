@@ -34,10 +34,10 @@ namespace DemoEx
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.clientSort = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.clientSortField = new System.Windows.Forms.ComboBox();
+            this.clientsFilter = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.clientDGV = new System.Windows.Forms.DataGridView();
@@ -50,12 +50,12 @@ namespace DemoEx
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.objectsSort = new System.Windows.Forms.ComboBox();
             this.objectPaginationLabel = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.objectsFilter = new System.Windows.Forms.ComboBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.objectsDGV = new System.Windows.Forms.DataGridView();
@@ -68,9 +68,9 @@ namespace DemoEx
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.groupBox12 = new System.Windows.Forms.GroupBox();
-            this.comboBox7 = new System.Windows.Forms.ComboBox();
+            this.dealsSort = new System.Windows.Forms.ComboBox();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
-            this.comboBox5 = new System.Windows.Forms.ComboBox();
+            this.dealsFilter = new System.Windows.Forms.ComboBox();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.dealsDGV = new System.Windows.Forms.DataGridView();
@@ -80,9 +80,9 @@ namespace DemoEx
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
-            this.comboBox6 = new System.Windows.Forms.ComboBox();
+            this.employeeSort = new System.Windows.Forms.ComboBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.employeeFilter = new System.Windows.Forms.ComboBox();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.employeeDGV = new System.Windows.Forms.DataGridView();
@@ -159,7 +159,7 @@ namespace DemoEx
             // 
             // groupBox6
             // 
-            this.groupBox6.Controls.Add(this.comboBox3);
+            this.groupBox6.Controls.Add(this.clientSort);
             this.groupBox6.Location = new System.Drawing.Point(954, 0);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(373, 77);
@@ -167,13 +167,13 @@ namespace DemoEx
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Сортировка";
             // 
-            // comboBox3
+            // clientSort
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(6, 32);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(360, 40);
-            this.comboBox3.TabIndex = 0;
+            this.clientSort.FormattingEnabled = true;
+            this.clientSort.Location = new System.Drawing.Point(6, 32);
+            this.clientSort.Name = "clientSort";
+            this.clientSort.Size = new System.Drawing.Size(360, 40);
+            this.clientSort.TabIndex = 0;
             // 
             // label1
             // 
@@ -186,7 +186,7 @@ namespace DemoEx
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.clientSortField);
+            this.groupBox1.Controls.Add(this.clientsFilter);
             this.groupBox1.Location = new System.Drawing.Point(575, 0);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(373, 77);
@@ -194,14 +194,14 @@ namespace DemoEx
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Фильтрация";
             // 
-            // clientSortField
+            // clientsFilter
             // 
-            this.clientSortField.FormattingEnabled = true;
-            this.clientSortField.Location = new System.Drawing.Point(6, 32);
-            this.clientSortField.Name = "clientSortField";
-            this.clientSortField.Size = new System.Drawing.Size(360, 40);
-            this.clientSortField.TabIndex = 0;
-            this.clientSortField.SelectedIndexChanged += new System.EventHandler(this.clientSortField_SelectedIndexChanged);
+            this.clientsFilter.FormattingEnabled = true;
+            this.clientsFilter.Location = new System.Drawing.Point(6, 32);
+            this.clientsFilter.Name = "clientsFilter";
+            this.clientsFilter.Size = new System.Drawing.Size(360, 40);
+            this.clientsFilter.TabIndex = 0;
+            this.clientsFilter.SelectedIndexChanged += new System.EventHandler(this.clientSortField_SelectedIndexChanged);
             // 
             // groupBox2
             // 
@@ -326,7 +326,7 @@ namespace DemoEx
             // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.comboBox1);
+            this.groupBox5.Controls.Add(this.objectsSort);
             this.groupBox5.Location = new System.Drawing.Point(954, 0);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(373, 77);
@@ -334,19 +334,19 @@ namespace DemoEx
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Сортировка";
             // 
-            // comboBox1
+            // objectsSort
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(6, 32);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(360, 40);
-            this.comboBox1.TabIndex = 0;
+            this.objectsSort.FormattingEnabled = true;
+            this.objectsSort.Location = new System.Drawing.Point(6, 32);
+            this.objectsSort.Name = "objectsSort";
+            this.objectsSort.Size = new System.Drawing.Size(360, 40);
+            this.objectsSort.TabIndex = 0;
             // 
             // objectPaginationLabel
             // 
             this.objectPaginationLabel.AutoSize = true;
             this.objectPaginationLabel.Font = new System.Drawing.Font("Yu Gothic UI", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.objectPaginationLabel.Location = new System.Drawing.Point(1740, 19);
+            this.objectPaginationLabel.Location = new System.Drawing.Point(1746, 18);
             this.objectPaginationLabel.Name = "objectPaginationLabel";
             this.objectPaginationLabel.Size = new System.Drawing.Size(0, 50);
             this.objectPaginationLabel.TabIndex = 18;
@@ -354,7 +354,7 @@ namespace DemoEx
             // pictureBox3
             // 
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(1662, 24);
+            this.pictureBox3.Location = new System.Drawing.Point(1668, 23);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(68, 46);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -364,7 +364,7 @@ namespace DemoEx
             // pictureBox4
             // 
             this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
-            this.pictureBox4.Location = new System.Drawing.Point(1821, 23);
+            this.pictureBox4.Location = new System.Drawing.Point(1827, 22);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(68, 46);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -373,7 +373,7 @@ namespace DemoEx
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.comboBox2);
+            this.groupBox3.Controls.Add(this.objectsFilter);
             this.groupBox3.Location = new System.Drawing.Point(575, 0);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(373, 77);
@@ -381,14 +381,14 @@ namespace DemoEx
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Фильтрация";
             // 
-            // comboBox2
+            // objectsFilter
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(6, 32);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(360, 40);
-            this.comboBox2.TabIndex = 0;
-            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
+            this.objectsFilter.FormattingEnabled = true;
+            this.objectsFilter.Location = new System.Drawing.Point(6, 32);
+            this.objectsFilter.Name = "objectsFilter";
+            this.objectsFilter.Size = new System.Drawing.Size(360, 40);
+            this.objectsFilter.TabIndex = 0;
+            this.objectsFilter.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
             // groupBox4
             // 
@@ -506,7 +506,7 @@ namespace DemoEx
             // 
             // groupBox12
             // 
-            this.groupBox12.Controls.Add(this.comboBox7);
+            this.groupBox12.Controls.Add(this.dealsSort);
             this.groupBox12.Location = new System.Drawing.Point(954, 0);
             this.groupBox12.Name = "groupBox12";
             this.groupBox12.Size = new System.Drawing.Size(373, 77);
@@ -514,17 +514,17 @@ namespace DemoEx
             this.groupBox12.TabStop = false;
             this.groupBox12.Text = "Сортировка";
             // 
-            // comboBox7
+            // dealsSort
             // 
-            this.comboBox7.FormattingEnabled = true;
-            this.comboBox7.Location = new System.Drawing.Point(6, 32);
-            this.comboBox7.Name = "comboBox7";
-            this.comboBox7.Size = new System.Drawing.Size(360, 40);
-            this.comboBox7.TabIndex = 0;
+            this.dealsSort.FormattingEnabled = true;
+            this.dealsSort.Location = new System.Drawing.Point(6, 32);
+            this.dealsSort.Name = "dealsSort";
+            this.dealsSort.Size = new System.Drawing.Size(360, 40);
+            this.dealsSort.TabIndex = 0;
             // 
             // groupBox9
             // 
-            this.groupBox9.Controls.Add(this.comboBox5);
+            this.groupBox9.Controls.Add(this.dealsFilter);
             this.groupBox9.Location = new System.Drawing.Point(575, 0);
             this.groupBox9.Name = "groupBox9";
             this.groupBox9.Size = new System.Drawing.Size(373, 77);
@@ -532,13 +532,13 @@ namespace DemoEx
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Фильтрация";
             // 
-            // comboBox5
+            // dealsFilter
             // 
-            this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Location = new System.Drawing.Point(6, 32);
-            this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(360, 40);
-            this.comboBox5.TabIndex = 0;
+            this.dealsFilter.FormattingEnabled = true;
+            this.dealsFilter.Location = new System.Drawing.Point(6, 32);
+            this.dealsFilter.Name = "dealsFilter";
+            this.dealsFilter.Size = new System.Drawing.Size(360, 40);
+            this.dealsFilter.TabIndex = 0;
             // 
             // groupBox10
             // 
@@ -633,7 +633,7 @@ namespace DemoEx
             // 
             // groupBox11
             // 
-            this.groupBox11.Controls.Add(this.comboBox6);
+            this.groupBox11.Controls.Add(this.employeeSort);
             this.groupBox11.Location = new System.Drawing.Point(954, 0);
             this.groupBox11.Name = "groupBox11";
             this.groupBox11.Size = new System.Drawing.Size(373, 77);
@@ -641,17 +641,17 @@ namespace DemoEx
             this.groupBox11.TabStop = false;
             this.groupBox11.Text = "Сортировка";
             // 
-            // comboBox6
+            // employeeSort
             // 
-            this.comboBox6.FormattingEnabled = true;
-            this.comboBox6.Location = new System.Drawing.Point(6, 32);
-            this.comboBox6.Name = "comboBox6";
-            this.comboBox6.Size = new System.Drawing.Size(360, 40);
-            this.comboBox6.TabIndex = 0;
+            this.employeeSort.FormattingEnabled = true;
+            this.employeeSort.Location = new System.Drawing.Point(6, 32);
+            this.employeeSort.Name = "employeeSort";
+            this.employeeSort.Size = new System.Drawing.Size(360, 40);
+            this.employeeSort.TabIndex = 0;
             // 
             // groupBox7
             // 
-            this.groupBox7.Controls.Add(this.comboBox4);
+            this.groupBox7.Controls.Add(this.employeeFilter);
             this.groupBox7.Location = new System.Drawing.Point(575, 0);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Size = new System.Drawing.Size(373, 77);
@@ -659,13 +659,13 @@ namespace DemoEx
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Фильтрация";
             // 
-            // comboBox4
+            // employeeFilter
             // 
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(6, 32);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(360, 40);
-            this.comboBox4.TabIndex = 0;
+            this.employeeFilter.FormattingEnabled = true;
+            this.employeeFilter.Location = new System.Drawing.Point(6, 32);
+            this.employeeFilter.Name = "employeeFilter";
+            this.employeeFilter.Size = new System.Drawing.Size(360, 40);
+            this.employeeFilter.TabIndex = 0;
             // 
             // groupBox8
             // 
@@ -819,26 +819,26 @@ namespace DemoEx
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox objectsFilter;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.DataGridView objectsDGV;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.TabPage tabPage5;
         private System.Windows.Forms.GroupBox groupBox7;
-        private System.Windows.Forms.ComboBox comboBox4;
+        private System.Windows.Forms.ComboBox employeeFilter;
         private System.Windows.Forms.GroupBox groupBox8;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.DataGridView employeeDGV;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.GroupBox groupBox9;
-        private System.Windows.Forms.ComboBox comboBox5;
+        private System.Windows.Forms.ComboBox dealsFilter;
         private System.Windows.Forms.GroupBox groupBox10;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.DataGridView dealsDGV;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ComboBox clientSortField;
+        private System.Windows.Forms.ComboBox clientsFilter;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.DataGridView clientDGV;
@@ -863,13 +863,13 @@ namespace DemoEx
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox objectsSort;
         private System.Windows.Forms.GroupBox groupBox6;
-        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ComboBox clientSort;
         private System.Windows.Forms.GroupBox groupBox11;
-        private System.Windows.Forms.ComboBox comboBox6;
+        private System.Windows.Forms.ComboBox employeeSort;
         private System.Windows.Forms.GroupBox groupBox12;
-        private System.Windows.Forms.ComboBox comboBox7;
+        private System.Windows.Forms.ComboBox dealsSort;
         private System.Windows.Forms.Label dealsPaginationLabel;
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.PictureBox pictureBox6;

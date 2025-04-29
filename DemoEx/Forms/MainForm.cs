@@ -25,29 +25,72 @@ namespace DemoEx
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            int totalRecords = db.getIntValuesFromColumn("select count(*) from clients;")[0];
-            clientsPageCount = (totalRecords % 10 == 0) ? totalRecords / 10 : totalRecords / 10 + 1;
-            label1.Text = $"{page}/{clientsPageCount}";
-            objectsDGV.RowTemplate.Height = 85;
-            clientDGV.RowTemplate.Height = 82;
-            dealsDGV.RowTemplate.Height = 85;
-            employeeDGV.RowTemplate.Height = 85;
+            try
+            {
+                int totalRecords = db.getIntValuesFromColumn("select count(*) from clients;")[0];
 
-            fillAllDgv();
+                string userFullName = db.getValuesFromColumn($"select concat(surname, ' ', name) from employees where login='{login}';")[0];
 
-            clientDGV.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            objectsDGV.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            employeeDGV.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dealsDGV.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                this.Text = $"Главное меню - {userFullName}";
 
-            clientSortField.DropDownStyle = ComboBoxStyle.DropDownList;
-            clientSortField.Items.Add("По умолчанию");
-            clientSortField.Items.Add("Покупатели");
-            clientSortField.Items.Add("Продавцы");
-            clientSortField.Items.Add("Арендодатели");
-            clientSortField.Items.Add("Арендатели");
+                clientsPageCount = (totalRecords % 10 == 0) ? totalRecords / 10 : totalRecords / 10 + 1;
+                label1.Text = $"{page}/{clientsPageCount}";
+                objectsDGV.RowTemplate.Height = 85;
+                clientDGV.RowTemplate.Height = 82;
+                dealsDGV.RowTemplate.Height = 85;
+                employeeDGV.RowTemplate.Height = 85;
 
-            clientSortField.SelectedIndex = 0;
+                fillAllDgv();
+
+                clientDGV.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                objectsDGV.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                employeeDGV.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                dealsDGV.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
+                clientsFilter.DropDownStyle = ComboBoxStyle.DropDownList;
+                objectsFilter.DropDownStyle = ComboBoxStyle.DropDownList;
+                dealsFilter.DropDownStyle = ComboBoxStyle.DropDownList;
+                employeeFilter.DropDownStyle = ComboBoxStyle.DropDownList;
+
+                clientSort.DropDownStyle = ComboBoxStyle.DropDownList;
+                objectsSort.DropDownStyle = ComboBoxStyle.DropDownList;
+                dealsSort.DropDownStyle = ComboBoxStyle.DropDownList;
+                employeeSort.DropDownStyle = ComboBoxStyle.DropDownList;
+
+                clientsFilter.Items.Add("По умолчанию");
+                clientsFilter.Items.Add("Покупатели");
+                clientsFilter.Items.Add("Продавцы");
+                clientsFilter.Items.Add("Арендодатели");
+                clientsFilter.Items.Add("Арендатели");
+
+                objectsFilter.Items.Add("По умолчанию");
+
+                dealsFilter.Items.Add("По умолчанию");
+
+                employeeFilter.Items.Add("По умолчанию");
+
+                objectsSort.Items.Add("По умолчанию");
+
+                clientSort.Items.Add("По умолчанию");
+
+                dealsSort.Items.Add("По умолчанию");
+
+                employeeSort.Items.Add("По умолчанию");
+
+                clientsFilter.SelectedIndex = 0;
+                objectsFilter.SelectedIndex = 0;
+                dealsFilter.SelectedIndex = 0;
+                employeeFilter.SelectedIndex = 0;
+                objectsSort.SelectedIndex = 0;
+                clientSort.SelectedIndex = 0;
+                dealsSort.SelectedIndex = 0;
+                employeeSort.SelectedIndex = 0;
+            }
+            catch (Exception ex)
+            {
+                MessageStore.somethingWentWrongMessage();
+            }
+            
         }
 
         private void fillAllDgv()
@@ -130,18 +173,18 @@ namespace DemoEx
 
         private void clientSortField_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (clientSortField.SelectedIndex == 0)
+            if (clientsFilter.SelectedIndex == 0)
             {
                 fillAllDgv();
-            } else if (clientSortField.SelectedIndex == 1)
+            } else if (clientsFilter.SelectedIndex == 1)
             {
                 db.FillDGV(clientDGV, $"SELECT id, concat(Surname,' ', Name,' ', Patronymic) as 'ФИО', passport as 'Паспорт', address as 'Адрес', birth as 'Дата рождения', phone_number as 'Номер телефона', type as 'Тип' FROM db17.clients WHERE type='Покупатель';");
             }
-            else if (clientSortField.SelectedIndex == 2)
+            else if (clientsFilter.SelectedIndex == 2)
             {
                 db.FillDGV(clientDGV, $"SELECT id, concat(Surname,' ', Name,' ', Patronymic) as 'ФИО', passport as 'Паспорт', address as 'Адрес', birth as 'Дата рождения', phone_number as 'Номер телефона', type as 'Тип' FROM db17.clients WHERE type='Продавец';");
             }
-            else if (clientSortField.SelectedIndex == 3)
+            else if (clientsFilter.SelectedIndex == 3)
             {
                 db.FillDGV(clientDGV, $"SELECT id, concat(Surname,' ', Name,' ', Patronymic) as 'ФИО', passport as 'Паспорт', address as 'Адрес', birth as 'Дата рождения', phone_number as 'Номер телефона', type as 'Тип' FROM db17.clients WHERE type='Арендодатель';");
             }
@@ -227,7 +270,7 @@ namespace DemoEx
 
         private void clearParameters()
         {
-            clientSortField.SelectedIndex = 0;
+            clientsFilter.SelectedIndex = 0;
             textBox1.Clear();
         }
 
