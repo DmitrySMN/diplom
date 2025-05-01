@@ -407,5 +407,18 @@ namespace DemoEx
             int sortIndex = objectsSort.SelectedIndex;
             fillAllDgv(0, sortIndex);
         }
+
+        private void экспортДанныхToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                db.exportDataFromTableToCSV("clients");
+                MessageStore.successExportMessage();
+            }
+            catch (Exception ex)
+            {
+                MessageStore.somethingWentWrongMessage();
+            }
+        }
     }
 }

@@ -119,6 +119,39 @@ namespace DB
             return hashPasswd;
         }
 
+        public void exportDataFromTableToCSV(string tableName)
+        {
+            string csvFilePath = $"{tableName}_exported_data.csv";
+            using (var connection = new MySqlConnection(conStr))
+            {
+                connection.Open();
+                string query = $"SELECT * FROM {tableName}";
+                using (var command = new MySqlCommand(query, connection))
+                using (var reader = command.ExecuteReader())
+                {
+                    using (var writer = new StreamWriter(csvFilePath))
+                    {
+                        for (int i = 0; i < reader.FieldCount; i++)
+                        {
+                            if (i > 0) writer.Write(",");
+                            writer.Write(reader.GetName(i));
+                        }
+                        writer.WriteLine();
+
+                        while (reader.Read())
+                        {
+                            for (int i = 0; i < reader.FieldCount; i++)
+                            {
+                                if (i > 0) writer.Write(",");
+                                if (!reader.IsDBNull(i))
+                                    writer.Write(reader.GetValue(i).ToString().Replace(",", ""));
+                            }
+                            writer.WriteLine();
+                        }
+                    }
+                }
+            }
+        }
 
         public int executeNonQuery(string nonQuery)
         {

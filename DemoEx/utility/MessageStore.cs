@@ -98,5 +98,16 @@ namespace DemoEx.utility
         {
             return MessageBox.Show("Удалить объект?", "Подтверждение", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
         }
+
+        //Импорт Экспорт
+        public static void successExportMessage()
+        {
+            MessageBox.Show("Данные успешно экспортированы!", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        public static void successImportMessage()
+        {
+            MessageBox.Show("Данные успешно импортированы!", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
     }
 }

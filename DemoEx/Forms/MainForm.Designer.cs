@@ -92,6 +92,8 @@ namespace DemoEx
             this.button4 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.contextMenuStrip4 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.экспортДанныхToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.импортДанныхToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -247,9 +249,11 @@ namespace DemoEx
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.создатьЗапросToolStripMenuItem,
             this.изменитьДанныеКлиентаToolStripMenuItem,
-            this.удалитьКлиентаToolStripMenuItem});
+            this.удалитьКлиентаToolStripMenuItem,
+            this.экспортДанныхToolStripMenuItem,
+            this.импортДанныхToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(220, 70);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(220, 136);
             // 
             // создатьЗапросToolStripMenuItem
             // 
@@ -754,6 +758,19 @@ namespace DemoEx
             this.contextMenuStrip4.Name = "contextMenuStrip4";
             this.contextMenuStrip4.Size = new System.Drawing.Size(61, 4);
             // 
+            // экспортДанныхToolStripMenuItem
+            // 
+            this.экспортДанныхToolStripMenuItem.Name = "экспортДанныхToolStripMenuItem";
+            this.экспортДанныхToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
+            this.экспортДанныхToolStripMenuItem.Text = "Экспорт данных";
+            this.экспортДанныхToolStripMenuItem.Click += new System.EventHandler(this.экспортДанныхToolStripMenuItem_Click);
+            // 
+            // импортДанныхToolStripMenuItem
+            // 
+            this.импортДанныхToolStripMenuItem.Name = "импортДанныхToolStripMenuItem";
+            this.импортДанныхToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
+            this.импортДанныхToolStripMenuItem.Text = "Импорт данных";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
@@ -878,5 +895,7 @@ namespace DemoEx
         private System.Windows.Forms.Label employeesPaginationLabel;
         private System.Windows.Forms.PictureBox pictureBox7;
         private System.Windows.Forms.PictureBox pictureBox8;
+        private System.Windows.Forms.ToolStripMenuItem экспортДанныхToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem импортДанныхToolStripMenuItem;
     }
 }
