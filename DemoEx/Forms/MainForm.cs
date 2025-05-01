@@ -420,5 +420,26 @@ namespace DemoEx
                 MessageStore.somethingWentWrongMessage();
             }
         }
+
+        private void импортДанныхToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.Filter = "CSV Files (*.csv)|*.csv|All Files (*.*)|*.*";
+            openFileDialog1.Title = "Выберите CSV-файл";
+
+            if (openFileDialog1.ShowDialog(this) == DialogResult.OK)
+            {
+                try
+                {
+                    openFileDialog1.OpenFile();
+                    db.importDataFromCSVToTable(openFileDialog1.FileName, "clients");
+                    MessageStore.successImportMessage();
+                }
+                catch (Exception ex)
+                {
+                    MessageStore.somethingWentWrongMessage();
+                }
+            }
+
+        }
     }
 }

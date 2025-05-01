@@ -153,6 +153,54 @@ namespace DB
             }
         }
 
+        public void importDataFromCSVToTable(string csvFilePath, string tableName)
+        {
+            using (var connection = new MySqlConnection(conStr))
+            {
+                connection.Open();
+
+                // Читаем CSV-файл
+                var lines = File.ReadAllLines(csvFilePath);
+                if (lines.Length == 0)
+                {
+                    throw new Exception("CSV-файл пуст.");
+                }
+
+                // Получаем названия столбцов из первой строки CSV
+                var columns = lines[0].Split(',');
+
+                // Формируем SQL-запрос для вставки данных
+                for (int i = 1; i < lines.Length; i++)
+                {
+                    var values = lines[i].Split(',');
+                    if (values.Length != columns.Length)
+                    {
+                        throw new Exception($"Ошибка в строке {i + 1}: несоответствие количества столбцов.");
+                    }
+
+                    // Экранируем значения для SQL
+                    for (int j = 0; j < values.Length; j++)
+                    {
+                        values[j] = MySqlHelper.EscapeString(values[j]);
+                    }
+
+                    string insertQuery = $"INSERT INTO {tableName} ({string.Join(",", columns)}) VALUES ('{string.Join("','", values)}')";
+
+                    using (var command = new MySqlCommand(insertQuery, connection))
+                    {
+                        try
+                        {
+                            command.ExecuteNonQuery();
+                        }
+                        catch (Exception ex)
+                        {
+                            throw new Exception($"Ошибка при вставке строки {i + 1}: {ex.Message}");
+                        }
+                    }
+                }
+            }
+        }
+
         public int executeNonQuery(string nonQuery)
         {
             using (con = new MySqlConnection(conStr))

@@ -94,6 +94,7 @@ namespace DemoEx
             this.contextMenuStrip4 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.экспортДанныхToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.импортДанныхToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -253,7 +254,7 @@ namespace DemoEx
             this.экспортДанныхToolStripMenuItem,
             this.импортДанныхToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(220, 136);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(220, 114);
             // 
             // создатьЗапросToolStripMenuItem
             // 
@@ -770,6 +771,11 @@ namespace DemoEx
             this.импортДанныхToolStripMenuItem.Name = "импортДанныхToolStripMenuItem";
             this.импортДанныхToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
             this.импортДанныхToolStripMenuItem.Text = "Импорт данных";
+            this.импортДанныхToolStripMenuItem.Click += new System.EventHandler(this.импортДанныхToolStripMenuItem_Click);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // MainForm
             // 
@@ -897,5 +903,6 @@ namespace DemoEx
         private System.Windows.Forms.PictureBox pictureBox8;
         private System.Windows.Forms.ToolStripMenuItem экспортДанныхToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem импортДанныхToolStripMenuItem;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }
