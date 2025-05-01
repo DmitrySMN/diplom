@@ -65,12 +65,19 @@ namespace DemoEx
                 clientsFilter.Items.Add("Арендатели");
 
                 objectsFilter.Items.Add("По умолчанию");
+                objectsFilter.Items.Add("Квартира");
+                objectsFilter.Items.Add("Дом");
+                objectsFilter.Items.Add("Складское помещ.");
+                objectsFilter.Items.Add("Офис");
 
                 dealsFilter.Items.Add("По умолчанию");
 
                 employeeFilter.Items.Add("По умолчанию");
 
                 objectsSort.Items.Add("По умолчанию");
+                objectsSort.Items.Add("Цена ↑");
+                objectsSort.Items.Add("Цена ↓");
+
 
                 clientSort.Items.Add("По умолчанию");
 
@@ -94,11 +101,18 @@ namespace DemoEx
             
         }
 
-        private void fillAllDgv()
+        private void fillAllDgv(int objectType = 0)
         {
             db.FillDGV(clientDGV, $"SELECT id, concat(Surname,' ', Name,' ', Patronymic) as 'ФИО', passport as 'Паспорт', address as 'Адрес', birth as 'Дата рождения', phone_number as 'Номер телефона', type as 'Тип' FROM db17.clients limit 10 offset {offset};");
-            db.FillDGV(objectsDGV, $"SELECT objectid, object_type.type as 'Тип объекта', concat(clients.surname,' ', clients.name, ' ', clients.patronymic) as 'Владелец', object_address as 'Адрес', square as 'Площадь', cadastral as 'Кадастровый ном.', rooms as 'Кол-во комнат', price as 'Цена', photo, status as 'Статус'\r\nFROM db17.object\r\nJOIN object_type ON object_type.id=object.object_type\r\nJOIN clients ON clients.id=object.owner_id;");
 
+            if (objectType == 0)
+            { 
+                db.FillDGV(objectsDGV, $"SELECT objectid, object_type.type as 'Тип объекта', concat(clients.surname,' ', clients.name, ' ', clients.patronymic) as 'Владелец', object_address as 'Адрес', square as 'Площадь', cadastral as 'Кадастровый ном.', rooms as 'Кол-во комнат', price as 'Цена', photo, status as 'Статус'\r\nFROM db17.object\r\nJOIN object_type ON object_type.id=object.object_type\r\nJOIN clients ON clients.id=object.owner_id;");
+            }
+            else
+            {
+                db.FillDGV(objectsDGV, $"SELECT objectid, object_type.type as 'Тип объекта', concat(clients.surname,' ', clients.name, ' ', clients.patronymic) as 'Владелец', object_address as 'Адрес', square as 'Площадь', cadastral as 'Кадастровый ном.', rooms as 'Кол-во комнат', price as 'Цена', photo, status as 'Статус'\r\nFROM db17.object\r\nJOIN object_type ON object_type.id=object.object_type\r\nJOIN clients ON clients.id=object.owner_id WHERE object_type='{objectType}';");
+            }
 
             db.FillDGV(employeeDGV, $"SELECT id, login as 'Логин', password as 'Пароль', concat(Surname, ' ', Name, ' ', Patronymic) as 'ФИО', passport as 'Паспорт', birth as 'Дата рождения', phone_number as 'Номер телефона', address as 'Адрес', post as 'Должность' FROM db17.employees;");
             db.FillDGV(dealsDGV, $"SELECT * FROM db17.deals;");
@@ -286,7 +300,8 @@ namespace DemoEx
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            int objectTypeId = objectsFilter.SelectedIndex;
+            fillAllDgv(objectTypeId);
         }
 
         private void clearParameters()
