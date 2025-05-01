@@ -342,12 +342,13 @@ namespace DemoEx
             this.objectsSort.Name = "objectsSort";
             this.objectsSort.Size = new System.Drawing.Size(360, 40);
             this.objectsSort.TabIndex = 0;
+            this.objectsSort.SelectedIndexChanged += new System.EventHandler(this.objectsSort_SelectedIndexChanged);
             // 
             // objectPaginationLabel
             // 
             this.objectPaginationLabel.AutoSize = true;
             this.objectPaginationLabel.Font = new System.Drawing.Font("Yu Gothic UI", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.objectPaginationLabel.Location = new System.Drawing.Point(1746, 18);
+            this.objectPaginationLabel.Location = new System.Drawing.Point(1740, 19);
             this.objectPaginationLabel.Name = "objectPaginationLabel";
             this.objectPaginationLabel.Size = new System.Drawing.Size(0, 50);
             this.objectPaginationLabel.TabIndex = 18;
@@ -355,7 +356,7 @@ namespace DemoEx
             // pictureBox3
             // 
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(1668, 23);
+            this.pictureBox3.Location = new System.Drawing.Point(1662, 24);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(68, 46);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -365,7 +366,7 @@ namespace DemoEx
             // pictureBox4
             // 
             this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
-            this.pictureBox4.Location = new System.Drawing.Point(1827, 22);
+            this.pictureBox4.Location = new System.Drawing.Point(1821, 23);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(68, 46);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -480,7 +481,7 @@ namespace DemoEx
             // 
             this.dealsPaginationLabel.AutoSize = true;
             this.dealsPaginationLabel.Font = new System.Drawing.Font("Yu Gothic UI", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.dealsPaginationLabel.Location = new System.Drawing.Point(1743, 18);
+            this.dealsPaginationLabel.Location = new System.Drawing.Point(1740, 19);
             this.dealsPaginationLabel.Name = "dealsPaginationLabel";
             this.dealsPaginationLabel.Size = new System.Drawing.Size(0, 50);
             this.dealsPaginationLabel.TabIndex = 21;
@@ -488,7 +489,7 @@ namespace DemoEx
             // pictureBox5
             // 
             this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
-            this.pictureBox5.Location = new System.Drawing.Point(1665, 23);
+            this.pictureBox5.Location = new System.Drawing.Point(1662, 24);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(68, 46);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -498,7 +499,7 @@ namespace DemoEx
             // pictureBox6
             // 
             this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
-            this.pictureBox6.Location = new System.Drawing.Point(1824, 22);
+            this.pictureBox6.Location = new System.Drawing.Point(1821, 23);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(68, 46);
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -607,7 +608,7 @@ namespace DemoEx
             // 
             this.employeesPaginationLabel.AutoSize = true;
             this.employeesPaginationLabel.Font = new System.Drawing.Font("Yu Gothic UI", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.employeesPaginationLabel.Location = new System.Drawing.Point(1742, 18);
+            this.employeesPaginationLabel.Location = new System.Drawing.Point(1740, 19);
             this.employeesPaginationLabel.Name = "employeesPaginationLabel";
             this.employeesPaginationLabel.Size = new System.Drawing.Size(0, 50);
             this.employeesPaginationLabel.TabIndex = 21;
@@ -615,7 +616,7 @@ namespace DemoEx
             // pictureBox7
             // 
             this.pictureBox7.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox7.Image")));
-            this.pictureBox7.Location = new System.Drawing.Point(1664, 23);
+            this.pictureBox7.Location = new System.Drawing.Point(1662, 24);
             this.pictureBox7.Name = "pictureBox7";
             this.pictureBox7.Size = new System.Drawing.Size(68, 46);
             this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -625,7 +626,7 @@ namespace DemoEx
             // pictureBox8
             // 
             this.pictureBox8.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox8.Image")));
-            this.pictureBox8.Location = new System.Drawing.Point(1823, 22);
+            this.pictureBox8.Location = new System.Drawing.Point(1821, 23);
             this.pictureBox8.Name = "pictureBox8";
             this.pictureBox8.Size = new System.Drawing.Size(68, 46);
             this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;

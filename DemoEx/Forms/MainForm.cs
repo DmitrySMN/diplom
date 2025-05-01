@@ -15,7 +15,9 @@ namespace DemoEx
         private int currentInfo = 1;
         private int offset = 0;
         private int page = 1;
+        private int objectPage = 1;
         private int clientsPageCount = 0;
+        private int objectPageCount = 0;
 
         public MainForm(string login, int post)
         {
@@ -29,13 +31,16 @@ namespace DemoEx
             try
             {
                 int totalRecords = db.getIntValuesFromColumn("select count(*) from clients;")[0];
-
-                string userFullName = db.getValuesFromColumn($"select concat(surname, ' ', name) from employees where login='{login}';")[0];
-
-                this.Text = $"Главное меню - {userFullName}";
-
                 clientsPageCount = (totalRecords % 10 == 0) ? totalRecords / 10 : totalRecords / 10 + 1;
                 label1.Text = $"{page}/{clientsPageCount}";
+
+                int totalObjectRecords = db.getIntValuesFromColumn("select count(*) from object;")[0];
+                objectPageCount = (totalObjectRecords % 10 == 0) ? totalObjectRecords / 10 : totalObjectRecords / 10 + 1;
+                objectPaginationLabel.Text = $"{objectPage}/{objectPageCount}";
+
+                string userFullName = db.getValuesFromColumn($"select concat(surname, ' ', name) from employees where login='{login}';")[0];
+                this.Text = $"Главное меню - {userFullName}";
+
                 objectsDGV.RowTemplate.Height = 85;
                 clientDGV.RowTemplate.Height = 82;
                 dealsDGV.RowTemplate.Height = 85;
@@ -101,7 +106,7 @@ namespace DemoEx
             
         }
 
-        private void fillAllDgv(int objectType = 0)
+        private void fillAllDgv(int objectType = 0, int objectSortIndex = 0)
         {
             db.FillDGV(clientDGV, $"SELECT id, concat(Surname,' ', Name,' ', Patronymic) as 'ФИО', passport as 'Паспорт', address as 'Адрес', birth as 'Дата рождения', phone_number as 'Номер телефона', type as 'Тип' FROM db17.clients limit 10 offset {offset};");
 
@@ -114,7 +119,21 @@ namespace DemoEx
                 db.FillDGV(objectsDGV, $"SELECT objectid, object_type.type as 'Тип объекта', concat(clients.surname,' ', clients.name, ' ', clients.patronymic) as 'Владелец', object_address as 'Адрес', square as 'Площадь', cadastral as 'Кадастровый ном.', rooms as 'Кол-во комнат', price as 'Цена', photo, status as 'Статус'\r\nFROM db17.object\r\nJOIN object_type ON object_type.id=object.object_type\r\nJOIN clients ON clients.id=object.owner_id WHERE object_type='{objectType}';");
             }
 
-            db.FillDGV(employeeDGV, $"SELECT id, login as 'Логин', password as 'Пароль', concat(Surname, ' ', Name, ' ', Patronymic) as 'ФИО', passport as 'Паспорт', birth as 'Дата рождения', phone_number as 'Номер телефона', address as 'Адрес', post as 'Должность' FROM db17.employees;");
+            if (objectSortIndex == 1)
+            {
+                db.FillDGV(objectsDGV, $"SELECT objectid, object_type.type as 'Тип объекта', concat(clients.surname,' ', clients.name, ' ', clients.patronymic) as 'Владелец', object_address as 'Адрес', square as 'Площадь', cadastral as 'Кадастровый ном.', rooms as 'Кол-во комнат', price as 'Цена', photo, status as 'Статус'\r\nFROM db17.object\r\nJOIN object_type ON object_type.id=object.object_type\r\nJOIN clients ON clients.id=object.owner_id order by price;");
+            }
+            else if (objectSortIndex == 2)
+            {
+                db.FillDGV(objectsDGV, $"SELECT objectid, object_type.type as 'Тип объекта', concat(clients.surname,' ', clients.name, ' ', clients.patronymic) as 'Владелец', object_address as 'Адрес', square as 'Площадь', cadastral as 'Кадастровый ном.', rooms as 'Кол-во комнат', price as 'Цена', photo, status as 'Статус'\r\nFROM db17.object\r\nJOIN object_type ON object_type.id=object.object_type\r\nJOIN clients ON clients.id=object.owner_id order by price desc;");
+            }
+            else
+            {
+                db.FillDGV(objectsDGV, $"SELECT objectid, object_type.type as 'Тип объекта', concat(clients.surname,' ', clients.name, ' ', clients.patronymic) as 'Владелец', object_address as 'Адрес', square as 'Площадь', cadastral as 'Кадастровый ном.', rooms as 'Кол-во комнат', price as 'Цена', photo, status as 'Статус'\r\nFROM db17.object\r\nJOIN object_type ON object_type.id=object.object_type\r\nJOIN clients ON clients.id=object.owner_id");
+
+            }
+
+            db.FillDGV(employeeDGV, $"SELECT id, login as 'Логин', password as 'Пароль', concat(Surname, ' ', Name, ' ', Patronymic) as 'ФИО', passport as 'Паспорт', birth as 'Дата рождения', phone_number as 'Номер телефона', address as 'Адрес', posts.post as 'Должность' FROM db17.employees join posts on employees.post=posts.postId;\r\n");
             db.FillDGV(dealsDGV, $"SELECT * FROM db17.deals;");
 
             clientDGV.Columns[0].Visible = false;
@@ -381,6 +400,12 @@ namespace DemoEx
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
             fillAllDgv();
+        }
+
+        private void objectsSort_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int sortIndex = objectsSort.SelectedIndex;
+            fillAllDgv(0, sortIndex);
         }
     }
 }
