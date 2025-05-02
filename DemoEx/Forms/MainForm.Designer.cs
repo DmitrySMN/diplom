@@ -45,6 +45,8 @@ namespace DemoEx
             this.создатьЗапросToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.изменитьДанныеКлиентаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.удалитьКлиентаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.экспортДанныхToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.импортДанныхToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.button1 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -92,8 +94,6 @@ namespace DemoEx
             this.button4 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.contextMenuStrip4 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.экспортДанныхToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.импортДанныхToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -276,6 +276,20 @@ namespace DemoEx
             this.удалитьКлиентаToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
             this.удалитьКлиентаToolStripMenuItem.Text = "Удалить клиента";
             this.удалитьКлиентаToolStripMenuItem.Click += new System.EventHandler(this.удалитьКлиентаToolStripMenuItem_Click);
+            // 
+            // экспортДанныхToolStripMenuItem
+            // 
+            this.экспортДанныхToolStripMenuItem.Name = "экспортДанныхToolStripMenuItem";
+            this.экспортДанныхToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
+            this.экспортДанныхToolStripMenuItem.Text = "Экспорт данных";
+            this.экспортДанныхToolStripMenuItem.Click += new System.EventHandler(this.экспортДанныхToolStripMenuItem_Click);
+            // 
+            // импортДанныхToolStripMenuItem
+            // 
+            this.импортДанныхToolStripMenuItem.Name = "импортДанныхToolStripMenuItem";
+            this.импортДанныхToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
+            this.импортДанныхToolStripMenuItem.Text = "Импорт данных";
+            this.импортДанныхToolStripMenuItem.Click += new System.EventHandler(this.импортДанныхToolStripMenuItem_Click);
             // 
             // button1
             // 
@@ -758,20 +772,6 @@ namespace DemoEx
             // 
             this.contextMenuStrip4.Name = "contextMenuStrip4";
             this.contextMenuStrip4.Size = new System.Drawing.Size(61, 4);
-            // 
-            // экспортДанныхToolStripMenuItem
-            // 
-            this.экспортДанныхToolStripMenuItem.Name = "экспортДанныхToolStripMenuItem";
-            this.экспортДанныхToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
-            this.экспортДанныхToolStripMenuItem.Text = "Экспорт данных";
-            this.экспортДанныхToolStripMenuItem.Click += new System.EventHandler(this.экспортДанныхToolStripMenuItem_Click);
-            // 
-            // импортДанныхToolStripMenuItem
-            // 
-            this.импортДанныхToolStripMenuItem.Name = "импортДанныхToolStripMenuItem";
-            this.импортДанныхToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
-            this.импортДанныхToolStripMenuItem.Text = "Импорт данных";
-            this.импортДанныхToolStripMenuItem.Click += new System.EventHandler(this.импортДанныхToolStripMenuItem_Click);
             // 
             // openFileDialog1
             // 

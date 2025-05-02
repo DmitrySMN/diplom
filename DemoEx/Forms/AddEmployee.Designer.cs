@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.passport = new System.Windows.Forms.MaskedTextBox();
@@ -50,7 +48,6 @@
             this.loginTb = new System.Windows.Forms.TextBox();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.address = new System.Windows.Forms.TextBox();
-            this.panel1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -62,29 +59,12 @@
             this.groupBox9.SuspendLayout();
             this.SuspendLayout();
             // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.Black;
-            this.panel1.Controls.Add(this.panel2);
-            this.panel1.Location = new System.Drawing.Point(-2, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(102, 635);
-            this.panel1.TabIndex = 7;
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.Black;
-            this.panel2.Location = new System.Drawing.Point(103, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(765, 68);
-            this.panel2.TabIndex = 7;
-            // 
             // button2
             // 
-            this.button2.BackColor = System.Drawing.Color.White;
+            this.button2.BackColor = System.Drawing.Color.SteelBlue;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button2.Font = new System.Drawing.Font("Yu Gothic UI", 18F);
-            this.button2.Location = new System.Drawing.Point(470, 572);
+            this.button2.Location = new System.Drawing.Point(378, 570);
             this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(355, 51);
@@ -98,7 +78,7 @@
             this.groupBox4.Controls.Add(this.passport);
             this.groupBox4.Font = new System.Drawing.Font("Yu Gothic UI", 18F);
             this.groupBox4.ForeColor = System.Drawing.Color.Black;
-            this.groupBox4.Location = new System.Drawing.Point(474, 354);
+            this.groupBox4.Location = new System.Drawing.Point(382, 352);
             this.groupBox4.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Padding = new System.Windows.Forms.Padding(6, 8, 6, 8);
@@ -123,7 +103,7 @@
             this.groupBox3.Controls.Add(this.pat);
             this.groupBox3.Font = new System.Drawing.Font("Yu Gothic UI", 18F);
             this.groupBox3.ForeColor = System.Drawing.Color.Black;
-            this.groupBox3.Location = new System.Drawing.Point(107, 354);
+            this.groupBox3.Location = new System.Drawing.Point(15, 352);
             this.groupBox3.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(6, 8, 6, 8);
@@ -149,7 +129,7 @@
             this.groupBox2.Controls.Add(this.name);
             this.groupBox2.Font = new System.Drawing.Font("Yu Gothic UI", 18F);
             this.groupBox2.ForeColor = System.Drawing.Color.Black;
-            this.groupBox2.Location = new System.Drawing.Point(107, 242);
+            this.groupBox2.Location = new System.Drawing.Point(15, 240);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(6, 8, 6, 8);
@@ -175,7 +155,7 @@
             this.groupBox6.Controls.Add(this.phone);
             this.groupBox6.Font = new System.Drawing.Font("Yu Gothic UI", 18F);
             this.groupBox6.ForeColor = System.Drawing.Color.Black;
-            this.groupBox6.Location = new System.Drawing.Point(474, 242);
+            this.groupBox6.Location = new System.Drawing.Point(382, 240);
             this.groupBox6.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Padding = new System.Windows.Forms.Padding(6, 8, 6, 8);
@@ -197,11 +177,11 @@
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.Color.Black;
+            this.button1.BackColor = System.Drawing.Color.SkyBlue;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button1.Font = new System.Drawing.Font("Yu Gothic UI", 18F);
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(107, 572);
+            this.button1.ForeColor = System.Drawing.Color.Black;
+            this.button1.Location = new System.Drawing.Point(15, 570);
             this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(355, 51);
@@ -215,7 +195,7 @@
             this.groupBox5.Controls.Add(this.dateTimePicker1);
             this.groupBox5.Font = new System.Drawing.Font("Yu Gothic UI", 18F);
             this.groupBox5.ForeColor = System.Drawing.Color.Black;
-            this.groupBox5.Location = new System.Drawing.Point(474, 127);
+            this.groupBox5.Location = new System.Drawing.Point(382, 125);
             this.groupBox5.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Padding = new System.Windows.Forms.Padding(6, 8, 6, 8);
@@ -241,7 +221,7 @@
             this.groupBox1.Controls.Add(this.surname);
             this.groupBox1.Font = new System.Drawing.Font("Yu Gothic UI", 18F);
             this.groupBox1.ForeColor = System.Drawing.Color.Black;
-            this.groupBox1.Location = new System.Drawing.Point(107, 127);
+            this.groupBox1.Location = new System.Drawing.Point(15, 125);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(6, 8, 6, 8);
@@ -267,7 +247,7 @@
             this.groupBox7.Controls.Add(this.pwdTb);
             this.groupBox7.Font = new System.Drawing.Font("Yu Gothic UI", 18F);
             this.groupBox7.ForeColor = System.Drawing.Color.Black;
-            this.groupBox7.Location = new System.Drawing.Point(474, 8);
+            this.groupBox7.Location = new System.Drawing.Point(382, 6);
             this.groupBox7.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Padding = new System.Windows.Forms.Padding(6, 8, 6, 8);
@@ -293,7 +273,7 @@
             this.groupBox8.Controls.Add(this.loginTb);
             this.groupBox8.Font = new System.Drawing.Font("Yu Gothic UI", 18F);
             this.groupBox8.ForeColor = System.Drawing.Color.Black;
-            this.groupBox8.Location = new System.Drawing.Point(107, 8);
+            this.groupBox8.Location = new System.Drawing.Point(15, 6);
             this.groupBox8.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.groupBox8.Name = "groupBox8";
             this.groupBox8.Padding = new System.Windows.Forms.Padding(6, 8, 6, 8);
@@ -317,7 +297,7 @@
             // groupBox9
             // 
             this.groupBox9.Controls.Add(this.address);
-            this.groupBox9.Location = new System.Drawing.Point(106, 472);
+            this.groupBox9.Location = new System.Drawing.Point(14, 470);
             this.groupBox9.Name = "groupBox9";
             this.groupBox9.Size = new System.Drawing.Size(723, 93);
             this.groupBox9.TabIndex = 17;
@@ -338,7 +318,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(835, 633);
+            this.ClientSize = new System.Drawing.Size(751, 633);
             this.ControlBox = false;
             this.Controls.Add(this.groupBox9);
             this.Controls.Add(this.groupBox7);
@@ -351,7 +331,6 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Yu Gothic UI", 18F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(7);
@@ -359,7 +338,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Добавление сотрудников";
             this.Load += new System.EventHandler(this.AddEmployee_Load);
-            this.panel1.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.groupBox3.ResumeLayout(false);
@@ -382,9 +360,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.MaskedTextBox passport;

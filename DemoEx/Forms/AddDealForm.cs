@@ -19,100 +19,93 @@ namespace DemoEx
     {
         private Db db = new Db(Connection.connectionString);
         private string empLogin;
-        private int clientId;
-        private int edit;
+        private int dealId;
         private string estateType;
         private int estateId;
         private int ownerId;
-        public AddDealForm(string empLogin, int clientId, int edit = 0)
+        public AddDealForm(string empLogin, int dealId = 0)
         {
             InitializeComponent();
             this.empLogin = empLogin;
-            this.clientId = clientId;
-            this.edit = edit;
+            this.dealId = dealId;
         }
 
         private void AddDealForm_Load(object sender, EventArgs e)
         {
+            objectDgv.RowTemplate.Height = 70;
+            clientsDgv.RowTemplate.Height = 70;
+            objectDgv.MultiSelect = false;
+            objectDgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
-            dataGridView1.RowTemplate.Height = 70;
-            dataGridView1.MultiSelect = false;
-            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            objectDgv.DefaultCellStyle.SelectionBackColor = Color.FromArgb(246, 246, 246);
+            objectDgv.DefaultCellStyle.SelectionForeColor = Color.Black;
 
-            dataGridView1.DefaultCellStyle.SelectionBackColor = Color.FromArgb(246, 246, 246);
-            dataGridView1.DefaultCellStyle.SelectionForeColor = Color.Black;
+            dealStatusCb.DropDownStyle = ComboBoxStyle.DropDownList;
+            dealStatusCb.Items.Add("Новая");
 
-            type.DropDownStyle = ComboBoxStyle.DropDownList;
-            status.DropDownStyle = ComboBoxStyle.DropDownList;
-            ownerTb.Enabled = false;
-            type.Items.Clear();
-            type.Items.Add("Аренда");
-            type.Items.Add("Покупка");
-            type.SelectedIndex = 0;
-
-            status.Items.Clear();
-            status.Items.Add("Новая");
-            status.SelectedIndex = 0;
-
-            if (edit == 0)
+            if (dealId == 0)
             {
-                editbutton.Visible = false;
-                addButton.Visible = true;
+                employeeFIO.Text = db.getValuesFromColumn($"SELECT concat(surname, ' ', name, ' ', patronymic) FROM db17.employees where login='{empLogin}';")[0].ToString();
+                fillDgv();
+                dealStatusCb.SelectedIndex = 0;
+                //switch (type)
+                //{
+                //    case "Покупатель":
+                //        db.FillDGV(dataGridView1, "select objectid, photo, square as 'Площадь', rooms as 'Кол-во комнат', price as 'Цена', owner_id as 'Владелец' from object where status='В продаже';");
+                //        dataGridView1.Columns["photo"].Visible = false;
+                //        dataGridView1.Columns["objectid"].Visible = false;
+                //        dataGridView1.Columns["Владелец"].Visible = false;
+                //        db.setUpDgvImages(dataGridView1, "Фото объекта");
+                //        break;
+                //    case "Арендатель":
+                //        db.FillDGV(dataGridView1, "select objectid, photo, square as 'Площадь', rooms as 'Кол-во комнат', price as 'Цена', owner_id as 'Владелец' from object where status='Сдается в аренду';");
+                //        dataGridView1.Columns["photo"].Visible = false;
+                //        dataGridView1.Columns["objectid"].Visible = false;
+                //        dataGridView1.Columns["Владелец"].Visible = false;
+                //        db.setUpDgvImages(dataGridView1, "Фото объекта");
+                //        break;
+                //}
 
-                string type = db.getValuesFromColumn($"select type from clients where id={clientId};")[0].ToString();
-
-                switch (type)
-                {
-                    case "Покупатель":
-                        db.FillDGV(dataGridView1, "select id, photo, square as 'Площадь', rooms as 'Кол-во комнат', price as 'Цена', owner_id as 'Владелец' from estate where status='В продаже';");
-                        dataGridView1.Columns["photo"].Visible = false;
-                        dataGridView1.Columns["id"].Visible = false;
-                        dataGridView1.Columns["Владелец"].Visible = false;
-                        db.setUpDgvImages(dataGridView1, "Фото объекта");
-                        break;
-                    case "Арендатель":
-                        db.FillDGV(dataGridView1, "select id, photo, square as 'Площадь', rooms as 'Кол-во комнат', price as 'Цена', owner_id as 'Владелец' from estate where status='Сдается в аренду';");
-                        dataGridView1.Columns["photo"].Visible = false;
-                        dataGridView1.Columns["id"].Visible = false;
-                        dataGridView1.Columns["Владелец"].Visible = false;
-                        db.setUpDgvImages(dataGridView1, "Фото объекта");
-                        break;
-                }
-
-                
-
-                var dealNumber = db.getIntValuesFromColumn("select id from deals ORDER BY id DESC LIMIT 1;")[0] + 1;
-                numberLabel.Text += " " + dealNumber.ToString();
-                db.FillLabel(employeeFIO, $"select CONCAT(surname,' ', name,' ', patronymic) from employees where login='{empLogin}';");
-                clientFIO.Text = db.getValuesFromColumn($"select CONCAT(surname,' ', name,' ', patronymic) from clients where id={clientId};")[0];
-                var owner_id = dataGridView1.SelectedCells[0].Value;
-                ownerTb.Text = db.getValuesFromColumn($"select concat(surname,' ', name,' ', patronymic) from clients where id={owner_id};")[0];
+                //var dealNumber = db.getIntValuesFromColumn("select id from deals ORDER BY id DESC LIMIT 1;")[0] + 1;
+                //numberLabel.Text += " " + dealNumber.ToString();
+                //db.FillLabel(employeeFIO, $"select CONCAT(surname,' ', name,' ', patronymic) from employees where login='{empLogin}';");
+                //clientFIO.Text = db.getValuesFromColumn($"select CONCAT(surname,' ', name,' ', patronymic) from clients where id={clientId};")[0];
+                //var owner_id = dataGridView1.SelectedCells[0].Value;
+                //ownerTb.Text = db.getValuesFromColumn($"select concat(surname,' ', name,' ', patronymic) from clients where id={owner_id};")[0];
             } else
             {
                 this.Text = "Редактирование сделки";
-                editbutton.Visible = true;
+                
                 dateTimePicker1.Enabled = false;
-                numberLabel.Text +=" " + clientId.ToString();
-                status.Items.Add("Завершена");
-                status.Items.Add("Не состоялась");
+                
 
-                estateId = db.getIntValuesFromColumn($"select estate from deals where id={clientId};")[0];
+                //db.FillDGV(dataGridView1, $"select id, photo, square as 'Площадь', rooms as 'Кол-во комнат', price as 'Цена', owner_id as 'Владелец' from estate where id={estateId};");
+                //dataGridView1.Columns["photo"].Visible = false;
+                //dataGridView1.Columns["id"].Visible = false;
+                //dataGridView1.Columns["Владелец"].Visible = false;
+                //db.setUpDgvImages(dataGridView1, "Фото объекта");
 
-                db.FillDGV(dataGridView1, $"select id, photo, square as 'Площадь', rooms as 'Кол-во комнат', price as 'Цена', owner_id as 'Владелец' from estate where id={estateId};");
-                dataGridView1.Columns["photo"].Visible = false;
-                dataGridView1.Columns["id"].Visible = false;
-                dataGridView1.Columns["Владелец"].Visible = false;
-                db.setUpDgvImages(dataGridView1, "Фото объекта");
+                //ownerTb.Text = db.getValuesFromColumn($"select (select concat(surname,' ', name,' ', patronymic) from clients where id=owner_id) from estate where id={estateId};")[0];
+                //ownerId = db.getIntValuesFromColumn($"select (select id from clients where id=owner_id) from estate where id={estateId};")[0];
 
-                ownerTb.Text = db.getValuesFromColumn($"select (select concat(surname,' ', name,' ', patronymic) from clients where id=owner_id) from estate where id={estateId};")[0];
-                ownerId = db.getIntValuesFromColumn($"select (select id from clients where id=owner_id) from estate where id={estateId};")[0];
-
-                dateTimePicker1.Value = db.getDateValuesFromColumn($"select transaction_date from deals where id={clientId};")[0];
-                db.FillLabel(clientFIO, $"select (select CONCAT(surname, ' ', name, ' ',patronymic) from clients where id=client) from deals where id={clientId};");
-                db.FillLabel(employeeFIO, $"select (select CONCAT(surname,' ', name, ' ', patronymic) from employees where id=employees) from deals where id={clientId};");
-                type.Text = db.getValuesFromColumn($"select type from deals where id={clientId};")[0].ToString();
-                status.Text = db.getValuesFromColumn($"select status from deals where id={clientId};")[0].ToString();
+                //dateTimePicker1.Value = db.getDateValuesFromColumn($"select transaction_date from deals where id={clientId};")[0];
+                //db.FillLabel(clientFIO, $"select (select CONCAT(surname, ' ', name, ' ',patronymic) from clients where id=client) from deals where id={clientId};");
+                //db.FillLabel(employeeFIO, $"select (select CONCAT(surname,' ', name, ' ', patronymic) from employees where id=employees) from deals where id={clientId};");
+                //type.Text = db.getValuesFromColumn($"select type from deals where id={clientId};")[0].ToString();
+                //status.Text = db.getValuesFromColumn($"select status from deals where id={clientId};")[0].ToString();
             }
+        }
+
+        private void fillDgv()
+        {
+            db.FillDGV(clientsDgv, $"SELECT id, concat(surname, ' ', name, ' ', patronymic) as 'ФИО' FROM db17.clients where type ='Покупатель' or type ='Арендатель';");
+            clientsDgv.Columns[0].Visible = false;
+            db.FillDGV(objectDgv, $"SELECT objectid, object_type.type as 'Тип объекта', square as 'Площадь', rooms as 'Км.', price as 'Цена', photo FROM db17.object JOIN object_type ON object_type.id=object.object_type;");
+            objectDgv.Columns[0].Visible = false;
+            objectDgv.Columns[2].Width = 40;
+            objectDgv.Columns[3].Width = 40;
+            objectDgv.Columns[4].Width = 100;
+            db.setUpDgvImages(objectDgv, "Фото объекта");
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -120,73 +113,44 @@ namespace DemoEx
             Close();
         }
 
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            var owner_id = dataGridView1.SelectedCells[0].Value;
-            ownerTb.Text = db.getValuesFromColumn($"select concat(surname,' ', name,' ', patronymic) from clients where id={owner_id};")[0];
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
-            var estateId = Convert.ToInt32(dataGridView1.SelectedCells[0].Value.ToString());
-            try
-            {
-                db.executeNonQuery($"INSERT INTO `db17`.`deals` (`client`, `estate`, `employees`, `type`, `transaction_date`, `status`) VALUES ('{clientId}', '{estateId}', '{db.getIntValuesFromColumn($"select id from employees where login='{empLogin}'")[0]}', '{type.Text}', '{dateTimePicker1.Value.ToString("yyyy-MM-dd")}', '{status.Text}')");
-                MessageBox.Show("Сделка создана!", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //var estateId = Convert.ToInt32(dataGridView1.SelectedCells[0].Value.ToString());
+            //try
+            //{
+            //    db.executeNonQuery($"INSERT INTO `db17`.`deals` (`client`, `estate`, `employees`, `type`, `transaction_date`, `status`) VALUES ('{clientId}', '{estateId}', '{db.getIntValuesFromColumn($"select id from employees where login='{empLogin}'")[0]}', '{type.Text}', '{dateTimePicker1.Value.ToString("yyyy-MM-dd")}', '{status.Text}')");
+            //    MessageBox.Show("Сделка создана!", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                if (type.Text == "Аренда")
-                {
-                    db.executeNonQuery($"UPDATE `db17`.`estate` SET `status` = '{"Арендовано"}' WHERE (`id` = '{estateId}');");
-                } else if (type.Text == "Покупка")
-                {
-                    db.executeNonQuery($"UPDATE `db17`.`estate` SET `status` = '{"Продан"}' WHERE (`id` = '{estateId}');");
-                }
-            }
-            catch (Exception exc)
-            {
-                MessageStore.somethingWentWrongMessage();
-            }
+            //    if (type.Text == "Аренда")
+            //    {
+            //        db.executeNonQuery($"UPDATE `db17`.`estate` SET `status` = '{"Арендовано"}' WHERE (`id` = '{estateId}');");
+            //    } else if (type.Text == "Покупка")
+            //    {
+            //        db.executeNonQuery($"UPDATE `db17`.`estate` SET `status` = '{"Продан"}' WHERE (`id` = '{estateId}');");
+            //    }
+            //}
+            //catch (Exception exc)
+            //{
+            //    MessageStore.somethingWentWrongMessage();
+            //}
 
         }
 
-        private void editbutton_Click(object sender, EventArgs e)
+        private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            try
+            if (textBox1.Text.Length > 0)
             {
-                db.executeNonQuery($"update deals set type='{type.Text}', status='{status.Text}' where id={clientId};");
-                MessageBox.Show("Данные о сделке успешно изменены!", "Информация",MessageBoxButtons.OK, MessageBoxIcon.Information);
-                var estateId = Convert.ToInt32(dataGridView1.SelectedCells[0].Value.ToString());
-                if (type.Text == "Аренда")
-                {
-                    db.executeNonQuery($"UPDATE `db17`.`estate` SET `status` = '{"Арендован"}' WHERE (`id` = '{estateId}');");
-                }
-                else if (type.Text == "Покупка")
-                {
-                    db.executeNonQuery($"UPDATE `db17`.`estate` SET `status` = '{"Продан"}' WHERE (`id` = '{estateId}');");
-                }
-
-                if (status.Text == "Завершена")
-                {
-                    var result = MessageBox.Show("Создать документ по данной сделке?", "Создание докумета", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-                    if (result == DialogResult.Yes)
-                    {
-                        if (type.Text == "Покупка")
-                        {
-                            DocumentHelper.createPurchaseDocument(clientId, ownerId, estateId);
-
-                        }
-                        else
-                        {
-                            DocumentHelper.createRentDocument(clientId, ownerId, estateId);
-
-                        }
-                    }
-                }
-            } catch (Exception xe)
-            {
-                MessageStore.somethingWentWrongMessage();
+                db.FillDGV(clientsDgv, $"SELECT id, concat(surname, ' ', name, ' ', patronymic) as 'ФИО' FROM db17.clients where Surname like \"{textBox1.Text}%\" and (type ='Покупатель' or type ='Арендатель');");
             }
+            else if (textBox1.Text.Length == 0)
+            {
+                db.FillDGV(clientsDgv, $"SELECT id, concat(surname, ' ', name, ' ', patronymic) as 'ФИО' FROM db17.clients where type ='Покупатель' or type ='Арендатель';");
+            }
+        }
+
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            InputFieldCorrection.ruLettersField(e);
         }
     }
 }

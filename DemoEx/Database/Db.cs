@@ -92,19 +92,6 @@ namespace DB
             return values;
         }
 
-        public void FillLabel(Label label, string selectQuery)
-        {
-            using (con = new MySqlConnection(conStr))
-            {
-                con.Open();
-                cmd = new MySqlCommand(selectQuery, con);
-                reader = cmd.ExecuteReader();
-                reader.Read();
-                string res = reader.GetString(0);
-                label.Text += res;
-            }
-        }
-
         public string getHashFromPassword(string password)
         {
             byte[] bytesPass = Encoding.UTF8.GetBytes(password);

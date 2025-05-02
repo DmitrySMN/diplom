@@ -31,93 +31,61 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
-            this.numberLabel = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.clientFIO = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.employeeFIO = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.type = new System.Windows.Forms.ComboBox();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.status = new System.Windows.Forms.ComboBox();
+            this.objectDgv = new System.Windows.Forms.DataGridView();
             this.addButton = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.ownerTb = new System.Windows.Forms.TextBox();
-            this.editbutton = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.clientsDgv = new System.Windows.Forms.DataGridView();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.dealStatusCb = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.groupBox5.SuspendLayout();
-            this.groupBox6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.objectDgv)).BeginInit();
             this.groupBox7.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.clientsDgv)).BeginInit();
+            this.groupBox8.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.dateTimePicker1);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.numberLabel);
             this.groupBox1.Location = new System.Drawing.Point(12, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1007, 86);
+            this.groupBox1.Size = new System.Drawing.Size(565, 86);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Сделка";
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(742, 35);
+            this.dateTimePicker1.Location = new System.Drawing.Point(220, 33);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(258, 39);
+            this.dateTimePicker1.Size = new System.Drawing.Size(339, 39);
             this.dateTimePicker1.TabIndex = 2;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(529, 35);
+            this.label2.Location = new System.Drawing.Point(7, 38);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(207, 32);
             this.label2.TabIndex = 1;
             this.label2.Text = "Дата заключения";
             // 
-            // numberLabel
-            // 
-            this.numberLabel.AutoSize = true;
-            this.numberLabel.Location = new System.Drawing.Point(6, 35);
-            this.numberLabel.Name = "numberLabel";
-            this.numberLabel.Size = new System.Drawing.Size(41, 32);
-            this.numberLabel.TabIndex = 0;
-            this.numberLabel.Text = "№";
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.clientFIO);
-            this.groupBox2.Location = new System.Drawing.Point(12, 95);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(500, 100);
-            this.groupBox2.TabIndex = 1;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Клиент";
-            // 
-            // clientFIO
-            // 
-            this.clientFIO.AutoSize = true;
-            this.clientFIO.Location = new System.Drawing.Point(6, 45);
-            this.clientFIO.Name = "clientFIO";
-            this.clientFIO.Size = new System.Drawing.Size(0, 32);
-            this.clientFIO.TabIndex = 0;
-            // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.employeeFIO);
-            this.groupBox3.Location = new System.Drawing.Point(519, 95);
+            this.groupBox3.Location = new System.Drawing.Point(583, 3);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(500, 100);
+            this.groupBox3.Size = new System.Drawing.Size(566, 86);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Риелтор";
@@ -125,79 +93,42 @@
             // employeeFIO
             // 
             this.employeeFIO.AutoSize = true;
-            this.employeeFIO.Location = new System.Drawing.Point(6, 45);
+            this.employeeFIO.Location = new System.Drawing.Point(6, 38);
             this.employeeFIO.Name = "employeeFIO";
             this.employeeFIO.Size = new System.Drawing.Size(0, 32);
             this.employeeFIO.TabIndex = 0;
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.dataGridView1);
-            this.groupBox4.Location = new System.Drawing.Point(12, 201);
+            this.groupBox4.Controls.Add(this.objectDgv);
+            this.groupBox4.Location = new System.Drawing.Point(12, 204);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(565, 429);
             this.groupBox4.TabIndex = 3;
             this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Объект сделки";
+            this.groupBox4.Text = "Объект";
             // 
-            // dataGridView1
+            // objectDgv
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 39);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(565, 390);
-            this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
-            // 
-            // groupBox5
-            // 
-            this.groupBox5.Controls.Add(this.type);
-            this.groupBox5.Location = new System.Drawing.Point(583, 307);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(435, 100);
-            this.groupBox5.TabIndex = 3;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Тип";
-            // 
-            // type
-            // 
-            this.type.FormattingEnabled = true;
-            this.type.Location = new System.Drawing.Point(6, 39);
-            this.type.Name = "type";
-            this.type.Size = new System.Drawing.Size(423, 40);
-            this.type.TabIndex = 0;
-            // 
-            // groupBox6
-            // 
-            this.groupBox6.Controls.Add(this.status);
-            this.groupBox6.Location = new System.Drawing.Point(583, 413);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(435, 100);
-            this.groupBox6.TabIndex = 4;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Статус";
-            // 
-            // status
-            // 
-            this.status.FormattingEnabled = true;
-            this.status.Location = new System.Drawing.Point(6, 38);
-            this.status.Name = "status";
-            this.status.Size = new System.Drawing.Size(423, 40);
-            this.status.TabIndex = 1;
+            this.objectDgv.AllowUserToAddRows = false;
+            this.objectDgv.AllowUserToDeleteRows = false;
+            this.objectDgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.objectDgv.BackgroundColor = System.Drawing.Color.White;
+            this.objectDgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.objectDgv.Location = new System.Drawing.Point(0, 39);
+            this.objectDgv.Name = "objectDgv";
+            this.objectDgv.ReadOnly = true;
+            this.objectDgv.Size = new System.Drawing.Size(565, 390);
+            this.objectDgv.TabIndex = 0;
             // 
             // addButton
             // 
-            this.addButton.BackColor = System.Drawing.Color.Black;
+            this.addButton.BackColor = System.Drawing.Color.SkyBlue;
             this.addButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.addButton.ForeColor = System.Drawing.Color.White;
-            this.addButton.Location = new System.Drawing.Point(583, 519);
+            this.addButton.ForeColor = System.Drawing.Color.Black;
+            this.addButton.Location = new System.Drawing.Point(12, 639);
             this.addButton.Name = "addButton";
-            this.addButton.Size = new System.Drawing.Size(435, 48);
+            this.addButton.Size = new System.Drawing.Size(1137, 47);
             this.addButton.TabIndex = 5;
             this.addButton.Text = "Создать";
             this.addButton.UseVisualStyleBackColor = false;
@@ -205,62 +136,91 @@
             // 
             // button2
             // 
+            this.button2.BackColor = System.Drawing.Color.SteelBlue;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button2.Location = new System.Drawing.Point(583, 582);
+            this.button2.Location = new System.Drawing.Point(12, 692);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(435, 48);
+            this.button2.Size = new System.Drawing.Size(1137, 47);
             this.button2.TabIndex = 6;
             this.button2.Text = "Выход";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // groupBox7
             // 
-            this.groupBox7.Controls.Add(this.ownerTb);
-            this.groupBox7.Location = new System.Drawing.Point(583, 201);
+            this.groupBox7.Controls.Add(this.dealStatusCb);
+            this.groupBox7.Location = new System.Drawing.Point(12, 95);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(435, 100);
+            this.groupBox7.Size = new System.Drawing.Size(565, 100);
             this.groupBox7.TabIndex = 4;
             this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "Владелец";
+            this.groupBox7.Text = "Статус";
             // 
-            // ownerTb
+            // groupBox2
             // 
-            this.ownerTb.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ownerTb.Location = new System.Drawing.Point(6, 38);
-            this.ownerTb.Name = "ownerTb";
-            this.ownerTb.Size = new System.Drawing.Size(423, 39);
-            this.ownerTb.TabIndex = 0;
+            this.groupBox2.Controls.Add(this.clientsDgv);
+            this.groupBox2.Location = new System.Drawing.Point(584, 204);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(565, 429);
+            this.groupBox2.TabIndex = 4;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Клиент";
             // 
-            // editbutton
+            // clientsDgv
             // 
-            this.editbutton.BackColor = System.Drawing.Color.Black;
-            this.editbutton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.editbutton.ForeColor = System.Drawing.Color.White;
-            this.editbutton.Location = new System.Drawing.Point(583, 519);
-            this.editbutton.Name = "editbutton";
-            this.editbutton.Size = new System.Drawing.Size(435, 48);
-            this.editbutton.TabIndex = 7;
-            this.editbutton.Text = "Редактировать";
-            this.editbutton.UseVisualStyleBackColor = false;
-            this.editbutton.Click += new System.EventHandler(this.editbutton_Click);
+            this.clientsDgv.AllowUserToAddRows = false;
+            this.clientsDgv.AllowUserToDeleteRows = false;
+            this.clientsDgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.clientsDgv.BackgroundColor = System.Drawing.Color.White;
+            this.clientsDgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.clientsDgv.Location = new System.Drawing.Point(0, 39);
+            this.clientsDgv.Name = "clientsDgv";
+            this.clientsDgv.ReadOnly = true;
+            this.clientsDgv.Size = new System.Drawing.Size(565, 390);
+            this.clientsDgv.TabIndex = 0;
+            // 
+            // groupBox8
+            // 
+            this.groupBox8.Controls.Add(this.textBox1);
+            this.groupBox8.Location = new System.Drawing.Point(584, 95);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(565, 100);
+            this.groupBox8.TabIndex = 5;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "Поиск клиента";
+            // 
+            // textBox1
+            // 
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox1.Location = new System.Drawing.Point(6, 38);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(553, 39);
+            this.textBox1.TabIndex = 0;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
+            // 
+            // dealStatusCb
+            // 
+            this.dealStatusCb.FormattingEnabled = true;
+            this.dealStatusCb.Location = new System.Drawing.Point(6, 38);
+            this.dealStatusCb.Name = "dealStatusCb";
+            this.dealStatusCb.Size = new System.Drawing.Size(553, 40);
+            this.dealStatusCb.TabIndex = 0;
             // 
             // AddDealForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1031, 642);
+            this.ClientSize = new System.Drawing.Size(1160, 748);
             this.ControlBox = false;
-            this.Controls.Add(this.editbutton);
+            this.Controls.Add(this.groupBox8);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox7);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.addButton);
-            this.Controls.Add(this.groupBox6);
-            this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Yu Gothic UI", 18F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -271,16 +231,15 @@
             this.Load += new System.EventHandler(this.AddDealForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.objectDgv)).EndInit();
             this.groupBox7.ResumeLayout(false);
-            this.groupBox7.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.clientsDgv)).EndInit();
+            this.groupBox8.ResumeLayout(false);
+            this.groupBox8.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -290,21 +249,17 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label numberLabel;
-        private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.Button addButton;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.ComboBox type;
-        private System.Windows.Forms.ComboBox status;
+        private System.Windows.Forms.DataGridView objectDgv;
         private System.Windows.Forms.GroupBox groupBox7;
-        private System.Windows.Forms.TextBox ownerTb;
         private System.Windows.Forms.Label employeeFIO;
-        private System.Windows.Forms.Label clientFIO;
-        private System.Windows.Forms.Button editbutton;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.DataGridView clientsDgv;
+        private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ComboBox dealStatusCb;
     }
 }

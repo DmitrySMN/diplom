@@ -181,7 +181,7 @@ namespace DemoEx
 
         private void button5_Click(object sender, EventArgs e)
         {
-            new AddDealForm("loginq",0).ShowDialog();
+            new AddDealForm(login).ShowDialog();
             fillAllDgv();
         }
 
@@ -440,6 +440,12 @@ namespace DemoEx
                 }
             }
 
+        }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            new AddDealForm(login, Convert.ToInt32(Convert.ToInt32(clientDGV.SelectedRows[0].Cells[0].Value))).ShowDialog(this);
+            fillAllDgv();
         }
     }
 }
