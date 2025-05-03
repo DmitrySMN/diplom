@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using DB;
 using DemoEx.Forms;
 using DemoEx.utility;
+using MySqlX.XDevAPI;
 
 namespace DemoEx
 {
@@ -134,7 +135,12 @@ namespace DemoEx
             }
 
             db.FillDGV(employeeDGV, $"SELECT id, login as 'Логин', password as 'Пароль', concat(Surname, ' ', Name, ' ', Patronymic) as 'ФИО', passport as 'Паспорт', birth as 'Дата рождения', phone_number as 'Номер телефона', address as 'Адрес', posts.post as 'Должность' FROM db17.employees join posts on employees.post=posts.postId;\r\n");
-            db.FillDGV(dealsDGV, $"SELECT * FROM db17.deals;");
+            db.FillDGV(dealsDGV, $@"SELECT dealId, concat(clients.surname, ' ', clients.name, ' ', clients.patronymic) as 'Клиент', object.cadastral as 'Объект', concat(employees.surname, ' ', employees.name, ' ', employees.patronymic) as 'Риелтор', deals.type as 'Тип', transaction_date as 'Дата заключения', deals.status as 'Статус'
+                                    FROM db17.deals
+                                    join clients on deals.client = clients.id
+                                    join object on deals.object = object.objectId
+                                    join employees on deals.employees = employees.id;
+                                    ");
 
             clientDGV.Columns[0].Visible = false;
             objectsDGV.Columns[0].Visible = false;
