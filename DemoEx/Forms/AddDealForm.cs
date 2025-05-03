@@ -32,6 +32,8 @@ namespace DemoEx
 
         private void AddDealForm_Load(object sender, EventArgs e)
         {
+            clientsDgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
             objectDgv.RowTemplate.Height = 70;
             clientsDgv.RowTemplate.Height = 70;
             objectDgv.MultiSelect = false;
@@ -102,9 +104,11 @@ namespace DemoEx
             clientsDgv.Columns[0].Visible = false;
             db.FillDGV(objectDgv, $"SELECT objectid, object_type.type as 'Тип объекта', square as 'Площадь', rooms as 'Км.', price as 'Цена', photo FROM db17.object JOIN object_type ON object_type.id=object.object_type;");
             objectDgv.Columns[0].Visible = false;
+
             objectDgv.Columns[2].Width = 40;
             objectDgv.Columns[3].Width = 40;
             objectDgv.Columns[4].Width = 100;
+
             db.setUpDgvImages(objectDgv, "Фото объекта");
         }
 
@@ -115,11 +119,21 @@ namespace DemoEx
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //var estateId = Convert.ToInt32(dataGridView1.SelectedCells[0].Value.ToString());
-            //try
-            //{
-            //    db.executeNonQuery($"INSERT INTO `db17`.`deals` (`client`, `estate`, `employees`, `type`, `transaction_date`, `status`) VALUES ('{clientId}', '{estateId}', '{db.getIntValuesFromColumn($"select id from employees where login='{empLogin}'")[0]}', '{type.Text}', '{dateTimePicker1.Value.ToString("yyyy-MM-dd")}', '{status.Text}')");
-            //    MessageBox.Show("Сделка создана!", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            try
+            {
+                db.executeNonQuery($@"INSERT INTO `db17`.`deals` (`client`, `object`, `employees`, `type`, `transaction_date`, `status`) VALUES
+                ('{Convert.ToInt32(clientsDgv.SelectedCells[0].Value)}',
+                '{Convert.ToInt32(objectDgv.SelectedRows[0].Cells[0].Value)}',
+                '{db.getIntValuesFromColumn($"SELECT id FROM db17.employees where login='{empLogin}';")[0]}',
+                'Аренда',
+                '{dateTimePicker1.Value.ToString("yyyy-MM-dd")}',
+                'Новая');");
+                MessageStore.addDealMessage();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
 
             //    if (type.Text == "Аренда")
             //    {
