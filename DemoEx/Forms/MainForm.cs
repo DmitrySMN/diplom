@@ -17,8 +17,12 @@ namespace DemoEx
         private int offset = 0;
         private int page = 1;
         private int objectPage = 1;
+        private int dealsPage = 1;
+        private int employeesPage = 1;
         private int clientsPageCount = 0;
         private int objectPageCount = 0;
+        private int dealsPageCount = 0;
+        private int employeesPageCount = 0;
 
         public MainForm(string login, int post)
         {
@@ -38,6 +42,14 @@ namespace DemoEx
                 int totalObjectRecords = db.getIntValuesFromColumn("select count(*) from object;")[0];
                 objectPageCount = (totalObjectRecords % 10 == 0) ? totalObjectRecords / 10 : totalObjectRecords / 10 + 1;
                 objectPaginationLabel.Text = $"{objectPage}/{objectPageCount}";
+
+                int totalDealsRecords = db.getIntValuesFromColumn("select count(*) from deals;")[0];
+                dealsPageCount = (totalDealsRecords % 10 == 0) ? totalDealsRecords / 10 : totalDealsRecords / 10 + 1;
+                dealsPaginationLabel.Text = $"{dealsPage}/{dealsPageCount}";
+
+                int totalEmployeesRecords = db.getIntValuesFromColumn("select count(*) from employees;")[0];
+                employeesPageCount = (totalEmployeesRecords % 10 == 0) ? totalEmployeesRecords / 10 : totalEmployeesRecords / 10 + 1;
+                employeesPaginationLabel.Text = $"{employeesPage}/{employeesPageCount}";
 
                 string userFullName = db.getValuesFromColumn($"select concat(surname, ' ', name) from employees where login='{login}';")[0];
                 this.Text = $"Главное меню - {userFullName}";
