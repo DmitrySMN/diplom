@@ -95,6 +95,7 @@ namespace DemoEx
             this.button6 = new System.Windows.Forms.Button();
             this.contextMenuStrip4 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.изменитьДанныеОСделкеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -127,6 +128,7 @@ namespace DemoEx
             this.groupBox8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.employeeDGV)).BeginInit();
             this.contextMenuStrip2.SuspendLayout();
+            this.contextMenuStrip4.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -586,6 +588,7 @@ namespace DemoEx
             this.dealsDGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dealsDGV.BackgroundColor = System.Drawing.Color.White;
             this.dealsDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dealsDGV.ContextMenuStrip = this.contextMenuStrip4;
             this.dealsDGV.Location = new System.Drawing.Point(-1, 83);
             this.dealsDGV.Name = "dealsDGV";
             this.dealsDGV.ReadOnly = true;
@@ -770,12 +773,21 @@ namespace DemoEx
             // 
             // contextMenuStrip4
             // 
+            this.contextMenuStrip4.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.изменитьДанныеОСделкеToolStripMenuItem});
             this.contextMenuStrip4.Name = "contextMenuStrip4";
-            this.contextMenuStrip4.Size = new System.Drawing.Size(61, 4);
+            this.contextMenuStrip4.Size = new System.Drawing.Size(214, 26);
             // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // изменитьДанныеОСделкеToolStripMenuItem
+            // 
+            this.изменитьДанныеОСделкеToolStripMenuItem.Name = "изменитьДанныеОСделкеToolStripMenuItem";
+            this.изменитьДанныеОСделкеToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
+            this.изменитьДанныеОСделкеToolStripMenuItem.Text = "Изменить данные сделки";
+            this.изменитьДанныеОСделкеToolStripMenuItem.Click += new System.EventHandler(this.изменитьДанныеОСделкеToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -835,6 +847,7 @@ namespace DemoEx
             this.groupBox8.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.employeeDGV)).EndInit();
             this.contextMenuStrip2.ResumeLayout(false);
+            this.contextMenuStrip4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -904,5 +917,6 @@ namespace DemoEx
         private System.Windows.Forms.ToolStripMenuItem экспортДанныхToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem импортДанныхToolStripMenuItem;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.ToolStripMenuItem изменитьДанныеОСделкеToolStripMenuItem;
     }
 }

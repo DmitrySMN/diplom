@@ -49,6 +49,11 @@ namespace DemoEx.utility
         {
             MessageBox.Show("Данные о сделке успешно изменены!", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+        public static void canNotEditDealMessage()
+        {
+            MessageBox.Show("Эта сделка завершена, ее нельзя изменить!", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
         public static DialogResult createDealDocumentlMessage()
         {
             return MessageBox.Show("Создать документ по данной сделке?", "Создание докумета", MessageBoxButtons.YesNo, MessageBoxIcon.Question);

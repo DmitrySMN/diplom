@@ -50,51 +50,25 @@ namespace DemoEx
                 employeeFIO.Text = db.getValuesFromColumn($"SELECT concat(surname, ' ', name, ' ', patronymic) FROM db17.employees where login='{empLogin}';")[0].ToString();
                 fillDgv();
                 dealStatusCb.SelectedIndex = 0;
-                //switch (type)
-                //{
-                //    case "Покупатель":
-                //        db.FillDGV(dataGridView1, "select objectid, photo, square as 'Площадь', rooms as 'Кол-во комнат', price as 'Цена', owner_id as 'Владелец' from object where status='В продаже';");
-                //        dataGridView1.Columns["photo"].Visible = false;
-                //        dataGridView1.Columns["objectid"].Visible = false;
-                //        dataGridView1.Columns["Владелец"].Visible = false;
-                //        db.setUpDgvImages(dataGridView1, "Фото объекта");
-                //        break;
-                //    case "Арендатель":
-                //        db.FillDGV(dataGridView1, "select objectid, photo, square as 'Площадь', rooms as 'Кол-во комнат', price as 'Цена', owner_id as 'Владелец' from object where status='Сдается в аренду';");
-                //        dataGridView1.Columns["photo"].Visible = false;
-                //        dataGridView1.Columns["objectid"].Visible = false;
-                //        dataGridView1.Columns["Владелец"].Visible = false;
-                //        db.setUpDgvImages(dataGridView1, "Фото объекта");
-                //        break;
-                //}
-
-                //var dealNumber = db.getIntValuesFromColumn("select id from deals ORDER BY id DESC LIMIT 1;")[0] + 1;
-                //numberLabel.Text += " " + dealNumber.ToString();
-                //db.FillLabel(employeeFIO, $"select CONCAT(surname,' ', name,' ', patronymic) from employees where login='{empLogin}';");
-                //clientFIO.Text = db.getValuesFromColumn($"select CONCAT(surname,' ', name,' ', patronymic) from clients where id={clientId};")[0];
-                //var owner_id = dataGridView1.SelectedCells[0].Value;
-                //ownerTb.Text = db.getValuesFromColumn($"select concat(surname,' ', name,' ', patronymic) from clients where id={owner_id};")[0];
             } else
             {
-                this.Text = "Редактирование сделки";
+                Text = "Редактирование сделки";
                 
+                addButton.Text = "Редактировать";
+
                 dateTimePicker1.Enabled = false;
-                
+                dealStatusCb.Items.Add("Ожидание");
+                dealStatusCb.Items.Add("Подтверждена");
+                dealStatusCb.Items.Add("Завершена");
+                dealStatusCb.Items.Add("Отменена");
 
-                //db.FillDGV(dataGridView1, $"select id, photo, square as 'Площадь', rooms as 'Кол-во комнат', price as 'Цена', owner_id as 'Владелец' from estate where id={estateId};");
-                //dataGridView1.Columns["photo"].Visible = false;
-                //dataGridView1.Columns["id"].Visible = false;
-                //dataGridView1.Columns["Владелец"].Visible = false;
-                //db.setUpDgvImages(dataGridView1, "Фото объекта");
+                textBox1.Enabled = false;
 
-                //ownerTb.Text = db.getValuesFromColumn($"select (select concat(surname,' ', name,' ', patronymic) from clients where id=owner_id) from estate where id={estateId};")[0];
-                //ownerId = db.getIntValuesFromColumn($"select (select id from clients where id=owner_id) from estate where id={estateId};")[0];
+                employeeFIO.Text = db.getValuesFromColumn($"SELECT concat(employees.surname, ' ', employees.name, ' ', employees.patronymic) FROM db17.deals \r\njoin employees on deals.employees=employees.id\r\nwhere dealId={dealId};")[0];
 
-                //dateTimePicker1.Value = db.getDateValuesFromColumn($"select transaction_date from deals where id={clientId};")[0];
-                //db.FillLabel(clientFIO, $"select (select CONCAT(surname, ' ', name, ' ',patronymic) from clients where id=client) from deals where id={clientId};");
-                //db.FillLabel(employeeFIO, $"select (select CONCAT(surname,' ', name, ' ', patronymic) from employees where id=employees) from deals where id={clientId};");
-                //type.Text = db.getValuesFromColumn($"select type from deals where id={clientId};")[0].ToString();
-                //status.Text = db.getValuesFromColumn($"select status from deals where id={clientId};")[0].ToString();
+                db.FillDGV(clientsDgv, $"SELECT concat(clients.surname, ' ', clients.name, ' ', clients.patronymic) as 'ФИО' FROM db17.deals \r\njoin clients on deals.client=clients.id\r\nwhere dealId={dealId};");
+                db.FillDGV(objectDgv, $"SELECT (select type from object_type where id=object.object_type) as 'Тип', object.cadastral as 'Кадастровый номер' FROM db17.deals \r\njoin object on deals.object=object.objectId\r\nwhere dealId={dealId};");
+                dealStatusCb.SelectedItem = db.getValuesFromColumn($"SELECT status FROM db17.deals where dealId={dealId};")[0];
             }
         }
 
@@ -121,14 +95,22 @@ namespace DemoEx
         {
             try
             {
-                db.executeNonQuery($@"INSERT INTO `db17`.`deals` (`client`, `object`, `employees`, `type`, `transaction_date`, `status`) VALUES
-                ('{Convert.ToInt32(clientsDgv.SelectedCells[0].Value)}',
-                '{Convert.ToInt32(objectDgv.SelectedRows[0].Cells[0].Value)}',
-                '{db.getIntValuesFromColumn($"SELECT id FROM db17.employees where login='{empLogin}';")[0]}',
-                'Аренда',
-                '{dateTimePicker1.Value.ToString("yyyy-MM-dd")}',
-                'Новая');");
-                MessageStore.addDealMessage();
+                if (dealId == 0)
+                {
+                    db.executeNonQuery($@"INSERT INTO `db17`.`deals` (`client`, `object`, `employees`, `type`, `transaction_date`, `status`) VALUES
+                    ('{Convert.ToInt32(clientsDgv.SelectedCells[0].Value)}',
+                    '{Convert.ToInt32(objectDgv.SelectedRows[0].Cells[0].Value)}',
+                    '{db.getIntValuesFromColumn($"SELECT id FROM db17.employees where login='{empLogin}';")[0]}',
+                    'Аренда',
+                    '{dateTimePicker1.Value.ToString("yyyy-MM-dd")}',
+                    'Новая');");
+                    MessageStore.addDealMessage();
+                } else
+                {
+                    db.executeNonQuery($"UPDATE `db17`.`deals` SET `status` = '{dealStatusCb.Text}' WHERE (`dealId` = '{dealId}');");
+                    MessageStore.editDealMessage();
+                }
+
             }
             catch (Exception ex)
             {

@@ -125,24 +125,24 @@ namespace DemoEx
 
             if (objectType == 0)
             { 
-                db.FillDGV(objectsDGV, $"SELECT objectid, object_type.type as 'Тип объекта', concat(clients.surname,' ', clients.name, ' ', clients.patronymic) as 'Владелец', object_address as 'Адрес', square as 'Площадь', cadastral as 'Кадастровый ном.', rooms as 'Кол-во комнат', price as 'Цена', photo, status as 'Статус'\r\nFROM db17.object\r\nJOIN object_type ON object_type.id=object.object_type\r\nJOIN clients ON clients.id=object.owner_id;");
+                db.FillDGV(objectsDGV, $"SELECT objectid, object_type.type as 'Тип объекта', concat(clients.surname,' ', clients.name, ' ', clients.patronymic) as 'Владелец', object_address as 'Адрес', square as 'Площадь', cadastral as 'Кадаст. ном.', rooms as 'Кол-во комнат', price as 'Цена', photo, status as 'Статус'\r\nFROM db17.object\r\nJOIN object_type ON object_type.id=object.object_type\r\nJOIN clients ON clients.id=object.owner_id;");
             }
             else
             {
-                db.FillDGV(objectsDGV, $"SELECT objectid, object_type.type as 'Тип объекта', concat(clients.surname,' ', clients.name, ' ', clients.patronymic) as 'Владелец', object_address as 'Адрес', square as 'Площадь', cadastral as 'Кадастровый ном.', rooms as 'Кол-во комнат', price as 'Цена', photo, status as 'Статус'\r\nFROM db17.object\r\nJOIN object_type ON object_type.id=object.object_type\r\nJOIN clients ON clients.id=object.owner_id WHERE object_type='{objectType}';");
+                db.FillDGV(objectsDGV, $"SELECT objectid, object_type.type as 'Тип объекта', concat(clients.surname,' ', clients.name, ' ', clients.patronymic) as 'Владелец', object_address as 'Адрес', square as 'Площадь', cadastral as 'Кадаст. ном.', rooms as 'Кол-во комнат', price as 'Цена', photo, status as 'Статус'\r\nFROM db17.object\r\nJOIN object_type ON object_type.id=object.object_type\r\nJOIN clients ON clients.id=object.owner_id WHERE object_type='{objectType}';");
             }
 
             if (objectSortIndex == 1)
             {
-                db.FillDGV(objectsDGV, $"SELECT objectid, object_type.type as 'Тип объекта', concat(clients.surname,' ', clients.name, ' ', clients.patronymic) as 'Владелец', object_address as 'Адрес', square as 'Площадь', cadastral as 'Кадастровый ном.', rooms as 'Кол-во комнат', price as 'Цена', photo, status as 'Статус'\r\nFROM db17.object\r\nJOIN object_type ON object_type.id=object.object_type\r\nJOIN clients ON clients.id=object.owner_id order by price;");
+                db.FillDGV(objectsDGV, $"SELECT objectid, object_type.type as 'Тип объекта', concat(clients.surname,' ', clients.name, ' ', clients.patronymic) as 'Владелец', object_address as 'Адрес', square as 'Площадь', cadastral as 'Кадаст. ном.', rooms as 'Кол-во комнат', price as 'Цена', photo, status as 'Статус'\r\nFROM db17.object\r\nJOIN object_type ON object_type.id=object.object_type\r\nJOIN clients ON clients.id=object.owner_id order by price;");
             }
             else if (objectSortIndex == 2)
             {
-                db.FillDGV(objectsDGV, $"SELECT objectid, object_type.type as 'Тип объекта', concat(clients.surname,' ', clients.name, ' ', clients.patronymic) as 'Владелец', object_address as 'Адрес', square as 'Площадь', cadastral as 'Кадастровый ном.', rooms as 'Кол-во комнат', price as 'Цена', photo, status as 'Статус'\r\nFROM db17.object\r\nJOIN object_type ON object_type.id=object.object_type\r\nJOIN clients ON clients.id=object.owner_id order by price desc;");
+                db.FillDGV(objectsDGV, $"SELECT objectid, object_type.type as 'Тип объекта', concat(clients.surname,' ', clients.name, ' ', clients.patronymic) as 'Владелец', object_address as 'Адрес', square as 'Площадь', cadastral as 'Кадаст. ном.', rooms as 'Кол-во комнат', price as 'Цена', photo, status as 'Статус'\r\nFROM db17.object\r\nJOIN object_type ON object_type.id=object.object_type\r\nJOIN clients ON clients.id=object.owner_id order by price desc;");
             }
             else
             {
-                db.FillDGV(objectsDGV, $"SELECT objectid, object_type.type as 'Тип объекта', concat(clients.surname,' ', clients.name, ' ', clients.patronymic) as 'Владелец', object_address as 'Адрес', square as 'Площадь', cadastral as 'Кадастровый ном.', rooms as 'Кол-во комнат', price as 'Цена', photo, status as 'Статус'\r\nFROM db17.object\r\nJOIN object_type ON object_type.id=object.object_type\r\nJOIN clients ON clients.id=object.owner_id");
+                db.FillDGV(objectsDGV, $"SELECT objectid, object_type.type as 'Тип объекта', concat(clients.surname,' ', clients.name, ' ', clients.patronymic) as 'Владелец', object_address as 'Адрес', square as 'Площадь', cadastral as 'Кадаст. ном..', rooms as 'Кол-во комнат', price as 'Цена', photo, status as 'Статус'\r\nFROM db17.object\r\nJOIN object_type ON object_type.id=object.object_type\r\nJOIN clients ON clients.id=object.owner_id");
 
             }
 
@@ -463,6 +463,18 @@ namespace DemoEx
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
             new AddDealForm(login, Convert.ToInt32(Convert.ToInt32(clientDGV.SelectedRows[0].Cells[0].Value))).ShowDialog(this);
+            fillAllDgv();
+        }
+
+        private void изменитьДанныеОСделкеToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (dealsDGV.SelectedRows[0].Cells[6].Value.ToString() != "Завершена")
+            {
+                new AddDealForm(login, Convert.ToInt32(dealsDGV.SelectedRows[0].Cells[0].Value)).ShowDialog();
+            } else
+            {
+                MessageStore.canNotEditDealMessage();
+            }
             fillAllDgv();
         }
     }

@@ -38,11 +38,11 @@
             this.addButton = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.dealStatusCb = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.clientsDgv = new System.Windows.Forms.DataGridView();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.dealStatusCb = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -156,6 +156,14 @@
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Статус";
             // 
+            // dealStatusCb
+            // 
+            this.dealStatusCb.FormattingEnabled = true;
+            this.dealStatusCb.Location = new System.Drawing.Point(6, 38);
+            this.dealStatusCb.Name = "dealStatusCb";
+            this.dealStatusCb.Size = new System.Drawing.Size(553, 40);
+            this.dealStatusCb.TabIndex = 0;
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.clientsDgv);
@@ -193,19 +201,12 @@
             // 
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox1.Location = new System.Drawing.Point(6, 38);
+            this.textBox1.MaxLength = 50;
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(553, 39);
             this.textBox1.TabIndex = 0;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
-            // 
-            // dealStatusCb
-            // 
-            this.dealStatusCb.FormattingEnabled = true;
-            this.dealStatusCb.Location = new System.Drawing.Point(6, 38);
-            this.dealStatusCb.Name = "dealStatusCb";
-            this.dealStatusCb.Size = new System.Drawing.Size(553, 40);
-            this.dealStatusCb.TabIndex = 0;
             // 
             // AddDealForm
             // 
