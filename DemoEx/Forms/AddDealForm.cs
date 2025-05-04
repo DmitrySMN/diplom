@@ -39,8 +39,11 @@ namespace DemoEx
             objectDgv.MultiSelect = false;
             objectDgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
-            objectDgv.DefaultCellStyle.SelectionBackColor = Color.FromArgb(246, 246, 246);
+            clientsDgv.DefaultCellStyle.SelectionBackColor = Color.OldLace;
+            objectDgv.DefaultCellStyle.SelectionBackColor = Color.OldLace;
+
             objectDgv.DefaultCellStyle.SelectionForeColor = Color.Black;
+            clientsDgv.DefaultCellStyle.SelectionForeColor = Color.Black;
 
             dealStatusCb.DropDownStyle = ComboBoxStyle.DropDownList;
             dealStatusCb.Items.Add("Новая");
@@ -66,7 +69,7 @@ namespace DemoEx
 
                 employeeFIO.Text = db.getValuesFromColumn($"SELECT concat(employees.surname, ' ', employees.name, ' ', employees.patronymic) FROM db17.deals \r\njoin employees on deals.employees=employees.id\r\nwhere dealId={dealId};")[0];
 
-                db.FillDGV(clientsDgv, $"SELECT concat(clients.surname, ' ', clients.name, ' ', clients.patronymic) as 'ФИО' FROM db17.deals \r\njoin clients on deals.client=clients.id\r\nwhere dealId={dealId};");
+                db.FillDGV(clientsDgv, $"SELECT concat(clients.surname, ' ', clients.name, ' ', clients.patronymic) as 'ФИО', birth as 'Дата рождения' FROM db17.deals \r\njoin clients on deals.client=clients.id\r\nwhere dealId={dealId};");
                 db.FillDGV(objectDgv, $"SELECT (select type from object_type where id=object.object_type) as 'Тип', object.cadastral as 'Кадастровый номер' FROM db17.deals \r\njoin object on deals.object=object.objectId\r\nwhere dealId={dealId};");
                 dealStatusCb.SelectedItem = db.getValuesFromColumn($"SELECT status FROM db17.deals where dealId={dealId};")[0];
             }
@@ -74,7 +77,7 @@ namespace DemoEx
 
         private void fillDgv()
         {
-            db.FillDGV(clientsDgv, $"SELECT id, concat(surname, ' ', name, ' ', patronymic) as 'ФИО' FROM db17.clients where type ='Покупатель' or type ='Арендатель';");
+            db.FillDGV(clientsDgv, $"SELECT id, concat(surname, ' ', name, ' ', patronymic) as 'ФИО', birth as 'Дата рождения' FROM db17.clients where type ='Покупатель' or type ='Арендатель';");
             clientsDgv.Columns[0].Visible = false;
             db.FillDGV(objectDgv, $"SELECT objectid, object_type.type as 'Тип объекта', square as 'Площадь', rooms as 'Км.', price as 'Цена', photo FROM db17.object JOIN object_type ON object_type.id=object.object_type;");
             objectDgv.Columns[0].Visible = false;
@@ -116,20 +119,6 @@ namespace DemoEx
             {
                 MessageBox.Show(ex.Message);
             }
-
-            //    if (type.Text == "Аренда")
-            //    {
-            //        db.executeNonQuery($"UPDATE `db17`.`estate` SET `status` = '{"Арендовано"}' WHERE (`id` = '{estateId}');");
-            //    } else if (type.Text == "Покупка")
-            //    {
-            //        db.executeNonQuery($"UPDATE `db17`.`estate` SET `status` = '{"Продан"}' WHERE (`id` = '{estateId}');");
-            //    }
-            //}
-            //catch (Exception exc)
-            //{
-            //    MessageStore.somethingWentWrongMessage();
-            //}
-
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
