@@ -76,6 +76,8 @@ namespace DemoEx
             this.groupBox10 = new System.Windows.Forms.GroupBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.dealsDGV = new System.Windows.Forms.DataGridView();
+            this.contextMenuStrip4 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.изменитьДанныеОСделкеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.button5 = new System.Windows.Forms.Button();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.employeesPaginationLabel = new System.Windows.Forms.Label();
@@ -93,9 +95,9 @@ namespace DemoEx
             this.удалитьСотрудникаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.button4 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
-            this.contextMenuStrip4 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.изменитьДанныеОСделкеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.создатьДокументыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.просмотрДокументовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -120,6 +122,7 @@ namespace DemoEx
             this.groupBox9.SuspendLayout();
             this.groupBox10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dealsDGV)).BeginInit();
+            this.contextMenuStrip4.SuspendLayout();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
@@ -128,7 +131,6 @@ namespace DemoEx
             this.groupBox8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.employeeDGV)).BeginInit();
             this.contextMenuStrip2.SuspendLayout();
-            this.contextMenuStrip4.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -596,6 +598,22 @@ namespace DemoEx
             this.dealsDGV.TabIndex = 9;
             this.dealsDGV.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dealsDGV_CellMouseDown);
             // 
+            // contextMenuStrip4
+            // 
+            this.contextMenuStrip4.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.изменитьДанныеОСделкеToolStripMenuItem,
+            this.создатьДокументыToolStripMenuItem,
+            this.просмотрДокументовToolStripMenuItem});
+            this.contextMenuStrip4.Name = "contextMenuStrip4";
+            this.contextMenuStrip4.Size = new System.Drawing.Size(214, 92);
+            // 
+            // изменитьДанныеОСделкеToolStripMenuItem
+            // 
+            this.изменитьДанныеОСделкеToolStripMenuItem.Name = "изменитьДанныеОСделкеToolStripMenuItem";
+            this.изменитьДанныеОСделкеToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
+            this.изменитьДанныеОСделкеToolStripMenuItem.Text = "Изменить данные сделки";
+            this.изменитьДанныеОСделкеToolStripMenuItem.Click += new System.EventHandler(this.изменитьДанныеОСделкеToolStripMenuItem_Click);
+            // 
             // button5
             // 
             this.button5.BackColor = System.Drawing.Color.SkyBlue;
@@ -771,23 +789,22 @@ namespace DemoEx
             this.button6.UseVisualStyleBackColor = false;
             this.button6.Click += new System.EventHandler(this.button6_Click_1);
             // 
-            // contextMenuStrip4
-            // 
-            this.contextMenuStrip4.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.изменитьДанныеОСделкеToolStripMenuItem});
-            this.contextMenuStrip4.Name = "contextMenuStrip4";
-            this.contextMenuStrip4.Size = new System.Drawing.Size(214, 26);
-            // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // изменитьДанныеОСделкеToolStripMenuItem
+            // создатьДокументыToolStripMenuItem
             // 
-            this.изменитьДанныеОСделкеToolStripMenuItem.Name = "изменитьДанныеОСделкеToolStripMenuItem";
-            this.изменитьДанныеОСделкеToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
-            this.изменитьДанныеОСделкеToolStripMenuItem.Text = "Изменить данные сделки";
-            this.изменитьДанныеОСделкеToolStripMenuItem.Click += new System.EventHandler(this.изменитьДанныеОСделкеToolStripMenuItem_Click);
+            this.создатьДокументыToolStripMenuItem.Name = "создатьДокументыToolStripMenuItem";
+            this.создатьДокументыToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
+            this.создатьДокументыToolStripMenuItem.Text = "Создать документы";
+            this.создатьДокументыToolStripMenuItem.Click += new System.EventHandler(this.создатьДокументыToolStripMenuItem_Click);
+            // 
+            // просмотрДокументовToolStripMenuItem
+            // 
+            this.просмотрДокументовToolStripMenuItem.Name = "просмотрДокументовToolStripMenuItem";
+            this.просмотрДокументовToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
+            this.просмотрДокументовToolStripMenuItem.Text = "Просмотр документов";
             // 
             // MainForm
             // 
@@ -837,6 +854,7 @@ namespace DemoEx
             this.groupBox10.ResumeLayout(false);
             this.groupBox10.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dealsDGV)).EndInit();
+            this.contextMenuStrip4.ResumeLayout(false);
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
@@ -847,7 +865,6 @@ namespace DemoEx
             this.groupBox8.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.employeeDGV)).EndInit();
             this.contextMenuStrip2.ResumeLayout(false);
-            this.contextMenuStrip4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -918,5 +935,7 @@ namespace DemoEx
         private System.Windows.Forms.ToolStripMenuItem импортДанныхToolStripMenuItem;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.ToolStripMenuItem изменитьДанныеОСделкеToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem создатьДокументыToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem просмотрДокументовToolStripMenuItem;
     }
 }

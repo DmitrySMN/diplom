@@ -13,6 +13,7 @@ using System.Configuration;
 using System.Threading;
 using System.Text.RegularExpressions;
 using DemoEx.utility;
+using DemoEx.Forms;
 
 
 namespace DemoEx
@@ -143,7 +144,7 @@ namespace DemoEx
 
         private void label3_Click(object sender, EventArgs e)
         {
-            new ManageConnectionForm().ShowDialog();
+            
         }
     }
 }

@@ -477,5 +477,17 @@ namespace DemoEx
             }
             fillAllDgv();
         }
+
+        private void создатьДокументыToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (dealsDGV.SelectedRows[0].Cells[6].Value.ToString() != "Завершена" || dealsDGV.SelectedRows[0].Cells[6].Value.ToString() != "Подтверждена")
+            {
+                new CreateDocumentForm().ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Для данное сделки пока нельзя создать документы");
+            }
+        }
     }
 }
