@@ -805,6 +805,7 @@ namespace DemoEx
             this.просмотрДокументовToolStripMenuItem.Name = "просмотрДокументовToolStripMenuItem";
             this.просмотрДокументовToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
             this.просмотрДокументовToolStripMenuItem.Text = "Просмотр документов";
+            this.просмотрДокументовToolStripMenuItem.Click += new System.EventHandler(this.просмотрДокументовToolStripMenuItem_Click);
             // 
             // MainForm
             // 

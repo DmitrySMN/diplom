@@ -75,6 +75,7 @@ namespace DemoEx
                 {
                     db.executeNonQuery($"UPDATE `db17`.`clients` SET `Surname` = '{surname.Text}', `Name` = '{name.Text}', `Patronymic` = '{pat.Text}', `passport` = '{passport.Text}', `address` = '{address.Text}', `birth` = '{dateTimePicker1.Value.ToString("yyyy-MM-dd")}', `phone_number` = '{phone.Text}', `type` = '{type.Text}' WHERE (`id` = '{id}');");
                     MessageStore.clientDataEditedMessage();
+                    Close();
                 }
             }
             catch (Exception ex)

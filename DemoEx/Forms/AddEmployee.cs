@@ -73,17 +73,14 @@ namespace DemoEx
                 else
                 {
                     db.executeNonQuery($"UPDATE `db17`.`employees` SET `login` = '{loginTb.Text}', password = '{db.getHashFromPassword(pwdTb.Text)}', `Surname` = '{surname.Text}', `Name` = '{name.Text}', `Patronymic` = '{pat.Text}', `passport` = '{passport.Text}', `birth` = '{dateTimePicker1.Value.ToString("yyyy-MM-dd")}', `phone_number` = '{phone.Text}', `address` = '{address.Text}' WHERE (`id` = {id});");
-
                     MessageBox.Show("Данные сотрудника изменены!", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                    Close();
                 }
             }
         }
 
         private void AddEmployee_Load(object sender, EventArgs e)
         {
-            
-
             dateTimePicker1.MinDate = DateTime.Now.AddYears(-99);
             dateTimePicker1.MaxDate = DateTime.Now.AddYears(-18);
 
@@ -101,7 +98,6 @@ namespace DemoEx
                 passport.Text = db.getValuesFromColumn($"select passport from employees where id={id};")[0];
                 phone.Text = db.getValuesFromColumn($"select phone_number from employees where id={id};")[0];
                 address.Text = db.getValuesFromColumn($"select address from employees where id={id};")[0];
-                //dateTimePicker1.Value = db.getDateValuesFromColumn($"select birth from employees where id={id};")[0];
 
                 button1.Text = "Редактирование";
             }

@@ -82,6 +82,7 @@ namespace DemoEx.Forms
                 else
                 {
                     MessageBox.Show("Редактирование");
+                    Close();
                 }
 
             }

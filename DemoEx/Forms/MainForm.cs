@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 using DB;
 using DemoEx.Forms;
@@ -488,6 +490,18 @@ namespace DemoEx
             {
                 MessageBox.Show("Для данное сделки пока нельзя создать документы");
             }
+        }
+
+        private void просмотрДокументовToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string docsFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Документы по сделкам");
+
+            if (!Directory.Exists(docsFolder))
+            {
+                Directory.CreateDirectory(docsFolder);
+            }
+
+            Process.Start("explorer.exe", docsFolder);
         }
     }
 }

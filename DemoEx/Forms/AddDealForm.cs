@@ -112,6 +112,7 @@ namespace DemoEx
                 {
                     db.executeNonQuery($"UPDATE `db17`.`deals` SET `status` = '{dealStatusCb.Text}' WHERE (`dealId` = '{dealId}');");
                     MessageStore.editDealMessage();
+                    Close();
                 }
 
             }
