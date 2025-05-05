@@ -12,9 +12,21 @@ namespace DemoEx.Forms
 {
     public partial class CreateDocumentForm : Form
     {
-        public CreateDocumentForm()
+        private int dealId; 
+        public CreateDocumentForm(int dealId = 0)
         {
             InitializeComponent();
+            this.dealId = dealId;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void CreateDocumentForm_Load(object sender, EventArgs e)
+        {
+            groupBox1.Text = $"Сделка №{dealId}";
         }
     }
 }

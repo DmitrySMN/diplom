@@ -484,7 +484,7 @@ namespace DemoEx
         {
             if (dealsDGV.SelectedRows[0].Cells[6].Value.ToString() != "Завершена" || dealsDGV.SelectedRows[0].Cells[6].Value.ToString() != "Подтверждена")
             {
-                new CreateDocumentForm().ShowDialog();
+                new CreateDocumentForm(Convert.ToInt32(dealsDGV.SelectedRows[0].Cells[0].Value)).ShowDialog();
             }
             else
             {
