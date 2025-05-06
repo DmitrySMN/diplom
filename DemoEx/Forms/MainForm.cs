@@ -91,19 +91,31 @@ namespace DemoEx
                 objectsFilter.Items.Add("Офис");
 
                 dealsFilter.Items.Add("По умолчанию");
+                dealsFilter.Items.Add("Новые");
+                dealsFilter.Items.Add("Подтвержденные");
+                dealsFilter.Items.Add("Отмененные");
+                dealsFilter.Items.Add("Завершенные");
 
                 employeeFilter.Items.Add("По умолчанию");
+                employeeFilter.Items.Add("Риелторы");
+                employeeFilter.Items.Add("Менеджеры");
+                employeeFilter.Items.Add("Администраторы");
 
                 objectsSort.Items.Add("По умолчанию");
-                objectsSort.Items.Add("Цена ↑");
-                objectsSort.Items.Add("Цена ↓");
-
+                objectsSort.Items.Add("Цена (убыв.)");
+                objectsSort.Items.Add("Цена (возр.)");
 
                 clientSort.Items.Add("По умолчанию");
+                clientSort.Items.Add("Дата рождения (возр.)");
+                clientSort.Items.Add("Дата рождения (убыв.)");
 
                 dealsSort.Items.Add("По умолчанию");
+                dealsSort.Items.Add("Дата заключения (убыв.)");
+                dealsSort.Items.Add("Дата заключения (возр.)");
 
                 employeeSort.Items.Add("По умолчанию");
+                employeeSort.Items.Add("Дата рождения (убыв.)");
+                employeeSort.Items.Add("Дата рождения (возр.)");
 
                 clientsFilter.SelectedIndex = 0;
                 objectsFilter.SelectedIndex = 0;
@@ -136,11 +148,11 @@ namespace DemoEx
 
             if (objectSortIndex == 1)
             {
-                db.FillDGV(objectsDGV, $"SELECT objectid, object_type.type as 'Тип объекта', concat(clients.surname,' ', clients.name, ' ', clients.patronymic) as 'Владелец', object_address as 'Адрес', square as 'Площадь', cadastral as 'Кадаст. ном.', rooms as 'Кол-во комнат', price as 'Цена', photo, status as 'Статус'\r\nFROM db17.object\r\nJOIN object_type ON object_type.id=object.object_type\r\nJOIN clients ON clients.id=object.owner_id order by price;");
+                db.FillDGV(objectsDGV, $"SELECT objectid, object_type.type as 'Тип объекта', concat(clients.surname,' ', clients.name, ' ', clients.patronymic) as 'Владелец', object_address as 'Адрес', square as 'Площадь', cadastral as 'Кадаст. ном.', rooms as 'Кол-во комнат', price as 'Цена', photo, status as 'Статус'\r\nFROM db17.object\r\nJOIN object_type ON object_type.id=object.object_type\r\nJOIN clients ON clients.id=object.owner_id order by price desc;");
             }
             else if (objectSortIndex == 2)
             {
-                db.FillDGV(objectsDGV, $"SELECT objectid, object_type.type as 'Тип объекта', concat(clients.surname,' ', clients.name, ' ', clients.patronymic) as 'Владелец', object_address as 'Адрес', square as 'Площадь', cadastral as 'Кадаст. ном.', rooms as 'Кол-во комнат', price as 'Цена', photo, status as 'Статус'\r\nFROM db17.object\r\nJOIN object_type ON object_type.id=object.object_type\r\nJOIN clients ON clients.id=object.owner_id order by price desc;");
+                db.FillDGV(objectsDGV, $"SELECT objectid, object_type.type as 'Тип объекта', concat(clients.surname,' ', clients.name, ' ', clients.patronymic) as 'Владелец', object_address as 'Адрес', square as 'Площадь', cadastral as 'Кадаст. ном.', rooms as 'Кол-во комнат', price as 'Цена', photo, status as 'Статус'\r\nFROM db17.object\r\nJOIN object_type ON object_type.id=object.object_type\r\nJOIN clients ON clients.id=object.owner_id order by price;");
             }
             else
             {
@@ -502,6 +514,33 @@ namespace DemoEx
             }
 
             Process.Start("explorer.exe", docsFolder);
+        }
+
+        private void dealsSort_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int dealSortIndex = dealsSort.SelectedIndex;
+
+            if (dealSortIndex == 0)
+            {
+                fillAllDgv();
+            }
+            else if (dealSortIndex == 1)
+            {
+                db.FillDGV(dealsDGV, $@"SELECT dealId, concat(clients.surname, ' ', clients.name, ' ', clients.patronymic) as 'Клиент', object.cadastral as 'Объект', concat(employees.surname, ' ', employees.name, ' ', employees.patronymic) as 'Риелтор', deals.type as 'Тип', transaction_date as 'Дата заключения', deals.status as 'Статус'
+                                    FROM db17.deals
+                                    join clients on deals.client = clients.id
+                                    join object on deals.object = object.objectId
+                                    join employees on deals.employees = employees.id
+                                    order by deals.transaction_date desc;");
+            } else
+            {
+                db.FillDGV(dealsDGV, $@"SELECT dealId, concat(clients.surname, ' ', clients.name, ' ', clients.patronymic) as 'Клиент', object.cadastral as 'Объект', concat(employees.surname, ' ', employees.name, ' ', employees.patronymic) as 'Риелтор', deals.type as 'Тип', transaction_date as 'Дата заключения', deals.status as 'Статус'
+                                    FROM db17.deals
+                                    join clients on deals.client = clients.id
+                                    join object on deals.object = object.objectId
+                                    join employees on deals.employees = employees.id
+                                    order by deals.transaction_date;");
+            }
         }
     }
 }

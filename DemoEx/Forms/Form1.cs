@@ -119,7 +119,8 @@ namespace DemoEx
                 
             } catch(Exception ex)
             {
-                MessageStore.somethingWentWrongMessage();
+                //MessageStore.somethingWentWrongMessage();
+                MessageBox.Show(ex.Message);
             }
         }
 

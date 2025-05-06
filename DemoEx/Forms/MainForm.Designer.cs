@@ -42,7 +42,6 @@ namespace DemoEx
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.clientDGV = new System.Windows.Forms.DataGridView();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.создатьЗапросToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.изменитьДанныеКлиентаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.удалитьКлиентаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.экспортДанныхToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -78,6 +77,8 @@ namespace DemoEx
             this.dealsDGV = new System.Windows.Forms.DataGridView();
             this.contextMenuStrip4 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.изменитьДанныеОСделкеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.создатьДокументыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.просмотрДокументовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.button5 = new System.Windows.Forms.Button();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.employeesPaginationLabel = new System.Windows.Forms.Label();
@@ -96,8 +97,6 @@ namespace DemoEx
             this.button4 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.создатьДокументыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.просмотрДокументовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -252,20 +251,12 @@ namespace DemoEx
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.создатьЗапросToolStripMenuItem,
             this.изменитьДанныеКлиентаToolStripMenuItem,
             this.удалитьКлиентаToolStripMenuItem,
             this.экспортДанныхToolStripMenuItem,
             this.импортДанныхToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(220, 114);
-            // 
-            // создатьЗапросToolStripMenuItem
-            // 
-            this.создатьЗапросToolStripMenuItem.Name = "создатьЗапросToolStripMenuItem";
-            this.создатьЗапросToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
-            this.создатьЗапросToolStripMenuItem.Text = "Добавить запрос";
-            this.создатьЗапросToolStripMenuItem.Click += new System.EventHandler(this.создатьЗапросToolStripMenuItem_Click);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(220, 92);
             // 
             // изменитьДанныеКлиентаToolStripMenuItem
             // 
@@ -546,6 +537,7 @@ namespace DemoEx
             this.dealsSort.Name = "dealsSort";
             this.dealsSort.Size = new System.Drawing.Size(360, 40);
             this.dealsSort.TabIndex = 0;
+            this.dealsSort.SelectedIndexChanged += new System.EventHandler(this.dealsSort_SelectedIndexChanged);
             // 
             // groupBox9
             // 
@@ -605,7 +597,7 @@ namespace DemoEx
             this.создатьДокументыToolStripMenuItem,
             this.просмотрДокументовToolStripMenuItem});
             this.contextMenuStrip4.Name = "contextMenuStrip4";
-            this.contextMenuStrip4.Size = new System.Drawing.Size(214, 92);
+            this.contextMenuStrip4.Size = new System.Drawing.Size(214, 70);
             // 
             // изменитьДанныеОСделкеToolStripMenuItem
             // 
@@ -613,6 +605,20 @@ namespace DemoEx
             this.изменитьДанныеОСделкеToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
             this.изменитьДанныеОСделкеToolStripMenuItem.Text = "Изменить данные сделки";
             this.изменитьДанныеОСделкеToolStripMenuItem.Click += new System.EventHandler(this.изменитьДанныеОСделкеToolStripMenuItem_Click);
+            // 
+            // создатьДокументыToolStripMenuItem
+            // 
+            this.создатьДокументыToolStripMenuItem.Name = "создатьДокументыToolStripMenuItem";
+            this.создатьДокументыToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
+            this.создатьДокументыToolStripMenuItem.Text = "Создать документы";
+            this.создатьДокументыToolStripMenuItem.Click += new System.EventHandler(this.создатьДокументыToolStripMenuItem_Click);
+            // 
+            // просмотрДокументовToolStripMenuItem
+            // 
+            this.просмотрДокументовToolStripMenuItem.Name = "просмотрДокументовToolStripMenuItem";
+            this.просмотрДокументовToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
+            this.просмотрДокументовToolStripMenuItem.Text = "Просмотр документов";
+            this.просмотрДокументовToolStripMenuItem.Click += new System.EventHandler(this.просмотрДокументовToolStripMenuItem_Click);
             // 
             // button5
             // 
@@ -793,20 +799,6 @@ namespace DemoEx
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // создатьДокументыToolStripMenuItem
-            // 
-            this.создатьДокументыToolStripMenuItem.Name = "создатьДокументыToolStripMenuItem";
-            this.создатьДокументыToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
-            this.создатьДокументыToolStripMenuItem.Text = "Создать документы";
-            this.создатьДокументыToolStripMenuItem.Click += new System.EventHandler(this.создатьДокументыToolStripMenuItem_Click);
-            // 
-            // просмотрДокументовToolStripMenuItem
-            // 
-            this.просмотрДокументовToolStripMenuItem.Name = "просмотрДокументовToolStripMenuItem";
-            this.просмотрДокументовToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
-            this.просмотрДокументовToolStripMenuItem.Text = "Просмотр документов";
-            this.просмотрДокументовToolStripMenuItem.Click += new System.EventHandler(this.просмотрДокументовToolStripMenuItem_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
@@ -901,7 +893,6 @@ namespace DemoEx
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.ToolStripMenuItem создатьЗапросToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem изменитьДанныеКлиентаToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem удалитьКлиентаToolStripMenuItem;
         private System.Windows.Forms.TextBox textBox2;

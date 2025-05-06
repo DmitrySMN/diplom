@@ -60,7 +60,6 @@ namespace DemoEx
                 addButton.Text = "Редактировать";
 
                 dateTimePicker1.Enabled = false;
-                dealStatusCb.Items.Add("Ожидание");
                 dealStatusCb.Items.Add("Подтверждена");
                 dealStatusCb.Items.Add("Завершена");
                 dealStatusCb.Items.Add("Отменена");
