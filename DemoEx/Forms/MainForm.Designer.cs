@@ -556,6 +556,7 @@ namespace DemoEx
             this.dealsFilter.Name = "dealsFilter";
             this.dealsFilter.Size = new System.Drawing.Size(360, 40);
             this.dealsFilter.TabIndex = 0;
+            this.dealsFilter.SelectedIndexChanged += new System.EventHandler(this.dealsFilter_SelectedIndexChanged);
             // 
             // groupBox10
             // 

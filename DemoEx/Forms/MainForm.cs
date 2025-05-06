@@ -432,6 +432,14 @@ namespace DemoEx
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
             fillAllDgv();
+            clientsFilter.SelectedIndex = 0;
+            objectsFilter.SelectedIndex = 0;
+            dealsFilter.SelectedIndex = 0;
+            employeeFilter.SelectedIndex = 0;
+            objectsSort.SelectedIndex = 0;
+            clientSort.SelectedIndex = 0;
+            dealsSort.SelectedIndex = 0;
+            employeeSort.SelectedIndex = 0;
         }
 
         private void objectsSort_SelectedIndexChanged(object sender, EventArgs e)
@@ -542,5 +550,52 @@ namespace DemoEx
                                     order by deals.transaction_date;");
             }
         }
+
+        private void dealsFilter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int dealFilterIndex = dealsFilter.SelectedIndex;
+
+            if (dealFilterIndex == 0)
+            {
+                fillAllDgv();
+            }
+            else if (dealFilterIndex == 1)
+            {
+                db.FillDGV(dealsDGV, $@"SELECT dealId, concat(clients.surname, ' ', clients.name, ' ', clients.patronymic) as 'Клиент', object.cadastral as 'Объект', concat(employees.surname, ' ', employees.name, ' ', employees.patronymic) as 'Риелтор', deals.type as 'Тип', transaction_date as 'Дата заключения', deals.status as 'Статус'
+                                    FROM db17.deals
+                                    join clients on deals.client = clients.id
+                                    join object on deals.object = object.objectId
+                                    join employees on deals.employees = employees.id
+                                    where deals.status='Новая';"); 
+            }
+            else if (dealFilterIndex == 2)
+            {
+                db.FillDGV(dealsDGV, $@"SELECT dealId, concat(clients.surname, ' ', clients.name, ' ', clients.patronymic) as 'Клиент', object.cadastral as 'Объект', concat(employees.surname, ' ', employees.name, ' ', employees.patronymic) as 'Риелтор', deals.type as 'Тип', transaction_date as 'Дата заключения', deals.status as 'Статус'
+                                    FROM db17.deals
+                                    join clients on deals.client = clients.id
+                                    join object on deals.object = object.objectId
+                                    join employees on deals.employees = employees.id
+                                    where deals.status='Подтверждена';");
+            }
+            else if (dealFilterIndex == 3)
+            {
+                db.FillDGV(dealsDGV, $@"SELECT dealId, concat(clients.surname, ' ', clients.name, ' ', clients.patronymic) as 'Клиент', object.cadastral as 'Объект', concat(employees.surname, ' ', employees.name, ' ', employees.patronymic) as 'Риелтор', deals.type as 'Тип', transaction_date as 'Дата заключения', deals.status as 'Статус'
+                                    FROM db17.deals
+                                    join clients on deals.client = clients.id
+                                    join object on deals.object = object.objectId
+                                    join employees on deals.employees = employees.id
+                                    where deals.status='Отменена';");
+            }
+            else
+            {
+                db.FillDGV(dealsDGV, $@"SELECT dealId, concat(clients.surname, ' ', clients.name, ' ', clients.patronymic) as 'Клиент', object.cadastral as 'Объект', concat(employees.surname, ' ', employees.name, ' ', employees.patronymic) as 'Риелтор', deals.type as 'Тип', transaction_date as 'Дата заключения', deals.status as 'Статус'
+                                    FROM db17.deals
+                                    join clients on deals.client = clients.id
+                                    join object on deals.object = object.objectId
+                                    join employees on deals.employees = employees.id
+                                    where deals.status='Завершена';");
+            }
+        }
+        
     }
 }
