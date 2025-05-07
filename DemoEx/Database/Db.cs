@@ -154,22 +154,17 @@ namespace DB
                 }
 
                 // Получаем названия столбцов из первой строки CSV
-                var columns = lines[0].Split(',');
+                var columns = lines[0].Split(';');
 
                 // Формируем SQL-запрос для вставки данных
                 for (int i = 1; i < lines.Length; i++)
                 {
-                    var values = lines[i].Split(',');
+                    var values = lines[i].Split(';');
                     if (values.Length != columns.Length)
                     {
                         throw new Exception($"Ошибка в строке {i + 1}: несоответствие количества столбцов.");
                     }
 
-                    // Экранируем значения для SQL
-                    for (int j = 0; j < values.Length; j++)
-                    {
-                        values[j] = MySqlHelper.EscapeString(values[j]);
-                    }
 
                     string insertQuery = $"INSERT INTO {tableName} ({string.Join(",", columns)}) VALUES ('{string.Join("','", values)}')";
 

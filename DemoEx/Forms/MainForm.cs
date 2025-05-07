@@ -465,6 +465,7 @@ namespace DemoEx
         {
             openFileDialog1.Filter = "CSV Files (*.csv)|*.csv|All Files (*.*)|*.*";
             openFileDialog1.Title = "Выберите CSV-файл";
+            openFileDialog1.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 
             if (openFileDialog1.ShowDialog(this) == DialogResult.OK)
             {
@@ -473,13 +474,13 @@ namespace DemoEx
                     openFileDialog1.OpenFile();
                     db.importDataFromCSVToTable(openFileDialog1.FileName, "clients");
                     MessageStore.successImportMessage();
+                    fillAllDgv();
                 }
                 catch (Exception ex)
                 {
-                    MessageStore.somethingWentWrongMessage();
+                    MessageBox.Show(ex.Message);
                 }
             }
-
         }
 
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
@@ -648,6 +649,72 @@ namespace DemoEx
                 db.FillDGV(employeeDGV, $"SELECT id, login as 'Логин', password as 'Пароль', concat(Surname, ' ', Name, ' ', Patronymic) as 'ФИО', passport as 'Паспорт', birth as 'Дата рождения', phone_number as 'Номер телефона', address as 'Адрес', posts.post as 'Должность' FROM db17.employees join posts on employees.post=posts.postId order by birth desc;");
             }
             
+        }
+
+        private void импортДанныхToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.Filter = "CSV Files (*.csv)|*.csv|All Files (*.*)|*.*";
+            openFileDialog1.Title = "Выберите CSV-файл";
+            openFileDialog1.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+
+            if (openFileDialog1.ShowDialog(this) == DialogResult.OK)
+            {
+                try
+                {
+                    openFileDialog1.OpenFile();
+                    db.importDataFromCSVToTable(openFileDialog1.FileName, "employees");
+                    MessageStore.successImportMessage();
+                    fillAllDgv();
+                }
+                catch (Exception ex)
+                {
+                    MessageStore.somethingWentWrongMessage();
+                }
+            }
+        }
+
+        private void импортДанныхToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.Filter = "CSV Files (*.csv)|*.csv|All Files (*.*)|*.*";
+            openFileDialog1.Title = "Выберите CSV-файл";
+            openFileDialog1.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+
+            if (openFileDialog1.ShowDialog(this) == DialogResult.OK)
+            {
+                try
+                {
+                    openFileDialog1.OpenFile();
+                    db.importDataFromCSVToTable(openFileDialog1.FileName, "object");
+                    MessageStore.successImportMessage();
+                    fillAllDgv();
+                }
+                catch (Exception ex)
+                {
+                    MessageStore.somethingWentWrongMessage();
+                }
+            }
+        }
+
+        private void импортДанныхToolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.Filter = "CSV Files (*.csv)|*.csv|All Files (*.*)|*.*";
+            openFileDialog1.Title = "Выберите CSV-файл";
+            openFileDialog1.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+
+            if (openFileDialog1.ShowDialog(this) == DialogResult.OK)
+            {
+                try
+                {
+                    openFileDialog1.OpenFile();
+                    db.importDataFromCSVToTable(openFileDialog1.FileName, "deals");
+                    MessageStore.successImportMessage();
+                    fillAllDgv();
+                }
+                catch (Exception ex)
+                {
+                    MessageStore.somethingWentWrongMessage();
+                }
+            }
         }
     }
 }
