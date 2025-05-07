@@ -181,6 +181,7 @@ namespace DemoEx
             this.clientSort.Name = "clientSort";
             this.clientSort.Size = new System.Drawing.Size(360, 40);
             this.clientSort.TabIndex = 0;
+            this.clientSort.SelectedIndexChanged += new System.EventHandler(this.clientSort_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -715,6 +716,7 @@ namespace DemoEx
             this.employeeFilter.Name = "employeeFilter";
             this.employeeFilter.Size = new System.Drawing.Size(360, 40);
             this.employeeFilter.TabIndex = 0;
+            this.employeeFilter.SelectedIndexChanged += new System.EventHandler(this.employeeFilter_SelectedIndexChanged);
             // 
             // groupBox8
             // 

@@ -596,6 +596,27 @@ namespace DemoEx
                                     where deals.status='Завершена';");
             }
         }
-        
+
+        private void employeeFilter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void clientSort_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (clientSort.SelectedIndex == 0)
+            {
+                fillAllDgv();
+            }
+            else if (clientSort.SelectedIndex == 1)
+            {
+                db.FillDGV(clientDGV, $"SELECT id, concat(Surname,' ', Name,' ', Patronymic) as 'ФИО', passport as 'Паспорт', address as 'Адрес', birth as 'Дата рождения', phone_number as 'Номер телефона', type as 'Тип' FROM db17.clients order by birth limit 10;");
+            }
+            else if (clientSort.SelectedIndex == 2)
+            {
+                db.FillDGV(clientDGV, $"SELECT id, concat(Surname,' ', Name,' ', Patronymic) as 'ФИО', passport as 'Паспорт', address as 'Адрес', birth as 'Дата рождения', phone_number as 'Номер телефона', type as 'Тип' FROM db17.clients order by birth desc limit 10;");
+            }
+            
+        }
     }
 }
