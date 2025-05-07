@@ -698,6 +698,7 @@ namespace DemoEx
             this.employeeSort.Name = "employeeSort";
             this.employeeSort.Size = new System.Drawing.Size(360, 40);
             this.employeeSort.TabIndex = 0;
+            this.employeeSort.SelectedIndexChanged += new System.EventHandler(this.employeeSort_SelectedIndexChanged);
             // 
             // groupBox7
             // 

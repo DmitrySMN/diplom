@@ -102,20 +102,20 @@ namespace DemoEx
                 employeeFilter.Items.Add("Администраторы");
 
                 objectsSort.Items.Add("По умолчанию");
-                objectsSort.Items.Add("Цена (убыв.)");
                 objectsSort.Items.Add("Цена (возр.)");
+                objectsSort.Items.Add("Цена (убыв.)");
 
                 clientSort.Items.Add("По умолчанию");
                 clientSort.Items.Add("Дата рождения (возр.)");
                 clientSort.Items.Add("Дата рождения (убыв.)");
 
                 dealsSort.Items.Add("По умолчанию");
-                dealsSort.Items.Add("Дата заключения (убыв.)");
                 dealsSort.Items.Add("Дата заключения (возр.)");
+                dealsSort.Items.Add("Дата заключения (убыв.)");
 
                 employeeSort.Items.Add("По умолчанию");
-                employeeSort.Items.Add("Дата рождения (убыв.)");
                 employeeSort.Items.Add("Дата рождения (возр.)");
+                employeeSort.Items.Add("Дата рождения (убыв.)");
 
                 clientsFilter.SelectedIndex = 0;
                 objectsFilter.SelectedIndex = 0;
@@ -599,7 +599,21 @@ namespace DemoEx
 
         private void employeeFilter_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            if (employeeFilter.SelectedIndex == 0)
+            {
+                db.FillDGV(employeeDGV, $"SELECT id, login as 'Логин', password as 'Пароль', concat(Surname, ' ', Name, ' ', Patronymic) as 'ФИО', passport as 'Паспорт', birth as 'Дата рождения', phone_number as 'Номер телефона', address as 'Адрес', posts.post as 'Должность' FROM db17.employees join posts on employees.post=posts.postId;");
+            } else if (employeeFilter.SelectedIndex == 1)
+            {
+                db.FillDGV(employeeDGV, $"SELECT id, login as 'Логин', password as 'Пароль', concat(Surname, ' ', Name, ' ', Patronymic) as 'ФИО', passport as 'Паспорт', birth as 'Дата рождения', phone_number as 'Номер телефона', address as 'Адрес', posts.post as 'Должность' FROM db17.employees join posts on employees.post=posts.postId where employees.post=2;");
+            }
+            else if (employeeFilter.SelectedIndex == 2)
+            {
+                db.FillDGV(employeeDGV, $"SELECT id, login as 'Логин', password as 'Пароль', concat(Surname, ' ', Name, ' ', Patronymic) as 'ФИО', passport as 'Паспорт', birth as 'Дата рождения', phone_number as 'Номер телефона', address as 'Адрес', posts.post as 'Должность' FROM db17.employees join posts on employees.post=posts.postId where employees.post=1;");
+            }
+            else
+            {
+                db.FillDGV(employeeDGV, $"SELECT id, login as 'Логин', password as 'Пароль', concat(Surname, ' ', Name, ' ', Patronymic) as 'ФИО', passport as 'Паспорт', birth as 'Дата рождения', phone_number as 'Номер телефона', address as 'Адрес', posts.post as 'Должность' FROM db17.employees join posts on employees.post=posts.postId where employees.post=3;");
+            }
         }
 
         private void clientSort_SelectedIndexChanged(object sender, EventArgs e)
@@ -615,6 +629,23 @@ namespace DemoEx
             else if (clientSort.SelectedIndex == 2)
             {
                 db.FillDGV(clientDGV, $"SELECT id, concat(Surname,' ', Name,' ', Patronymic) as 'ФИО', passport as 'Паспорт', address as 'Адрес', birth as 'Дата рождения', phone_number as 'Номер телефона', type as 'Тип' FROM db17.clients order by birth desc limit 10;");
+            }
+            
+        }
+
+        private void employeeSort_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (employeeSort.SelectedIndex == 0)
+            {
+                db.FillDGV(employeeDGV, $"SELECT id, login as 'Логин', password as 'Пароль', concat(Surname, ' ', Name, ' ', Patronymic) as 'ФИО', passport as 'Паспорт', birth as 'Дата рождения', phone_number as 'Номер телефона', address as 'Адрес', posts.post as 'Должность' FROM db17.employees join posts on employees.post=posts.postId;");
+            }
+            else if (employeeSort.SelectedIndex == 1)
+            {
+                db.FillDGV(employeeDGV, $"SELECT id, login as 'Логин', password as 'Пароль', concat(Surname, ' ', Name, ' ', Patronymic) as 'ФИО', passport as 'Паспорт', birth as 'Дата рождения', phone_number as 'Номер телефона', address as 'Адрес', posts.post as 'Должность' FROM db17.employees join posts on employees.post=posts.postId order by birth;");
+            }
+            else if (employeeSort.SelectedIndex == 2)
+            {
+                db.FillDGV(employeeDGV, $"SELECT id, login as 'Логин', password as 'Пароль', concat(Surname, ' ', Name, ' ', Patronymic) as 'ФИО', passport as 'Паспорт', birth as 'Дата рождения', phone_number as 'Номер телефона', address as 'Адрес', posts.post as 'Должность' FROM db17.employees join posts on employees.post=posts.postId order by birth desc;");
             }
             
         }
