@@ -81,6 +81,7 @@ namespace DemoEx
             this.surname.Name = "surname";
             this.surname.Size = new System.Drawing.Size(339, 39);
             this.surname.TabIndex = 0;
+            this.surname.TextChanged += new System.EventHandler(this.surname_TextChanged);
             this.surname.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
             // 
             // groupBox4
@@ -199,6 +200,7 @@ namespace DemoEx
             this.name.Name = "name";
             this.name.Size = new System.Drawing.Size(339, 39);
             this.name.TabIndex = 0;
+            this.name.TextChanged += new System.EventHandler(this.name_TextChanged);
             this.name.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox2_KeyPress_1);
             // 
             // groupBox3
@@ -225,6 +227,7 @@ namespace DemoEx
             this.pat.Name = "pat";
             this.pat.Size = new System.Drawing.Size(339, 39);
             this.pat.TabIndex = 0;
+            this.pat.TextChanged += new System.EventHandler(this.pat_TextChanged);
             this.pat.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox3_KeyPress_1);
             // 
             // groupBox7
@@ -281,6 +284,7 @@ namespace DemoEx
             this.address.Name = "address";
             this.address.Size = new System.Drawing.Size(706, 39);
             this.address.TabIndex = 0;
+            this.address.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.address_KeyPress);
             // 
             // AddClientForm
             // 

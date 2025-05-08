@@ -125,7 +125,22 @@ namespace DemoEx
 
         private void address_KeyPress(object sender, KeyPressEventArgs e)
         {
-            InputFieldCorrection.ruLettersNumbersField(e);
+            InputFieldCorrection.ruAddressField(e);
+        }
+
+        private void surname_TextChanged(object sender, EventArgs e)
+        {
+            InputFieldCorrection.toUpperFirstLetter(surname);
+        }
+
+        private void name_TextChanged(object sender, EventArgs e)
+        {
+            InputFieldCorrection.toUpperFirstLetter(name);
+        }
+
+        private void pat_TextChanged(object sender, EventArgs e)
+        {
+            InputFieldCorrection.toUpperFirstLetter(pat);
         }
     }
 }

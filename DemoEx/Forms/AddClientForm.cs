@@ -58,7 +58,7 @@ namespace DemoEx
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
-            InputFieldCorrection.ruLettersField(e);
+            InputFieldCorrection.ruLettersAndDash(e);
         }             
 
         private void button1_Click(object sender, EventArgs e)
@@ -112,6 +112,26 @@ namespace DemoEx
         private void button2_Click_1(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void surname_TextChanged(object sender, EventArgs e)
+        {
+            InputFieldCorrection.toUpperFirstLetter(surname);
+        }
+
+        private void name_TextChanged(object sender, EventArgs e)
+        {
+            InputFieldCorrection.toUpperFirstLetter(name);
+        }
+
+        private void pat_TextChanged(object sender, EventArgs e)
+        {
+            InputFieldCorrection.toUpperFirstLetter(name);
+        }
+
+        private void address_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            InputFieldCorrection.ruAddressField(e);
         }
     }
 }

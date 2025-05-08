@@ -122,6 +122,7 @@
             this.pat.Name = "pat";
             this.pat.Size = new System.Drawing.Size(339, 39);
             this.pat.TabIndex = 0;
+            this.pat.TextChanged += new System.EventHandler(this.pat_TextChanged);
             this.pat.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.pat_KeyPress);
             // 
             // groupBox2
@@ -148,6 +149,7 @@
             this.name.Name = "name";
             this.name.Size = new System.Drawing.Size(339, 39);
             this.name.TabIndex = 0;
+            this.name.TextChanged += new System.EventHandler(this.name_TextChanged);
             this.name.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.name_KeyPress);
             // 
             // groupBox6
@@ -240,6 +242,7 @@
             this.surname.Name = "surname";
             this.surname.Size = new System.Drawing.Size(339, 39);
             this.surname.TabIndex = 0;
+            this.surname.TextChanged += new System.EventHandler(this.surname_TextChanged);
             this.surname.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.surname_KeyPress);
             // 
             // groupBox7

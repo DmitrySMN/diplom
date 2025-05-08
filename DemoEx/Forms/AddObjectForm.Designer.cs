@@ -132,6 +132,7 @@
             this.address_tb.Name = "address_tb";
             this.address_tb.Size = new System.Drawing.Size(558, 39);
             this.address_tb.TabIndex = 0;
+            this.address_tb.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.address_tb_KeyPress);
             // 
             // groupBox2
             // 
@@ -265,6 +266,7 @@
             this.rooms_tb.Name = "rooms_tb";
             this.rooms_tb.Size = new System.Drawing.Size(183, 39);
             this.rooms_tb.TabIndex = 2;
+            this.rooms_tb.TextChanged += new System.EventHandler(this.rooms_tb_TextChanged);
             this.rooms_tb.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.rooms_tb_KeyPress);
             // 
             // groupBox8

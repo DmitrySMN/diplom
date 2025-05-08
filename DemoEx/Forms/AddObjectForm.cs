@@ -155,5 +155,15 @@ namespace DemoEx.Forms
         {
             InputFieldCorrection.numbersField(e);
         }
+
+        private void address_tb_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            InputFieldCorrection.ruAddressField(e);
+        }
+
+        private void rooms_tb_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
