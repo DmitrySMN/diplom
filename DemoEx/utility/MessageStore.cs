@@ -114,5 +114,19 @@ namespace DemoEx.utility
         {
             MessageBox.Show("Данные успешно импортированы!", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
+        //Создание документов
+        public static void successCreateSalesDocument(string path)
+        {
+            MessageBox.Show($"Документ купли-продажи создан и сохранен по пути\n{path}", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+        public static void successCreateTransferDocument(string path)
+        {
+            MessageBox.Show($"Документ приема-передачи создан и сохранен по пути\n{path}", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+        public static void successCreateObjectDocument(string path)
+        {
+            MessageBox.Show($"Отчет по объекту создан и сохранен по пути\n{path}", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
     }
 }

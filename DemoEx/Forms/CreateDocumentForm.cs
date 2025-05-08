@@ -46,7 +46,7 @@ namespace DemoEx.Forms
                     price: db.getIntValuesFromColumn($"SELECT object.price FROM db17.deals join object on deals.object=object.objectid where dealid={dealId};")[0],
                     contractDate: db.getDateValuesFromColumn($"SELECT transaction_date FROM db17.deals where dealId={dealId};")[0]
                     );
-                MessageBox.Show("Документ создан!");
+                MessageStore.successCreateSalesDocument(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Документы по сделкам"));
             } catch (Exception ex)
             {
                 MessageStore.somethingWentWrongMessage();
