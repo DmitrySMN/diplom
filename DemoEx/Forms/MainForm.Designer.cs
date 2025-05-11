@@ -383,6 +383,7 @@ namespace DemoEx
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox3.TabIndex = 16;
             this.pictureBox3.TabStop = false;
+            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
             // 
             // pictureBox4
             // 
@@ -393,6 +394,7 @@ namespace DemoEx
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox4.TabIndex = 17;
             this.pictureBox4.TabStop = false;
+            this.pictureBox4.Click += new System.EventHandler(this.pictureBox4_Click);
             // 
             // groupBox3
             // 
@@ -482,6 +484,7 @@ namespace DemoEx
             this.экспортДанныхToolStripMenuItem2.Name = "экспортДанныхToolStripMenuItem2";
             this.экспортДанныхToolStripMenuItem2.Size = new System.Drawing.Size(219, 22);
             this.экспортДанныхToolStripMenuItem2.Text = "Экспорт данных";
+            this.экспортДанныхToolStripMenuItem2.Click += new System.EventHandler(this.экспортДанныхToolStripMenuItem2_Click);
             // 
             // button2
             // 
@@ -531,6 +534,7 @@ namespace DemoEx
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox5.TabIndex = 19;
             this.pictureBox5.TabStop = false;
+            this.pictureBox5.Click += new System.EventHandler(this.pictureBox5_Click);
             // 
             // pictureBox6
             // 
@@ -541,6 +545,7 @@ namespace DemoEx
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox6.TabIndex = 20;
             this.pictureBox6.TabStop = false;
+            this.pictureBox6.Click += new System.EventHandler(this.pictureBox6_Click);
             // 
             // groupBox12
             // 
@@ -657,6 +662,7 @@ namespace DemoEx
             this.экспортДанныхToolStripMenuItem3.Name = "экспортДанныхToolStripMenuItem3";
             this.экспортДанныхToolStripMenuItem3.Size = new System.Drawing.Size(213, 22);
             this.экспортДанныхToolStripMenuItem3.Text = "Экспорт данных";
+            this.экспортДанныхToolStripMenuItem3.Click += new System.EventHandler(this.экспортДанныхToolStripMenuItem3_Click);
             // 
             // button5
             // 
@@ -706,6 +712,7 @@ namespace DemoEx
             this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox7.TabIndex = 19;
             this.pictureBox7.TabStop = false;
+            this.pictureBox7.Click += new System.EventHandler(this.pictureBox7_Click);
             // 
             // pictureBox8
             // 
@@ -716,6 +723,7 @@ namespace DemoEx
             this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox8.TabIndex = 20;
             this.pictureBox8.TabStop = false;
+            this.pictureBox8.Click += new System.EventHandler(this.pictureBox8_Click);
             // 
             // groupBox11
             // 
@@ -823,6 +831,7 @@ namespace DemoEx
             this.экспортДанныхToolStripMenuItem1.Name = "экспортДанныхToolStripMenuItem1";
             this.экспортДанныхToolStripMenuItem1.Size = new System.Drawing.Size(238, 22);
             this.экспортДанныхToolStripMenuItem1.Text = "Экспорт данных";
+            this.экспортДанныхToolStripMenuItem1.Click += new System.EventHandler(this.экспортДанныхToolStripMenuItem1_Click);
             // 
             // button4
             // 

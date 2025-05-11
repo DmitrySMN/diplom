@@ -17,6 +17,9 @@ namespace DemoEx
         private int post;
         private int currentInfo = 1;
         private int offset = 0;
+        private int employeeOffset = 0;
+        private int dealOffset = 0;
+        private int objectOffset = 0;
 
         private int page = 1;
         private int objectPage = 1;
@@ -44,10 +47,10 @@ namespace DemoEx
                 string userFullName = db.getValuesFromColumn($"select concat(surname, ' ', name) from employees where login='{login}';")[0];
                 this.Text = $"Главное меню - {userFullName}";
 
-                objectsDGV.RowTemplate.Height = 85;
+                objectsDGV.RowTemplate.Height = 82;
                 clientDGV.RowTemplate.Height = 82;
-                dealsDGV.RowTemplate.Height = 85;
-                employeeDGV.RowTemplate.Height = 85;
+                dealsDGV.RowTemplate.Height = 82;
+                employeeDGV.RowTemplate.Height = 82;
 
 
                 clientDGV.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -142,14 +145,14 @@ namespace DemoEx
         private void fillAllDgv()
         {
             db.FillDGV(clientDGV, $"SELECT id, concat(Surname,' ', Name,' ', Patronymic) as 'ФИО', passport as 'Паспорт', address as 'Адрес', birth as 'Дата рождения', phone_number as 'Номер телефона', type as 'Тип' FROM db17.clients limit 10 offset {offset};");
-            db.FillDGV(objectsDGV, $"SELECT objectid, object_type.type as 'Тип объекта', concat(clients.surname,' ', clients.name, ' ', clients.patronymic) as 'Владелец', object_address as 'Адрес', square as 'Площадь', cadastral as 'Кадаст. ном..', rooms as 'Кол-во комнат', price as 'Цена', photo, status as 'Статус'\r\nFROM db17.object\r\nJOIN object_type ON object_type.id=object.object_type\r\nJOIN clients ON clients.id=object.owner_id");
-            db.FillDGV(employeeDGV, $"SELECT id, login as 'Логин', password as 'Пароль', concat(Surname, ' ', Name, ' ', Patronymic) as 'ФИО', passport as 'Паспорт', birth as 'Дата рождения', phone_number as 'Номер телефона', address as 'Адрес', posts.post as 'Должность' FROM db17.employees join posts on employees.post=posts.postId;\r\n");
+            db.FillDGV(objectsDGV, $"SELECT objectid, object_type.type as 'Тип объекта', concat(clients.surname,' ', clients.name, ' ', clients.patronymic) as 'Владелец', object_address as 'Адрес', square as 'Площадь', cadastral as 'Кадаст. ном..', rooms as 'Кол-во комнат', price as 'Цена', photo, status as 'Статус'\r\nFROM db17.object\r\nJOIN object_type ON object_type.id=object.object_type JOIN clients ON clients.id=object.owner_id limit 10 offset {objectOffset};");
+            db.FillDGV(employeeDGV, $"SELECT id, login as 'Логин', password as 'Пароль', concat(Surname, ' ', Name, ' ', Patronymic) as 'ФИО', passport as 'Паспорт', birth as 'Дата рождения', phone_number as 'Номер телефона', address as 'Адрес', posts.post as 'Должность' FROM db17.employees join posts on employees.post=posts.postId limit 10 offset {employeeOffset};");
             db.FillDGV(dealsDGV, $@"SELECT dealId, concat(clients.surname, ' ', clients.name, ' ', clients.patronymic) as 'Клиент', object.cadastral as 'Объект', concat(employees.surname, ' ', employees.name, ' ', employees.patronymic) as 'Риелтор', deals.type as 'Тип', transaction_date as 'Дата заключения', deals.status as 'Статус'
                                     FROM db17.deals
                                     join clients on deals.client = clients.id
                                     join object on deals.object = object.objectId
-                                    join employees on deals.employees = employees.id;
-                                    ");
+                                    join employees on deals.employees = employees.id
+                                    limit 10 offset {dealOffset};");
 
             clientDGV.Columns[0].Visible = false;
             objectsDGV.Columns[0].Visible = false;
@@ -375,6 +378,78 @@ namespace DemoEx
                 fillAllDgv();
                 page -= 1;
                 label1.Text = $"{page}/{clientsPageCount}";
+            }
+        }
+
+        private void nextEmployeesPage()
+        {
+            if (employeesPage < employeesPageCount)
+            {
+                employeeOffset += 10;
+                clearParameters();
+                fillAllDgv();
+                employeesPage += 1;
+                employeesPaginationLabel.Text = $"{employeesPage}/{employeesPageCount}";
+            }
+        }
+
+        private void prevEmployeesPage()
+        {
+            if (employeesPage > 1)
+            {
+                employeeOffset -= 10;
+                clearParameters();
+                fillAllDgv();
+                employeesPage -= 1;
+                employeesPaginationLabel.Text = $"{employeesPage}/{employeesPageCount}";
+            }
+        }
+
+        private void nextObjectPage()
+        {
+            if (objectPage < objectPageCount)
+            {
+                objectOffset += 10;
+                clearParameters();
+                fillAllDgv();
+                objectPage += 1;
+                objectPaginationLabel.Text = $"{objectPage}/{objectPageCount}";
+            }
+        }
+
+        private void prevObjectPage()
+        {
+            if (objectPage > 1)
+            {
+                objectOffset -= 10;
+                clearParameters();
+                fillAllDgv();
+                objectPage -= 1;
+                objectPaginationLabel.Text = $"{objectPage}/{objectPageCount}";
+            }
+        }
+
+        private void nextDealsPage()
+        {
+            if (dealsPage < dealsPageCount)
+            {
+                dealOffset += 10;
+                clearParameters();
+                fillAllDgv();
+                dealsPage += 1;
+                dealsPaginationLabel.Text = $"{dealsPage}/{dealsPageCount}";
+            }
+        }
+
+        private void prevDealsPage()
+        {
+            if (dealsPage > 1)
+            {
+                dealOffset -= 10;
+                clearParameters();
+                fillAllDgv();
+                dealsPage -= 1;
+                dealsPaginationLabel.Text = $"{dealsPage}/{dealsPageCount}";
             }
         }
 
@@ -734,6 +809,75 @@ namespace DemoEx
                 {
                     MessageStore.somethingWentWrongMessage();
                 }
+            }
+        }
+
+        private void pictureBox8_Click(object sender, EventArgs e)
+        {
+            nextEmployeesPage();
+        }
+
+        private void pictureBox7_Click(object sender, EventArgs e)
+        {
+            prevEmployeesPage();
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            prevObjectPage();
+        }
+
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+            nextObjectPage();
+        }
+
+        private void pictureBox6_Click(object sender, EventArgs e)
+        {
+            nextDealsPage();
+        }
+
+        private void pictureBox5_Click(object sender, EventArgs e)
+        {
+            prevDealsPage();
+        }
+
+        private void экспортДанныхToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                db.exportDataFromTableToCSV("employees");
+                MessageStore.successExportMessage();
+            }
+            catch (Exception ex)
+            {
+                MessageStore.somethingWentWrongMessage();
+            }
+        }
+
+        private void экспортДанныхToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                db.exportDataFromTableToCSV("object");
+                MessageStore.successExportMessage();
+            }
+            catch (Exception ex)
+            {
+                MessageStore.somethingWentWrongMessage();
+            }
+        }
+
+        private void экспортДанныхToolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                db.exportDataFromTableToCSV("deals");
+                MessageStore.successExportMessage();
+            }
+            catch (Exception ex)
+            {
+                MessageStore.somethingWentWrongMessage();
             }
         }
     }

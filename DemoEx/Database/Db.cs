@@ -108,7 +108,7 @@ namespace DB
 
         public void exportDataFromTableToCSV(string tableName)
         {
-            string csvFilePath = $"{tableName}_exported_data.csv";
+            string csvFilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), $"{tableName}_exported_data.csv");
             using (var connection = new MySqlConnection(conStr))
             {
                 connection.Open();
