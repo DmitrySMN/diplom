@@ -39,15 +39,36 @@ namespace DemoEx.Forms
             try
             {
                 DocumentHelper.generateSalesContract(
-                    filePath: $@"{Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Документы по сделкам")}\{dealId}_Документ_купли_продажи.docx",
-                    buyer: db.getValuesFromColumn($"SELECT concat(clients.surname, ' ', clients.name, ' ', clients.patronymic) FROM db17.deals join clients on deals.client=clients.id where dealId={dealId};")[0],
-                    seller: db.getValuesFromColumn($"SELECT (select concat(surname,' ', name,' ', patronymic) from clients where id=object.owner_id) FROM db17.deals join object on deals.object=object.objectid where dealId={dealId};")[0],
-                    propertyDescription: $"{db.getValuesFromColumn($"SELECT (select type from object_type where id=object.object_type) FROM db17.deals join object on deals.object=object.objectid where dealid={dealId};")[0]} по адресу: {db.getValuesFromColumn($"SELECT object.object_address FROM db17.deals join object on deals.object=object.objectid where dealid={dealId};")[0]}",
-                    price: db.getIntValuesFromColumn($"SELECT object.price FROM db17.deals join object on deals.object=object.objectid where dealid={dealId};")[0],
-                    contractDate: db.getDateValuesFromColumn($"SELECT transaction_date FROM db17.deals where dealId={dealId};")[0]
-                    );
+                            filePath: $@"{Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Документы по сделкам")}\{dealId}_Документ_купли_продажи.docx",
+                            buyer: db.getValuesFromColumn($"SELECT concat(clients.surname, ' ', clients.name, ' ', clients.patronymic) FROM db17.deals join clients on deals.client=clients.id where dealId={dealId};")[0],
+                            seller: db.getValuesFromColumn($"SELECT (select concat(surname,' ', name,' ', patronymic) from clients where id=object.owner_id) FROM db17.deals join object on deals.object=object.objectid where dealId={dealId};")[0],
+                            propertyDescription: $"{db.getValuesFromColumn($"SELECT (select type from object_type where id=object.object_type) FROM db17.deals join object on deals.object=object.objectid where dealid={dealId};")[0]} по адресу: {db.getValuesFromColumn($"SELECT object.object_address FROM db17.deals join object on deals.object=object.objectid where dealid={dealId};")[0]}",
+                            price: db.getIntValuesFromColumn($"SELECT object.price FROM db17.deals join object on deals.object=object.objectid where dealid={dealId};")[0],
+                            contractDate: db.getDateValuesFromColumn($"SELECT transaction_date FROM db17.deals where dealId={dealId};")[0]
+                            );
                 MessageStore.successCreateSalesDocument(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Документы по сделкам"));
             } catch (Exception ex)
+            {
+                MessageStore.somethingWentWrongMessage();
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DocumentHelper.generateTransferDocument(
+                            filePath: $@"{Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Документы по сделкам")}\{dealId}_Акт_приема_передачи.docx",
+                            seller: db.getValuesFromColumn($"SELECT (select concat(surname,' ', name,' ', patronymic) from clients where id=object.owner_id) FROM db17.deals join object on deals.object=object.objectid where dealId={dealId};")[0],
+                            buyer: db.getValuesFromColumn($"SELECT concat(clients.surname, ' ', clients.name, ' ', clients.patronymic) FROM db17.deals join clients on deals.client=clients.id where dealId={dealId};")[0],
+                            propertyDescription: $"{db.getValuesFromColumn($"SELECT (select type from object_type where id=object.object_type) FROM db17.deals join object on deals.object=object.objectid where dealid={dealId};")[0]} по адресу: {db.getValuesFromColumn($"SELECT object.object_address FROM db17.deals join object on deals.object=object.objectid where dealid={dealId};")[0]}",
+                            contractDate: db.getDateValuesFromColumn($"SELECT transaction_date FROM db17.deals where dealid={dealId};")[0],
+                            actDate: DateTime.Now,
+                            propertyCondition: "отличном состоянии",
+                            additionalTerms: "3.1. Ключи от квартиры переданы покупателю.\n3.2. Документы на квартиру переданы в полном объеме.");
+                MessageStore.successCreateObjectDocument(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Документы по сделкам"));
+            }
+            catch (Exception ex)
             {
                 MessageStore.somethingWentWrongMessage();
             }
